@@ -41,16 +41,30 @@ $env:FISHXCODE_TOKEN="sk-xxx"
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "fishxcode": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "FishXCode",
+    "fishxcode-anthropic": {
+      "npm": "@ai-sdk/anthropic",
+      "name": "fishxcode-anthropic",
       "options": {
         "baseURL": "https://fishxcode.com/v1",
         "apiKey": "{env:FISHXCODE_TOKEN}"
       },
       "models": {
-        "gpt-5": { "name": "GPT-5" },
-        "claude-sonnet-4-5-20250929": { "name": "Claude Sonnet 4.5" }
+        "claude-sonnet-4-6": {
+          "name": "claude-sonnet-4-6"
+        }
+      }
+    },
+    "fishxcode-openai": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "fishxcode-openai",
+      "options": {
+        "baseURL": "https://fishxcode.com/v1",
+        "apiKey": "{env:FISHXCODE_TOKEN}"
+      },
+      "models": {
+        "gpt-5.2-codex": {
+          "name": "gpt-5.2-codex"
+        }
       }
     }
   }
