@@ -167,7 +167,8 @@ export default withPwa(defineConfig({
           next: '下一页'
         },
         outline: {
-          label: '页面导航'
+          label: '页面导航',
+          level: [2, 3]
         }
       }
     },
@@ -255,7 +256,8 @@ export default withPwa(defineConfig({
           next: 'Next page'
         },
         outline: {
-          label: 'On this page'
+          label: 'On this page',
+          level: [2, 3]
         }
       }
     },
@@ -343,7 +345,8 @@ export default withPwa(defineConfig({
           next: 'Page suivante'
         },
         outline: {
-          label: 'Sur cette page'
+          label: 'Sur cette page',
+          level: [2, 3]
         }
       }
     },
@@ -431,7 +434,8 @@ export default withPwa(defineConfig({
           next: 'Página siguiente'
         },
         outline: {
-          label: 'En esta página'
+          label: 'En esta página',
+          level: [2, 3]
         }
       }
     },
@@ -519,7 +523,8 @@ export default withPwa(defineConfig({
           next: 'Próxima página'
         },
         outline: {
-          label: 'Nesta página'
+          label: 'Nesta página',
+          level: [2, 3]
         }
       }
     }
