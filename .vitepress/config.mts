@@ -113,7 +113,6 @@ export default withPwa(defineConfig({
                   { text: '支持的模型', link: '/models' },
                   { text: '常见问题', link: '/faq' },
                   { text: '更新日志', link: '/changelog' },
-                  { text: '社区公告', link: '/announcement' },
                   { text: '用户协议', link: '/terms' },
                   { text: '隐私政策', link: '/privacy' }
                 ]
@@ -151,7 +150,6 @@ export default withPwa(defineConfig({
               { text: '支持的模型', link: '/models' },
               { text: '常见问题', link: '/faq' },
               { text: '更新日志', link: '/changelog' },
-              { text: '社区公告', link: '/announcement' },
               { text: '用户协议', link: '/terms' },
               { text: '隐私政策', link: '/privacy' }
             ]
@@ -203,7 +201,6 @@ export default withPwa(defineConfig({
                   { text: 'Supported Models', link: '/en/models' },
                   { text: 'FAQ', link: '/en/faq' },
                   { text: 'Changelog', link: '/en/changelog' },
-                  { text: 'Announcement', link: '/en/announcement' },
                   { text: 'Terms', link: '/en/terms' },
                   { text: 'Privacy', link: '/en/privacy' }
                 ]
@@ -241,7 +238,6 @@ export default withPwa(defineConfig({
               { text: 'Supported Models', link: '/en/models' },
               { text: 'FAQ', link: '/en/faq' },
               { text: 'Changelog', link: '/en/changelog' },
-              { text: 'Announcement', link: '/en/announcement' },
               { text: 'Terms', link: '/en/terms' },
               { text: 'Privacy', link: '/en/privacy' }
             ]
@@ -293,7 +289,6 @@ export default withPwa(defineConfig({
                   { text: 'Modèles supportés', link: '/fr/models' },
                   { text: 'FAQ', link: '/fr/faq' },
                   { text: 'Journal des modifications', link: '/fr/changelog' },
-                  { text: 'Annonce', link: '/fr/announcement' },
                   { text: 'Conditions', link: '/fr/terms' },
                   { text: 'Confidentialité', link: '/fr/privacy' }
                 ]
@@ -331,7 +326,6 @@ export default withPwa(defineConfig({
               { text: 'Modèles supportés', link: '/fr/models' },
               { text: 'FAQ', link: '/fr/faq' },
               { text: 'Journal des modifications', link: '/fr/changelog' },
-              { text: 'Annonce', link: '/fr/announcement' },
               { text: 'Conditions', link: '/fr/terms' },
               { text: 'Confidentialité', link: '/fr/privacy' }
             ]
@@ -383,7 +377,6 @@ export default withPwa(defineConfig({
                   { text: 'Modelos soportados', link: '/es/models' },
                   { text: 'Preguntas frecuentes', link: '/es/faq' },
                   { text: 'Registro de cambios', link: '/es/changelog' },
-                  { text: 'Anuncio', link: '/es/announcement' },
                   { text: 'Términos', link: '/es/terms' },
                   { text: 'Privacidad', link: '/es/privacy' }
                 ]
@@ -421,7 +414,6 @@ export default withPwa(defineConfig({
               { text: 'Modelos soportados', link: '/es/models' },
               { text: 'Preguntas frecuentes', link: '/es/faq' },
               { text: 'Registro de cambios', link: '/es/changelog' },
-              { text: 'Anuncio', link: '/es/announcement' },
               { text: 'Términos', link: '/es/terms' },
               { text: 'Privacidad', link: '/es/privacy' }
             ]
@@ -473,7 +465,6 @@ export default withPwa(defineConfig({
                   { text: 'Modelos suportados', link: '/pt/models' },
                   { text: 'Perguntas frequentes', link: '/pt/faq' },
                   { text: 'Registro de alterações', link: '/pt/changelog' },
-                  { text: 'Comunicado', link: '/pt/announcement' },
                   { text: 'Termos', link: '/pt/terms' },
                   { text: 'Privacidade', link: '/pt/privacy' }
                 ]
@@ -511,7 +502,6 @@ export default withPwa(defineConfig({
               { text: 'Modelos suportados', link: '/pt/models' },
               { text: 'Perguntas frequentes', link: '/pt/faq' },
               { text: 'Registro de alterações', link: '/pt/changelog' },
-              { text: 'Comunicado', link: '/pt/announcement' },
               { text: 'Termos', link: '/pt/terms' },
               { text: 'Privacidade', link: '/pt/privacy' }
             ]
