@@ -26,7 +26,7 @@ export default {
   setup() {
     const route = useRoute()
     const initZoom = () => {
-      mediumZoom('[data-zoomable]', { background: 'var(--vp-c-bg)' })
+      mediumZoom('.vp-doc img', { background: 'var(--vp-c-bg)' })
     }
     onMounted(initZoom)
     watch(() => route.path, () => nextTick(initZoom))

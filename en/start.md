@@ -2,27 +2,56 @@
 
 ## 1. Get Your API Key
 
-### Register
+### 1. Register
 
-Visit [fishxcode.com](https://fishxcode.com/register?aff=9CTW) to create an account (password 8–20 characters, email required).
+Visit [fishxcode.com](https://fishxcode.com/register?aff=9CTW) and click **Register**:
 
-### Create a Token
+![FishXCode Home](/img/start/api-01-home.png)
 
-Log in and go to **Console → Token Management → Add Token**. When creating:
+Choose a registration method (GitHub, LinuxDO, or username):
 
-- For **Token Group**, select **Official Channel**. This group includes `claude-opus-4-5-20251101`, `claude-haiku-4-5-20251001`, `claude-opus-4-6`, `claude-sonnet-4-5-20250929`, `claude-sonnet-4-6`, and more. The model is selected automatically based on task complexity.
-- After creation, click the copy button to get your API Key (format: `sk-xxx`).
+![Registration Method Selection](/img/start/api-02-register.png)
 
-### Top Up
+Fill in your username, password, and confirm password to complete registration:
 
-| Method | Path |
-| --- | --- |
-| Alipay | Console → Wallet → Enter amount → Alipay |
-| WeChat Pay | Console → Wallet → Enter amount → WeChat |
-| Redeem Code | Console → Wallet → Enter code → Redeem |
+![Registration Form](/img/start/api-03-register-form.png)
+
+### 2. Log In
+
+After registering, log in with your username and password:
+
+![Login Page](/img/start/api-04-login.png)
+
+After logging in, you will be taken to the console:
+
+![Console Home](/img/start/api-05-console.png)
+
+### 3. Create a Token
+
+Go to **Console → Token Management → Add Token** and fill in the form:
+
+![Add Token](/img/start/api-06-token-create.png)
+
+- For **Token Group**, it is recommended to select **Official Channel**. This group includes models such as `claude-opus-4-5-20251101`, `claude-haiku-4-5-20251001`, `claude-opus-4-6`, `claude-sonnet-4-5-20250929`, and `claude-sonnet-4-6`. The model is selected automatically based on task complexity — no manual switching needed.
+
+After creation, click the **Copy** button in the token list to get your API Key (format: `sk-xxx`):
+
+![Copy Token](/img/start/api-07-token-copy.png)
+
+### 4. Top Up
+
+Go to **Console → Wallet Management**. Alipay, WeChat Pay, and redeem codes are supported:
+
+![Top-Up Page](/img/start/api-08-wallet.png)
+
+| Method | Steps |
+|---|---|
+| Alipay | Enter/select amount → Alipay |
+| WeChat Pay | Enter/select amount → WeChat |
+| Redeem Code | Enter code in the redeem section → Click Redeem |
 
 ::: tip Rate Multiplier
-A group labeled `0.5x` means you get double the tokens compared to the official price. For example, `0.5x` = 10M tokens for ¥1 (vs. 5M at official pricing).
+A group labeled `0.5x` in the group name means a 0.5x consumption multiplier — the lower the value, the more tokens you get. For example, `0.5x` means ¥1 gives you 10M official tokens (vs. 5M at the official price).
 :::
 
 ---
@@ -31,7 +60,7 @@ A group labeled `0.5x` means you get double the tokens compared to the official 
 
 ### Install Node.js
 
-Claude  Code is installed via npm. Verify Node.js is available first.
+Claude  Code is installed via npm. Confirm Node.js is available first.
 
 ::: code-group
 
@@ -51,13 +80,13 @@ npm -v
 
 :::
 
-If not installed, download from [nodejs.org/en/download](https://nodejs.org/en/download). **Windows requires a restart** after installation.
+If not installed, download from [nodejs.org/zh-cn/download](https://nodejs.org/zh-cn/download) for your platform. **Windows requires a restart** after installation.
 
 ### Windows Only: Install Git Bash
 
 Claude  Code requires a bash environment. Windows users must install Git Bash:
 
-1. Download from [git-scm.com/download/windows](https://git-scm.com/download/windows) and install.
+1. Download from [git-scm.com/install/windows](https://git-scm.com/download/windows) and install the appropriate version.
 2. Verify: right-click the desktop — if **Open Git Bash here** appears, installation succeeded.
 
 ---
@@ -92,12 +121,12 @@ claude --version
 
 ### Option 1: settings.json (Recommended)
 
-Edit `~/.claude/settings.json` (Windows: `C:\Users\<username>\.claude\settings.json`):
+Edit `~/.claude/settings.json` (Windows: `C:\Users\<username>\.claude\settings.json`) with the following content:
 
 ```json
 {
   "env": {
-    "ANTHROPIC_AUTH_TOKEN": "your-api-key-here",
+    "ANTHROPIC_AUTH_TOKEN": "replace with your API Key",
     "ANTHROPIC_BASE_URL": "https://fishxcode.com/",
     "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1
@@ -105,18 +134,27 @@ Edit `~/.claude/settings.json` (Windows: `C:\Users\<username>\.claude\settings.j
   "permissions": {
     "allow": [
       "Bash",
+      "LS(*)",
       "Read(*)",
       "Write(*)",
       "Edit(*)",
+      "MultiEdit(*)",
       "Glob(*)",
-      "Grep(*)"
+      "Grep(*)",
+      "Task(*)",
+      "WebFetch(domain:*)",
+      "WebSearch",
+      "TodoWrite(*)",
+      "NotebookRead(*)",
+      "NotebookEdit(*)"
     ],
+    "defaultMode": "bypassPermissions",
     "deny": []
-  }
+  },
 }
 ```
 
-This configuration **persists permanently** — no need to set variables each session.
+This configuration **persists permanently** — no need to set environment variables each session.
 
 ### Option 2: Temporary Environment Variables
 
@@ -146,7 +184,7 @@ setx ANTHROPIC_AUTH_TOKEN "sk-xxx"
 setx ANTHROPIC_BASE_URL "https://fishxcode.com/"
 ```
 
-Reopen the terminal after running these commands.
+Reopen the terminal after running these commands for the changes to take effect.
 
 ::: warning
 Replace `sk-xxx` with your actual Token from the [FishXCode Console](https://fishxcode.com/console/token).
@@ -168,8 +206,8 @@ claude
 Type `/model` inside Claude  Code to switch models:
 
 | Option | Model | Notes |
-| --- | --- | --- |
-| **Default** | `claude-sonnet-4-5-20250929` + `claude-haiku-4-5-20251001` | Auto-selected by task complexity. Recommended. |
+|---|---|---|
+| **Default** | `claude-sonnet-4-5-20250929` + `claude-haiku-4-5-20251001` | Auto-selected by task complexity. Recommended for daily use. |
 | **Opus** | `claude-opus-4-5-20251101` | Strongest reasoning, higher cost |
 | **Haiku** | `claude-haiku-4-5-20251001` | Lightweight and fast |
 
@@ -190,27 +228,65 @@ claude
 :::
 
 ::: tip Upgrade Claude  Code
-If the model version appears outdated, upgrade and restart your tools:
-
+If the model version appears outdated, run the upgrade command and restart your tools:
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
-
 :::
 
 ---
 
-## 7. IDE Integration (IntelliJ IDEA)
+## 7. IDE Integration
 
-**Path**: IDEA → File → Settings → Plugins → Marketplace → search `claude code` → install **Claude  Code Terminal**.
+### IntelliJ IDEA
+
+Navigate to: File → Settings → Plugins → Marketplace → search `claude code`, find **Claude  Code Terminal** and install:
+
+![Install Claude  Code Terminal](/img/start/idea-01-install.png)
+
+After installation, restart IDEA and verify the plugin has loaded:
+
+![Verify Plugin Loaded](/img/start/idea-02-verify.png)
 
 ::: info
-If the plugin doesn't appear in the Marketplace, your IDEA version is too old — upgrade to the latest release.
+If the plugin does not appear in the Marketplace, your current IDEA version is too old — upgrade to the latest release.
 :::
+
+### VSCode
+
+Press `Ctrl + Shift + X` to open the Extensions panel, search `claude code`, and install **Claude  Code for VSCode**.
+
+![Search and Install Claude  Code Extension](/img/start/vscode-01-install.png)
+
+After installation, the extension offers three connection methods:
+
+![Claude  Code Extension Connection Methods](/img/start/vscode-02-login.png)
+
+It is recommended to connect to FishXCode via `settings.json`. Click the **gear icon** in the bottom-right of the extension → **Edit in settings.json**:
+
+![Open settings.json for Editing](/img/start/vscode-03-settings.png)
+
+Add the following to VSCode's `settings.json`:
+
+```json
+{
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.environmentVariables": [
+    { "name": "ANTHROPIC_AUTH_TOKEN", "value": "replace with your API Key" },
+    { "name": "ANTHROPIC_BASE_URL", "value": "https://fishxcode.com/" }
+  ]
+}
+```
+
+![settings.json Configuration Example](/img/start/vscode-04-config.png)
+
+After saving, **quit and reopen VSCode** — the extension will connect to FishXCode normally.
+
+![Using Claude  Code in VSCode](/img/start/vscode-05-demo.gif)
 
 ---
 
-## 8. Troubleshooting
+## 8. FAQ
 
 ### 403 Error
 
@@ -218,7 +294,7 @@ Token balance is insufficient. Top up in the console and retry.
 
 ### Windows: Connection Error or 400/401
 
-Run these commands in PowerShell to write permanent system variables, then reopen the terminal:
+Re-run the `setx` commands in PowerShell to write system variables, then reopen the terminal:
 
 ```powershell
 setx ANTHROPIC_AUTH_TOKEN "sk-xxx"
@@ -235,7 +311,7 @@ Failed to connect to api.anthropic.com: ERR_BAD_REQUEST
 Please check your internet connection and network settings.
 ```
 
-This happens because Claude  Code hasn't completed onboarding and still tries to connect to `api.anthropic.com`. **No VPN required.** Open `~/.claude.json` (the `.claude.json` in your home directory — not `.claude/settings.json`) and add `"hasCompletedOnboarding": true`:
+This happens because Claude  Code has not completed onboarding and is still trying to connect to `api.anthropic.com`. **No VPN required.** Open `~/.claude.json` (the `.claude.json` in your home directory — not `.claude/settings.json`) and add `"hasCompletedOnboarding": true` at the end:
 
 ```json
 {
@@ -247,5 +323,5 @@ This happens because Claude  Code hasn't completed onboarding and still tries to
 ```
 
 ::: tip
-Make sure to add a comma after the preceding field before adding the new entry. Restart `claude` after saving.
+Make sure to add a comma after the preceding field (required by JSON syntax). Restart `claude` after saving to connect normally.
 :::

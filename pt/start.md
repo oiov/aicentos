@@ -2,24 +2,53 @@
 
 ## 1. Obter uma API Key
 
-### Criar conta
+### 1. Criar conta
 
-Acesse [fishxcode.com](https://fishxcode.com/register?aff=9CTW) para se registrar (senha 8–20 caracteres, e-mail obrigatório).
+Acesse [fishxcode.com](https://fishxcode.com/register?aff=9CTW) e clique em **Registrar**:
 
-### Criar um token
+![Página inicial do FishXCode](/img/start/api-01-home.png)
 
-Faça login e vá em **Console → Gerenciamento de tokens → Adicionar token**. Ao criar:
+Escolha o método de registro (GitHub, LinuxDO ou nome de usuário):
+
+![Opções de registro](/img/start/api-02-register.png)
+
+Preencha nome de usuário, senha e confirmação de senha:
+
+![Formulário de registro](/img/start/api-03-register-form.png)
+
+### 2. Fazer login
+
+Após o registro, faça login com nome de usuário e senha:
+
+![Página de login](/img/start/api-04-login.png)
+
+Após o login, acesse o console:
+
+![Console principal](/img/start/api-05-console.png)
+
+### 3. Criar token
+
+Vá em **Console → Gerenciamento de tokens → Adicionar token** e preencha o formulário:
+
+![Adicionar token](/img/start/api-06-token-create.png)
 
 - Em **Grupo de tokens**, selecione o **canal oficial**. Este grupo inclui `claude-opus-4-5-20251101`, `claude-haiku-4-5-20251001`, `claude-opus-4-6`, `claude-sonnet-4-5-20250929`, `claude-sonnet-4-6`, etc. O modelo é selecionado automaticamente com base na complexidade da tarefa.
-- Após a criação, clique no botão de copiar para obter sua API Key (formato: `sk-xxx`).
 
-### Recarregar saldo
+Após a criação, clique em **Copiar** na lista de tokens para obter sua API Key (formato: `sk-xxx`):
+
+![Copiar token](/img/start/api-07-token-copy.png)
+
+### 4. Recarregar saldo
+
+Vá em **Console → Carteira**, suporta Alipay, WeChat Pay ou código de resgate:
+
+![Página de recarga](/img/start/api-08-wallet.png)
 
 | Método | Caminho |
-| --- | --- |
-| Alipay | Console → Carteira → Valor → Alipay |
-| WeChat Pay | Console → Carteira → Valor → WeChat |
-| Código de resgate | Console → Carteira → Inserir código → Resgatar |
+|---|---|
+| Alipay | Inserir/selecionar valor → Alipay |
+| WeChat Pay | Inserir/selecionar valor → WeChat |
+| Código de resgate | Inserir código → Resgatar créditos |
 
 ::: tip Multiplicador de taxa
 Um grupo rotulado como `0.5x` significa que você obtém o dobro de tokens em relação ao preço oficial. Exemplo: `0.5x` = 10M tokens por ¥1 (vs. 5M no preço oficial).
@@ -97,7 +126,7 @@ Edite `~/.claude/settings.json` (Windows: `C:\Users\<usuário>\.claude\settings.
 ```json
 {
   "env": {
-    "ANTHROPIC_AUTH_TOKEN": "sua-api-key",
+    "ANTHROPIC_AUTH_TOKEN": "substitua pela sua API Key",
     "ANTHROPIC_BASE_URL": "https://fishxcode.com/",
     "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1
@@ -105,14 +134,23 @@ Edite `~/.claude/settings.json` (Windows: `C:\Users\<usuário>\.claude\settings.
   "permissions": {
     "allow": [
       "Bash",
+      "LS(*)",
       "Read(*)",
       "Write(*)",
       "Edit(*)",
+      "MultiEdit(*)",
       "Glob(*)",
-      "Grep(*)"
+      "Grep(*)",
+      "Task(*)",
+      "WebFetch(domain:*)",
+      "WebSearch",
+      "TodoWrite(*)",
+      "NotebookRead(*)",
+      "NotebookEdit(*)"
     ],
+    "defaultMode": "bypassPermissions",
     "deny": []
-  }
+  },
 }
 ```
 
@@ -157,7 +195,7 @@ Substitua `sk-xxx` pelo seu token real obtido no [Console FishXCode](https://fis
 ## 5. Iniciar
 
 ```bash
-cd meu-projeto
+cd my-project
 claude
 ```
 
@@ -168,7 +206,7 @@ claude
 Digite `/model` dentro do Claude  Code para trocar de modelo:
 
 | Opção | Modelo | Notas |
-| --- | --- | --- |
+|---|---|---|
 | **Default** | `claude-sonnet-4-5-20250929` + `claude-haiku-4-5-20251001` | Seleção automática por complexidade da tarefa. Recomendado. |
 | **Opus** | `claude-opus-4-5-20251101` | Raciocínio mais poderoso, custo mais alto |
 | **Haiku** | `claude-haiku-4-5-20251001` | Leve e rápido |
@@ -191,22 +229,60 @@ claude
 
 ::: tip Atualizar Claude  Code
 Se a versão do modelo parecer desatualizada, atualize e reinicie suas ferramentas:
-
 ```bash
 npm install -g @anthropic-ai/claude-code
 ```
-
 :::
 
 ---
 
-## 7. Integração com IDE (IntelliJ IDEA)
+## 7. Integração com IDE
 
-**Caminho**: IDEA → Arquivo → Configurações → Plugins → Marketplace → buscar `claude code` → instalar **Claude  Code Terminal**.
+### IntelliJ IDEA
+
+Caminho: Arquivo → Configurações → Plugins → Marketplace → buscar `claude code`, encontrar **Claude  Code Terminal** e instalar:
+
+![Instalar Claude  Code Terminal](/img/start/idea-01-install.png)
+
+Após a instalação, reinicie o IDEA e verifique se o plugin foi carregado:
+
+![Verificar plugin carregado](/img/start/idea-02-verify.png)
 
 ::: info
 Se o plugin não aparecer no Marketplace, sua versão do IDEA é muito antiga — atualize para a versão mais recente.
 :::
+
+### VSCode
+
+Pressione `Ctrl + Shift + X` para abrir o painel de extensões, busque `claude code` e instale o **Claude  Code for VSCode**.
+
+![Buscar e instalar o plugin Claude  Code](/img/start/vscode-01-install.png)
+
+Após a instalação, o plugin oferece três métodos de conexão:
+
+![Métodos de conexão do plugin Claude  Code](/img/start/vscode-02-login.png)
+
+Recomenda-se configurar via `settings.json`. Clique no **ícone de engrenagem** do plugin → **Editar em settings.json**:
+
+![Abrir edição do settings.json](/img/start/vscode-03-settings.png)
+
+Adicione ao `settings.json` do VSCode:
+
+```json
+{
+  "claudeCode.preferredLocation": "panel",
+  "claudeCode.environmentVariables": [
+    { "name": "ANTHROPIC_AUTH_TOKEN", "value": "substitua pela sua API Key" },
+    { "name": "ANTHROPIC_BASE_URL", "value": "https://fishxcode.com/" }
+  ]
+}
+```
+
+![Exemplo de configuração no settings.json](/img/start/vscode-04-config.png)
+
+Após salvar, **feche e reabra o VSCode** — o plugin estará conectado ao FishXCode.
+
+![Usando Claude  Code no VSCode](/img/start/vscode-05-demo.gif)
 
 ---
 
