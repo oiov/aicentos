@@ -135,6 +135,7 @@ export default withPwa(defineConfig({
             items: [
               { text: '账户注册', link: '/account' },
               { text: 'Claude Code', link: '/start' },
+              { text: 'ZCF 快速接入', link: '/zcf' },
               { text: 'OpenAI Codex', link: '/codex' },
               { text: 'Gemini Cli', link: '/gemini' },
               { text: 'RooCode', link: '/roocode' },
@@ -225,6 +226,7 @@ export default withPwa(defineConfig({
             items: [
               { text: 'Account Setup', link: '/en/account' },
               { text: 'Claude Code', link: '/en/start' },
+              { text: 'ZCF Quick Setup', link: '/en/zcf' },
               { text: 'OpenAI Codex', link: '/en/codex' },
               { text: 'Gemini Cli', link: '/en/gemini' },
               { text: 'RooCode', link: '/en/roocode' },
@@ -315,6 +317,7 @@ export default withPwa(defineConfig({
             items: [
               { text: 'Création de compte', link: '/fr/account' },
               { text: 'Claude Code', link: '/fr/start' },
+              { text: 'ZCF Configuration', link: '/fr/zcf' },
               { text: 'OpenAI Codex', link: '/fr/codex' },
               { text: 'Gemini Cli', link: '/fr/gemini' },
               { text: 'RooCode', link: '/fr/roocode' },
@@ -405,6 +408,7 @@ export default withPwa(defineConfig({
             items: [
               { text: 'Registro de cuenta', link: '/es/account' },
               { text: 'Claude Code', link: '/es/start' },
+              { text: 'ZCF Configuración', link: '/es/zcf' },
               { text: 'OpenAI Codex', link: '/es/codex' },
               { text: 'Gemini Cli', link: '/es/gemini' },
               { text: 'RooCode', link: '/es/roocode' },
@@ -495,6 +499,7 @@ export default withPwa(defineConfig({
             items: [
               { text: 'Configuração de conta', link: '/pt/account' },
               { text: 'Claude Code', link: '/pt/start' },
+              { text: 'ZCF Configuração', link: '/pt/zcf' },
               { text: 'OpenAI Codex', link: '/pt/codex' },
               { text: 'Gemini Cli', link: '/pt/gemini' },
               { text: 'RooCode', link: '/pt/roocode' },
