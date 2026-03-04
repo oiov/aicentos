@@ -753,7 +753,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
       <div class="anim-fade-up delay-4 mb-10">
         <p class="text-gray-400 text-xs mb-2 tracking-wide"><span data-i18n="hero.urlHint">▸ 替换 Base URL 即可接入</span></p>
         <div class="url-bar">
-          <span class="url-bar-text" id="apiUrl">https://api.fishxcode.com</span>
+          <span class="url-bar-text" id="apiUrl">https://fishxcode.com</span>
           <button class="url-bar-btn" id="copyBtn" onclick="copyUrl()">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             <span data-i18n="hero.copy">复制</span>
@@ -771,8 +771,8 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
             <span style="color:#6a7a8e;font-size:12px;margin-left:8px;font-family:inherit">TERMINAL — zsh</span>
           </div>
           <div class="terminal-body">
-            <p><span class="cm">// 配置 Claude Code（只需两行）</span></p>
-            <p><span class="kw">export</span> <span class="var">ANTHROPIC_BASE_URL</span><span class="op">=</span><span class="str">"https://api.fishxcode.com"</span></p>
+            <p><span class="cm" data-i18n="terminal.comment">// 配置 Claude Code（只需两行）</span></p>
+            <p><span class="kw">export</span> <span class="var">ANTHROPIC_BASE_URL</span><span class="op">=</span><span class="str">"https://fishxcode.com"</span></p>
             <p><span class="kw">export</span> <span class="var">ANTHROPIC_API_KEY</span><span class="op">=</span><span class="str">"sk-..."</span></p>
             <p></p>
             <p><span class="cm" data-i18n="terminal.start"># 开始编码</span></p>
@@ -904,8 +904,8 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
             <span class="tool-tag">💡 OpenCode</span>
           </div>
           <div class="mt-6 pt-6 border-t border-purple-50">
-            <p class="text-sm text-gray-400">更多工具持续接入中，欢迎提交建议 →
-              <a href="https://fishxcode.com/" target="_blank" class="text-purple-600 hover:underline font-medium">进入平台</a>
+            <p class="text-sm text-gray-400"><span data-i18n="compat.more">更多工具持续接入中，欢迎提交建议 →</span>
+              <a href="https://fishxcode.com/" target="_blank" class="text-purple-600 hover:underline font-medium" data-i18n="compat.enterPlatform">进入平台</a>
             </p>
           </div>
         </div>
@@ -923,28 +923,28 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
               <div class="step-num">1</div>
               <div>
                 <p class="font-semibold text-gray-800" data-i18n="step1.title">注册账户</p>
-                <p class="text-gray-500 text-sm mt-0.5">访问 <a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="text-purple-600 hover:underline">fishxcode.com</a> 注册，几秒即可完成</p>
+                <p class="text-gray-500 text-sm mt-0.5" data-i18n-html="step1.desc">访问 <a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="text-purple-600 hover:underline">fishxcode.com</a> 注册，几秒即可完成</p>
               </div>
             </li>
             <li class="flex gap-4 items-start">
               <div class="step-num">2</div>
               <div>
                 <p class="font-semibold text-gray-800" data-i18n="step2.title">获取 API Key</p>
-                <p class="text-gray-500 text-sm mt-0.5">在账户设置中一键生成专属 API Key</p>
+                <p class="text-gray-500 text-sm mt-0.5" data-i18n="step2.desc">在账户设置中一键生成专属 API Key</p>
               </div>
             </li>
             <li class="flex gap-4 items-start">
               <div class="step-num">3</div>
               <div>
                 <p class="font-semibold text-gray-800" data-i18n="step3.title">配置你的工具</p>
-                <p class="text-gray-500 text-sm mt-0.5">参考 <a href="https://doc.fishxcode.com/start" target="_blank" class="text-purple-600 hover:underline">接入指南</a>，将 Base URL 和 Key 填入对应工具</p>
+                <p class="text-gray-500 text-sm mt-0.5" data-i18n-html="step3.desc">参考 <a href="https://doc.fishxcode.com/start" target="_blank" class="text-purple-600 hover:underline">接入指南</a>，将 Base URL 和 Key 填入对应工具</p>
               </div>
             </li>
             <li class="flex gap-4 items-start">
               <div class="step-num">4</div>
               <div>
                 <p class="font-semibold text-gray-800" data-i18n="step4.title">开始 AI 编码！</p>
-                <p class="text-gray-500 text-sm mt-0.5">一切就绪，享受 AI Coding 加持的开发体验</p>
+                <p class="text-gray-500 text-sm mt-0.5" data-i18n="step4.desc">一切就绪，享受 AI Coding 加持的开发体验</p>
               </div>
             </li>
           </ol>
@@ -983,22 +983,22 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
                 <span class="text-amber-500 font-bold text-lg mt-0.5">✓</span>
                 <div>
                   <p class="font-semibold text-gray-800" data-i18n="mig.item1.title">旧平台未使用额度，同等迁移至新平台</p>
-                  <p class="text-gray-600 text-sm mt-0.5">无论余额多少，全部等值迁移，您的每一分投入都不会浪费</p>
+                  <p class="text-gray-600 text-sm mt-0.5" data-i18n="mig.item1.desc">无论余额多少，全部等值迁移，您的每一分投入都不会浪费</p>
                 </div>
               </div>
               <div class="flex gap-3 items-start">
                 <span class="text-amber-500 font-bold text-lg mt-0.5">✓</span>
                 <div>
                   <p class="font-semibold text-gray-800" data-i18n="mig.item2.title">专属客服，全程协助迁移</p>
-                  <p class="text-gray-600 text-sm mt-0.5">遇到任何疑问，联系客服即可，我们帮您一对一处理</p>
+                  <p class="text-gray-600 text-sm mt-0.5" data-i18n="mig.item2.desc">遇到任何疑问，联系客服即可，我们帮您一对一处理</p>
                 </div>
               </div>
             </div>
 
             <div class="mt-6 pt-5 border-t border-amber-200 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-              <p class="text-gray-600 text-sm">需要迁移帮助或有其他问题？</p>
+              <p class="text-gray-600 text-sm" data-i18n="mig.contact.hint">需要迁移帮助或有其他问题？</p>
               <a href="mailto:support@fishxcode.com" class="btn-primary text-sm" style="padding:10px 22px;background:linear-gradient(135deg,#f59e0b,#f97316);box-shadow:0 4px 14px rgba(245,158,11,0.35)">
-                联系客服
+                <span data-i18n="mig.contact.btn">联系客服</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
               </a>
             </div>
@@ -1048,9 +1048,9 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
             <div class="w-9 h-9 rounded-xl grad-bg flex items-center justify-center text-white font-black text-base">F</div>
             <span class="font-bold text-white text-lg">FishXCode</span>
           </div>
-          <p style="color:#a5b4fc;font-size:14px;line-height:1.7">
-            AI Coding 中转站<br/>连接全球顶尖 AI 模型<br/>让代码工作流更高效
-          </p>
+          <p style="color:#a5b4fc;font-size:14px;line-height:1.7;white-space:pre-line" data-i18n="footer.brand">AI Coding 中转站
+连接全球顶尖 AI 模型
+让代码工作流更高效</p>
         </div>
 
         <!-- Product -->
@@ -1092,9 +1092,9 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         <div style="color:#6272a4;font-size:13px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
           <span>&copy; 2026 FishXCode. All rights reserved.</span>
           <span style="color:#374163">·</span>
-          <span>累计访问
+          <span><span data-i18n="footer.visits.prefix">累计访问</span>
             <span style="color:#a5b4fc;font-weight:700">${visitCount.toLocaleString()}</span>
-            次
+            <span data-i18n="footer.visits.suffix">次</span>
           </span>
         </div>
         <div class="flex flex-wrap gap-5 justify-center">
@@ -1143,7 +1143,17 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         'footer.faq':'常见问题','footer.models':'支持的模型','footer.changelog':'更新日志',
         'footer.cs':'联系客服','footer.status':'服务状态','footer.quota':'额度查询',
         'footer.terms':'用户协议','footer.privacy':'隐私政策','footer.contact':'联系我们',
-        'terminal.comment':'// 配置 Claude  Code（只需两行）','terminal.start':'# 开始编码'
+        'terminal.comment':'// 配置 Claude  Code（只需两行）','terminal.start':'# 开始编码',
+        'step1.desc':'访问 <a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="text-purple-600 hover:underline">fishxcode.com</a> 注册，几秒即可完成',
+        'step2.desc':'在账户设置中一键生成专属 API Key',
+        'step3.desc':'参考 <a href="https://doc.fishxcode.com/start" target="_blank" class="text-purple-600 hover:underline">接入指南</a>，将 Base URL 和 Key 填入对应工具',
+        'step4.desc':'一切就绪，享受 AI Coding 加持的开发体验',
+        'mig.item1.desc':'无论余额多少，全部等值迁移，您的每一分投入都不会浪费',
+        'mig.item2.desc':'遇到任何疑问，联系客服即可，我们帮您一对一处理',
+        'mig.contact.hint':'需要迁移帮助或有其他问题？','mig.contact.btn':'联系客服',
+        'compat.more':'更多工具持续接入中，欢迎提交建议 →','compat.enterPlatform':'进入平台',
+        'footer.brand':'AI Coding 中转站\\n连接全球顶尖 AI 模型\\n让代码工作流更高效',
+        'footer.visits.prefix':'累计访问 ','footer.visits.suffix':' 次'
       },
       'zh-TW': {
         'nav.docs':'文檔','nav.start':'快速開始','nav.enter':'進入平台',
@@ -1178,7 +1188,17 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         'footer.faq':'常見問題','footer.models':'支援的模型','footer.changelog':'更新日誌',
         'footer.cs':'聯繫客服','footer.status':'服務狀態','footer.quota':'額度查詢',
         'footer.terms':'用戶協議','footer.privacy':'隱私政策','footer.contact':'聯繫我們',
-        'terminal.comment':'// 設定 Claude  Code（只需兩行）','terminal.start':'# 開始編碼'
+        'terminal.comment':'// 設定 Claude  Code（只需兩行）','terminal.start':'# 開始編碼',
+        'step1.desc':'訪問 <a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="text-purple-600 hover:underline">fishxcode.com</a> 註冊，幾秒即可完成',
+        'step2.desc':'在帳戶設定中一鍵生成專屬 API Key',
+        'step3.desc':'參考 <a href="https://doc.fishxcode.com/start" target="_blank" class="text-purple-600 hover:underline">接入指南</a>，將 Base URL 和 Key 填入對應工具',
+        'step4.desc':'一切就緒，享受 AI Coding 加持的開發體驗',
+        'mig.item1.desc':'無論餘額多少，全部等值遷移，您的每一分投入都不會浪費',
+        'mig.item2.desc':'遇到任何疑問，聯繫客服即可，我們幫您一對一處理',
+        'mig.contact.hint':'需要遷移幫助或有其他問題？','mig.contact.btn':'聯繫客服',
+        'compat.more':'更多工具持續接入中，歡迎提交建議 →','compat.enterPlatform':'進入平台',
+        'footer.brand':'AI Coding 中繼站\\n連接全球頂尖 AI 模型\\n讓程式工作流更高效',
+        'footer.visits.prefix':'累計訪問 ','footer.visits.suffix':' 次'
       },
       'en': {
         'nav.docs':'Docs','nav.start':'Quick Start','nav.enter':'Enter Platform',
@@ -1213,7 +1233,17 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         'footer.faq':'FAQ','footer.models':'Models','footer.changelog':'Changelog',
         'footer.cs':'Contact Support','footer.status':'Status','footer.quota':'Usage Checker',
         'footer.terms':'Terms','footer.privacy':'Privacy','footer.contact':'Contact Us',
-        'terminal.comment':'// Setup Claude  Code (just 2 lines)','terminal.start':'# Start coding'
+        'terminal.comment':'// Setup Claude  Code (just 2 lines)','terminal.start':'# Start coding',
+        'step1.desc':'Visit <a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="text-purple-600 hover:underline">fishxcode.com</a> to sign up — takes just seconds',
+        'step2.desc':'Generate your API Key in account settings with one click',
+        'step3.desc':'Follow the <a href="https://doc.fishxcode.com/start" target="_blank" class="text-purple-600 hover:underline">Setup Guide</a> to configure Base URL and Key',
+        'step4.desc':'All set! Enjoy AI-powered coding experience',
+        'mig.item1.desc':'All remaining credits transferred at equal value — nothing wasted',
+        'mig.item2.desc':'Got questions? Contact support for one-on-one assistance',
+        'mig.contact.hint':'Need migration help or have questions?','mig.contact.btn':'Contact Support',
+        'compat.more':'More tools coming soon. Suggestions welcome →','compat.enterPlatform':'Enter Platform',
+        'footer.brand':'AI Coding Relay\\nConnect to Top AI Models\\nSupercharge Your Workflow',
+        'footer.visits.prefix':'Total Visits: ','footer.visits.suffix':''
       },
       'fr': {
         'nav.docs':'Docs','nav.start':'Démarrage','nav.enter':'Accéder',
@@ -1248,7 +1278,17 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         'footer.faq':'FAQ','footer.models':'Modèles','footer.changelog':'Changelog',
         'footer.cs':'Support','footer.status':'Statut','footer.quota':"Vérifier l'usage",
         'footer.terms':'CGU','footer.privacy':'Confidentialité','footer.contact':'Contact',
-        'terminal.comment':'// Configurer Claude  Code (2 lignes)','terminal.start':'# Commencer à coder'
+        'terminal.comment':'// Configurer Claude  Code (2 lignes)','terminal.start':'# Commencer à coder',
+        'step1.desc':'Visitez <a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="text-purple-600 hover:underline">fishxcode.com</a> pour vous inscrire — quelques secondes',
+        'step2.desc':"Générez votre clé API en un clic dans les paramètres du compte",
+        'step3.desc':'Suivez le <a href="https://doc.fishxcode.com/start" target="_blank" class="text-purple-600 hover:underline">guide d\\'intégration</a> pour configurer Base URL et Key',
+        'step4.desc':'Tout est prêt ! Profitez du développement assisté par IA',
+        'mig.item1.desc':'Tous les crédits restants transférés à valeur égale — rien de perdu',
+        'mig.item2.desc':'Des questions ? Contactez le support pour une assistance personnalisée',
+        'mig.contact.hint':"Besoin d'aide pour la migration ?",'mig.contact.btn':'Contacter le support',
+        'compat.more':"Plus d'outils à venir. Suggestions bienvenues →",'compat.enterPlatform':'Accéder',
+        'footer.brand':'Relais AI Coding\\nConnexion aux meilleurs modèles IA\\nOptimisez votre workflow',
+        'footer.visits.prefix':'Visites totales : ','footer.visits.suffix':''
       },
       'ja': {
         'nav.docs':'ドキュメント','nav.start':'クイックスタート','nav.enter':'プラットフォームへ',
@@ -1283,7 +1323,17 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         'footer.faq':'よくある質問','footer.models':'モデル一覧','footer.changelog':'更新履歴',
         'footer.cs':'サポートへ連絡','footer.status':'サービス状態','footer.quota':'使用量確認',
         'footer.terms':'利用規約','footer.privacy':'プライバシー','footer.contact':'お問い合わせ',
-        'terminal.comment':'// Claude  Code を設定（2 行だけ）','terminal.start':'# コーディング開始'
+        'terminal.comment':'// Claude  Code を設定（2 行だけ）','terminal.start':'# コーディング開始',
+        'step1.desc':'<a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="text-purple-600 hover:underline">fishxcode.com</a> でアカウント登録 — 数秒で完了',
+        'step2.desc':'アカウント設定からワンクリックで API Key を発行',
+        'step3.desc':'<a href="https://doc.fishxcode.com/start" target="_blank" class="text-purple-600 hover:underline">導入ガイド</a>を参考に、Base URL と Key をツールに設定',
+        'step4.desc':'準備完了！AI 搭載のコーディング体験をお楽しみください',
+        'mig.item1.desc':'残高はすべて等価で移行 — 無駄になりません',
+        'mig.item2.desc':'ご不明な点はサポートまでお気軽にお問い合わせください',
+        'mig.contact.hint':'移行に関するご質問はありますか？','mig.contact.btn':'サポートへ連絡',
+        'compat.more':'対応ツールを拡大中。ご提案歓迎 →','compat.enterPlatform':'プラットフォームへ',
+        'footer.brand':'AI Coding リレー\\n世界トップクラスの AI モデルに接続\\nワークフローを加速',
+        'footer.visits.prefix':'累計訪問数: ','footer.visits.suffix':''
       },
       'ru': {
         'nav.docs':'Документация','nav.start':'Быстрый старт','nav.enter':'Войти',
@@ -1318,7 +1368,17 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         'footer.faq':'FAQ','footer.models':'Модели','footer.changelog':'Изменения',
         'footer.cs':'Поддержка','footer.status':'Статус','footer.quota':'Проверка лимитов',
         'footer.terms':'Условия','footer.privacy':'Конфиденциальность','footer.contact':'Контакты',
-        'terminal.comment':'// Настройка Claude  Code (2 строки)','terminal.start':'# Начало кодирования'
+        'terminal.comment':'// Настройка Claude  Code (2 строки)','terminal.start':'# Начало кодирования',
+        'step1.desc':'Зарегистрируйтесь на <a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="text-purple-600 hover:underline">fishxcode.com</a> — за несколько секунд',
+        'step2.desc':'Сгенерируйте API-ключ в настройках аккаунта одним кликом',
+        'step3.desc':'Следуйте <a href="https://doc.fishxcode.com/start" target="_blank" class="text-purple-600 hover:underline">руководству</a> для настройки Base URL и ключа',
+        'step4.desc':'Всё готово! Наслаждайтесь разработкой с AI',
+        'mig.item1.desc':'Все оставшиеся кредиты переносятся по равной стоимости — ничего не теряется',
+        'mig.item2.desc':'Есть вопросы? Обратитесь в поддержку для персональной помощи',
+        'mig.contact.hint':'Нужна помощь с миграцией?','mig.contact.btn':'Связаться с поддержкой',
+        'compat.more':'Новые инструменты добавляются. Предложения приветствуются →','compat.enterPlatform':'Войти',
+        'footer.brand':'Ретранслятор AI Coding\\nПодключение к лучшим AI-моделям\\nУскорьте рабочий процесс',
+        'footer.visits.prefix':'Всего посещений: ','footer.visits.suffix':''
       },
       'vi': {
         'nav.docs':'Tài liệu','nav.start':'Bắt đầu nhanh','nav.enter':'Vào nền tảng',
@@ -1353,16 +1413,32 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         'footer.faq':'FAQ','footer.models':'Mô hình','footer.changelog':'Nhật ký thay đổi',
         'footer.cs':'Hỗ trợ','footer.status':'Trạng thái','footer.quota':'Kiểm tra quota',
         'footer.terms':'Điều khoản','footer.privacy':'Quyền riêng tư','footer.contact':'Liên hệ',
-        'terminal.comment':'// Cấu hình Claude  Code (chỉ 2 dòng)','terminal.start':'# Bắt đầu code'
+        'terminal.comment':'// Cấu hình Claude  Code (chỉ 2 dòng)','terminal.start':'# Bắt đầu code',
+        'step1.desc':'Truy cập <a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="text-purple-600 hover:underline">fishxcode.com</a> để đăng ký — chỉ vài giây',
+        'step2.desc':'Tạo API Key trong cài đặt tài khoản chỉ với một cú nhấp',
+        'step3.desc':'Theo <a href="https://doc.fishxcode.com/start" target="_blank" class="text-purple-600 hover:underline">hướng dẫn tích hợp</a> để cấu hình Base URL và Key',
+        'step4.desc':'Sẵn sàng! Tận hưởng trải nghiệm lập trình với AI',
+        'mig.item1.desc':'Tất cả tín dụng còn lại được chuyển với giá trị tương đương — không lãng phí',
+        'mig.item2.desc':'Có thắc mắc? Liên hệ hỗ trợ để được tư vấn riêng',
+        'mig.contact.hint':'Cần hỗ trợ di chuyển hoặc có câu hỏi?','mig.contact.btn':'Liên hệ hỗ trợ',
+        'compat.more':'Thêm công cụ đang được hỗ trợ. Đề xuất luôn được chào đón →','compat.enterPlatform':'Vào nền tảng',
+        'footer.brand':'Trạm chuyển tiếp AI Coding\\nKết nối mô hình AI hàng đầu\\nTối ưu quy trình làm việc',
+        'footer.visits.prefix':'Tổng lượt truy cập: ','footer.visits.suffix':''
       }
     };
 
     function applyLang(lang) {
       var t = _T[lang] || _T[_T[lang.split('-')[0]] ? lang.split('-')[0] : 'zh-CN'];
       if (!t) return;
+      // textContent replacement
       document.querySelectorAll('[data-i18n]').forEach(function(el) {
         var key = el.getAttribute('data-i18n');
         if (t[key] !== undefined) el.textContent = t[key];
+      });
+      // innerHTML replacement (for elements containing links)
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
       });
       // 同步复制按钮（防止 copied 状态中切换）
       var copyBtn = document.getElementById('copyBtn');
@@ -1396,12 +1472,18 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
     });
 
     // ─── 复制 URL（兼容 iframe Permissions Policy 限制）───────────────────────
+    function _getT() {
+      var lang = document.documentElement.lang || 'zh-CN';
+      return _T[lang] || _T[_T[lang.split('-')[0]] ? lang.split('-')[0] : 'zh-CN'];
+    }
+
     function _showCopied(btn) {
+      var t = _getT();
       btn.classList.add('copied');
-      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 已复制';
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ' + (t['hero.copied'] || '已复制');
       setTimeout(function() {
         btn.classList.remove('copied');
-        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> 复制';
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> <span data-i18n="hero.copy">' + (t['hero.copy'] || '复制') + '</span>';
       }, 2000);
     }
 
