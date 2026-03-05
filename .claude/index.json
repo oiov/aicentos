@@ -1,0 +1,125 @@
+{
+  "timestamp": "2026-03-05T08:00:27+08:00",
+  "project": "fishxcode",
+  "description": "FishXCode - AI Coding 中转站文档站 + Landing Page",
+  "repository": "https://github.com/fishxcode/fishxcode.git",
+  "homepage": "https://doc.fishxcode.com",
+  "modules": [
+    {
+      "name": "VitePress 文档站",
+      "path": "/",
+      "language": "TypeScript + Vue 3 + Markdown",
+      "framework": "VitePress 1.x",
+      "entry": ".vitepress/config.mts",
+      "interfaces": [
+        "静态站点 (doc.fishxcode.com)",
+        "RSS Feed (/feed.xml)",
+        "Atom Feed (/feed.atom)",
+        "Sitemap (/sitemap.xml)"
+      ],
+      "tests": [],
+      "testDirectory": null,
+      "configFiles": [
+        "package.json",
+        ".vitepress/config.mts",
+        "vercel.json",
+        ".github/workflows/deploy.yml"
+      ],
+      "importantPaths": [
+        ".vitepress/theme/index.ts",
+        ".vitepress/theme/components/AnnouncementBar.vue",
+        ".vitepress/theme/components/BackToTop.vue",
+        ".vitepress/theme/components/ModelCards.vue",
+        ".vitepress/theme/components/ToolWizard.vue",
+        ".vitepress/theme/components/Timeline.vue",
+        ".vitepress/theme/NotFound.vue",
+        ".vitepress/theme/style.css",
+        ".vitepress/theme/dark-mode.css",
+        "public/_headers",
+        "public/robots.txt"
+      ],
+      "contentPages": {
+        "languages": ["zh-CN", "en-US", "fr-FR", "es-ES", "pt-BR"],
+        "pages": [
+          "index.md", "start.md", "account.md", "zcf.md",
+          "codex.md", "gemini.md", "roocode.md", "qwencode.md",
+          "droid.md", "opencode.md", "openclaw.md",
+          "models.md", "compare.md", "faq.md", "changelog.md",
+          "terms.md", "privacy.md"
+        ],
+        "totalMarkdownFiles": 85
+      },
+      "claudeMd": "CLAUDE.md"
+    },
+    {
+      "name": "Deno Landing Page",
+      "path": "deno/",
+      "language": "TypeScript",
+      "framework": "Deno (原生 HTTP)",
+      "entry": "deno/landing.deno.ts",
+      "interfaces": [
+        "GET / (Landing Page HTML)",
+        "GET /robots.txt",
+        "GET /sitemap.xml",
+        "GET /manifest.json",
+        "POST /api/visit (访问计数)"
+      ],
+      "tests": [],
+      "testDirectory": null,
+      "configFiles": [
+        "deno/deno.json"
+      ],
+      "importantPaths": [
+        "deno/landing.deno.ts"
+      ],
+      "claudeMd": "deno/CLAUDE.md"
+    }
+  ],
+  "coverage": {
+    "totalFiles": 107,
+    "scannedFiles": 107,
+    "coveragePercent": 100,
+    "scannedModules": 2,
+    "totalModules": 2,
+    "moduleCoverage": [
+      {
+        "module": "VitePress 文档站",
+        "scanned": true,
+        "gaps": ["无自动化测试", "无 lint/格式化配置文件"]
+      },
+      {
+        "module": "Deno Landing Page",
+        "scanned": true,
+        "gaps": ["无自动化测试", "单文件体量大(~88KB)建议拆分"]
+      }
+    ]
+  },
+  "ignored": {
+    "rules": [
+      "node_modules/**",
+      ".git/**",
+      ".vitepress/cache/**",
+      ".vitepress/dist/**",
+      ".vercel/**",
+      ".playwright-mcp/**",
+      "*.lock",
+      "*.DS_Store"
+    ],
+    "topIgnoredDirectories": [
+      {"path": "node_modules/", "reason": ".gitignore 规则"},
+      {"path": ".git/", "reason": "版本控制内部目录"},
+      {"path": ".vitepress/cache/", "reason": ".gitignore 规则"},
+      {"path": ".vitepress/dist/", "reason": ".gitignore 规则"},
+      {"path": ".vercel/", "reason": "Vercel 内部配置与缓存"},
+      {"path": ".playwright-mcp/", "reason": "Playwright MCP 日志"}
+    ]
+  },
+  "truncated": false,
+  "gaps": [
+    "项目无自动化测试框架",
+    "无 ESLint/Prettier/Stylelint 配置",
+    "deno/landing.deno.ts 单文件过大(~88KB)，可考虑拆分",
+    ".vercel/ 目录含多个非标准文件（中文文档、JSON），用途不明"
+  ],
+  "nextSteps": []
+}
