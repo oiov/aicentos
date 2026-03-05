@@ -52,8 +52,8 @@ const MANIFEST_JSON = JSON.stringify({
   description: "支持 Claude、Codex、Gemini 等主流 AI 模型的 Coding 中转站",
   start_url: "/",
   display: "standalone",
-  background_color: "#fafbff",
-  theme_color: "#7c3aed",
+  background_color: "#fdf9f5",
+  theme_color: "#c9973e",
   orientation: "portrait-primary",
   lang: "zh-CN",
   categories: ["productivity", "developer-tools"],
@@ -145,7 +145,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
 
   <!-- ═══ PWA ═══ -->
   <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#7c3aed" />
+  <meta name="theme-color" content="#c9973e" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -154,49 +154,49 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
-      --primary: #7c3aed;
-      --primary-light: #a78bfa;
-      --primary-soft: #ede9fe;
-      --accent: #6366f1;
+      --primary: #c9973e;
+      --primary-light: #d4b04a;
+      --primary-soft: #fdf2e0;
+      --accent: #de7898;
       /* light theme tokens */
-      --bg: #fafbff;
-      --bg-soft: #f5f3ff;
+      --bg: #fdf9f5;
+      --bg-soft: #f8f2ea;
       --surface: #ffffff;
-      --surface-border: rgba(124,58,237,0.08);
-      --text: #1e1b4b;
+      --surface-border: rgba(185,134,46,0.12);
+      --text: #2d200e;
       --text-muted: #6b7280;
       --text-sub: #9ca3af;
-      --nav-bg: rgba(250,251,255,0.85);
-      --nav-border: rgba(124,58,237,0.08);
-      --card-shadow: 0 4px 24px rgba(99,102,241,0.07);
-      --card-shadow-hover: 0 20px 48px rgba(99,102,241,0.16);
+      --nav-bg: rgba(253,249,245,0.88);
+      --nav-border: rgba(185,134,46,0.12);
+      --card-shadow: 0 4px 24px rgba(185,134,46,0.07);
+      --card-shadow-hover: 0 20px 48px rgba(185,134,46,0.16);
       --glass-bg: rgba(255,255,255,0.72);
       --glass-border: rgba(255,255,255,0.5);
-      --footer-bg: #1e1b4b;
-      --footer-text: #e0e7ff;
-      --scrollbar: #c4b5fd;
-      --divider: rgba(124,58,237,0.2);
+      --footer-bg: #1c1814;
+      --footer-text: #f5e6c8;
+      --scrollbar: rgba(185,134,46,0.4);
+      --divider: rgba(185,134,46,0.22);
       --blob-opacity: 0.18;
     }
 
     [data-theme="dark"] {
-      --bg: #0f0f1a;
-      --bg-soft: #13131f;
-      --surface: #1a1a2e;
-      --surface-border: rgba(167,139,250,0.12);
-      --text: #e2e8f0;
+      --bg: #1c1814;
+      --bg-soft: #231f1a;
+      --surface: #2a251f;
+      --surface-border: rgba(196,148,56,0.16);
+      --text: #e2d8c8;
       --text-muted: #94a3b8;
       --text-sub: #64748b;
-      --nav-bg: rgba(15,15,26,0.88);
-      --nav-border: rgba(167,139,250,0.1);
+      --nav-bg: rgba(28,24,20,0.92);
+      --nav-border: rgba(196,148,56,0.14);
       --card-shadow: 0 4px 24px rgba(0,0,0,0.3);
-      --card-shadow-hover: 0 20px 48px rgba(124,58,237,0.25);
-      --glass-bg: rgba(26,26,46,0.8);
-      --glass-border: rgba(167,139,250,0.15);
-      --footer-bg: #080810;
-      --footer-text: #c4b5fd;
-      --scrollbar: #4c1d95;
-      --divider: rgba(167,139,250,0.15);
+      --card-shadow-hover: 0 20px 48px rgba(196,148,56,0.22);
+      --glass-bg: rgba(28,24,20,0.82);
+      --glass-border: rgba(196,148,56,0.18);
+      --footer-bg: #14100c;
+      --footer-text: #f0d9a8;
+      --scrollbar: rgba(196,148,56,0.32);
+      --divider: rgba(196,148,56,0.18);
       --blob-opacity: 0.08;
     }
 
@@ -218,13 +218,13 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
 
     /* Gradient utilities */
     .grad-text {
-      background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+      background: linear-gradient(135deg, #c9973e 0%, #de7898 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .grad-bg { background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%); }
+    .grad-bg { background: linear-gradient(135deg, #c9973e 0%, #de7898 100%); }
 
     .grad-bg-soft {
       background: var(--bg-soft);
@@ -249,7 +249,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
     .card:hover {
       transform: translateY(-8px);
       box-shadow: var(--card-shadow-hover);
-      border-color: rgba(124, 58, 237, 0.2);
+      border-color: rgba(185, 134, 46, 0.28);
     }
 
     /* Navigation */
@@ -271,14 +271,14 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
 
     /* Button */
     .btn-primary {
-      background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+      background: linear-gradient(135deg, #c9973e 0%, #de7898 100%);
       color: #fff;
       border-radius: 12px;
       padding: 14px 32px;
       font-weight: 600;
       font-size: 15px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+      box-shadow: 0 4px 16px rgba(185, 134, 46, 0.35);
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -286,13 +286,13 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(99, 102, 241, 0.45);
+      box-shadow: 0 8px 28px rgba(185, 134, 46, 0.45);
     }
 
     .btn-ghost {
       background: var(--surface);
-      color: #4c1d95;
-      border: 2px solid #ddd6fe;
+      color: #7a5020;
+      border: 2px solid #f0e0b0;
       border-radius: 12px;
       padding: 12px 30px;
       font-weight: 600;
@@ -303,10 +303,10 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
       gap: 8px;
       text-decoration: none;
     }
-    [data-theme="dark"] .btn-ghost { color: #c4b5fd; border-color: #4c1d95; }
+    [data-theme="dark"] .btn-ghost { color: #e0c870; border-color: #7a5020; }
     .btn-ghost:hover {
       background: var(--primary-soft);
-      border-color: #a78bfa;
+      border-color: #d4b04a;
       transform: translateY(-2px);
     }
 
@@ -321,9 +321,9 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
       font-weight: 500;
       background: var(--primary-soft);
       color: var(--primary);
-      border: 1px solid #ddd6fe;
+      border: 1px solid #f0e0b0;
     }
-    [data-theme="dark"] .badge { background: rgba(124,58,237,0.2); border-color: rgba(124,58,237,0.3); }
+    [data-theme="dark"] .badge { background: rgba(185,134,46,0.18); border-color: rgba(185,134,46,0.3); }
 
     /* Divider */
     .divider {
@@ -339,7 +339,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 16px; flex-shrink: 0;
-      background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+      background: linear-gradient(135deg, #c9973e 0%, #de7898 100%);
       color: #fff;
     }
 
@@ -353,7 +353,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
       font-size: 14px; font-weight: 500;
       transition: all 0.2s;
     }
-    .tool-tag:hover { background: var(--primary-soft); border-color: #c4b5fd; }
+    .tool-tag:hover { background: var(--primary-soft); border-color: #d4b04a; }
 
     /* Migration card */
     .migration-card {
@@ -409,31 +409,30 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
       transition: color 0.2s;
       text-decoration: none;
     }
-    .foot-link:hover { color: #7c3aed; }
+    .foot-link:hover { color: #c9973e; }
 
     /* Dark mode text helpers */
-    [data-theme="dark"] .text-gray-900 { color: #e2e8f0 !important; }
-    [data-theme="dark"] .text-gray-800 { color: #cbd5e1 !important; }
+    [data-theme="dark"] .text-gray-900 { color: #e2d8c8 !important; }
+    [data-theme="dark"] .text-gray-800 { color: #cdc4b4 !important; }
     [data-theme="dark"] .text-gray-700 { color: #94a3b8 !important; }
     [data-theme="dark"] .text-gray-600 { color: #64748b !important; }
     [data-theme="dark"] .text-gray-500 { color: #64748b !important; }
     [data-theme="dark"] .text-gray-400 { color: #475569 !important; }
-    [data-theme="dark"] .border-purple-50 { border-color: rgba(124,58,237,0.15) !important; }
-    [data-theme="dark"] .border-amber-200 { border-color: #713f12 !important; }
-    [data-theme="dark"] .text-gray-800 { color: #cbd5e1 !important; }
+    [data-theme="dark"] .border-purple-50 { border-color: rgba(185,134,46,0.18) !important; }
+    [data-theme="dark"] .border-amber-200 { border-color: #7a5020 !important; }
     [data-theme="dark"] .tool-brand { background: var(--surface); border-color: var(--surface-border); }
     [data-theme="dark"] .cta-box {
-      background: linear-gradient(135deg, #16162a 0%, #0f1520 50%, #0a1a14 100%) !important;
-      border-color: #4c1d95 !important;
+      background: linear-gradient(135deg, #1a1510 0%, #150f0a 50%, #0f0d0a 100%) !important;
+      border-color: #7a5020 !important;
     }
-    [data-theme="dark"] .cta-box h2 { color: #e2e8f0 !important; }
+    [data-theme="dark"] .cta-box h2 { color: #e2d8c8 !important; }
     [data-theme="dark"] .cta-box p { color: #94a3b8 !important; }
 
-    [data-theme="dark"] .url-bar { background: var(--surface); border-color: #4c1d95; }
-    [data-theme="dark"] .url-bar-text { color: #c4b5fd; }
-    [data-theme="dark"] section[style*="background:linear-gradient(135deg,#f5f3ff"] {
-      background: linear-gradient(135deg, #13131f 0%, #0f1520 50%, #0a1a0f 100%) !important;
-      border-color: #4c1d95 !important;
+    [data-theme="dark"] .url-bar { background: var(--surface); border-color: #7a5020; }
+    [data-theme="dark"] .url-bar-text { color: #e0c870; }
+    [data-theme="dark"] section[style*="background:linear-gradient(135deg,#fdf2e0"] {
+      background: linear-gradient(135deg, #231f1a 0%, #1c1510 50%, #150f0a 100%) !important;
+      border-color: #7a5020 !important;
     }
 
     /* iframe detection: hide own nav, add top offset for parent nav */
@@ -463,11 +462,11 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
     [data-theme="dark"] body.in-iframe footer h4,
     [data-theme="dark"] body.in-iframe footer .text-lg { color: #fff !important; }
     [data-theme="dark"] body.in-iframe footer a,
-    [data-theme="dark"] body.in-iframe footer .foot-link { color: #a5b4fc !important; }
+    [data-theme="dark"] body.in-iframe footer .foot-link { color: #e0c870 !important; }
 
     /* Terminal window */
     .terminal {
-      background: #1a1a2e;
+      background: #2a251f;
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 24px 64px rgba(0,0,0,0.25);
@@ -477,7 +476,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
       text-align: left;
     }
     .terminal-bar {
-      background: #16162a;
+      background: #1c1814;
       padding: 10px 16px;
       display: flex;
       align-items: center;
@@ -505,20 +504,20 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
       align-items: center;
       gap: 0;
       background: #fff;
-      border: 2px solid #ddd6fe;
+      border: 2px solid #f0e0b0;
       border-radius: 12px;
       padding: 4px;
       max-width: 480px;
       margin: 0 auto;
       transition: border-color 0.2s;
     }
-    .url-bar:hover { border-color: #a78bfa; }
+    .url-bar:hover { border-color: #d4b04a; }
     .url-bar-text {
       flex: 1;
       padding: 8px 14px;
       font-family: 'SF Mono', monospace;
       font-size: 14px;
-      color: #7c3aed;
+      color: #c9973e;
       font-weight: 600;
       white-space: nowrap;
       overflow: hidden;
@@ -527,7 +526,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
     }
     .url-bar-btn {
       flex-shrink: 0;
-      background: linear-gradient(135deg, #7c3aed, #6366f1);
+      background: linear-gradient(135deg, #c9973e, #de7898);
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -736,7 +735,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
           <div class="text-center border-x border-purple-100 px-4">
             <div class="flex justify-center mb-1">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#grad)" stroke-width="2.2">
-                <defs><linearGradient id="grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#6366f1"/></linearGradient></defs>
+                <defs><linearGradient id="grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c9973e"/><stop offset="100%" stop-color="#de7898"/></linearGradient></defs>
                 <path d="M16 3h5v5"/><path d="M4 20L21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/>
               </svg>
             </div>
@@ -844,7 +843,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         </div>
         <!-- Codex -->
         <div class="tool-brand reveal" style="transition-delay:0.1s">
-          <div class="tool-brand-icon" style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe)">
+          <div class="tool-brand-icon" style="background:linear-gradient(135deg,#fdf2e0,#f8e0c0)">
             <span>⚪</span>
           </div>
           <span class="text-xs text-gray-400 font-semibold tracking-wider uppercase" data-i18n="brand.codex.label">OpenAI</span>
@@ -1015,7 +1014,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
   <!-- ╚══════════════════════════════╝ -->
   <section class="py-24 px-4 sm:px-6 lg:px-8">
     <div class="max-w-6xl mx-auto text-center reveal">
-      <div class="cta-box" style="background:linear-gradient(135deg,#f5f3ff 0%,#eef2ff 50%,#f0fdf4 100%);border:1px solid #ddd6fe;border-radius:28px;padding:60px 40px">
+      <div class="cta-box" style="background:linear-gradient(135deg,#fdf2e0 0%,#fde8d0 50%,#fdf5e0 100%);border:1px solid #f0e0b0;border-radius:28px;padding:60px 40px">
         <h2 class="text-4xl sm:text-5xl font-black text-gray-900 mb-4" data-i18n="cta.title">
           随时出发，AI 助力编码
         </h2>
@@ -1048,7 +1047,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
             <div class="w-9 h-9 rounded-xl grad-bg flex items-center justify-center text-white font-black text-base">F</div>
             <span class="font-bold text-white text-lg">FishXCode</span>
           </div>
-          <p style="color:#a5b4fc;font-size:14px;line-height:1.7;white-space:pre-line" data-i18n="footer.brand">AI Coding 中转站
+          <p style="color:#e0c870;font-size:14px;line-height:1.7;white-space:pre-line" data-i18n="footer.brand">AI Coding 中转站
 连接全球顶尖 AI 模型
 让代码工作流更高效</p>
         </div>
@@ -1057,9 +1056,9 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         <div>
           <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider" data-i18n="footer.product">产品</h4>
           <ul class="space-y-2.5">
-            <li><a href="https://fishxcode.com/" target="_blank" class="foot-link" style="color:#a5b4fc" data-i18n="footer.home">平台首页</a></li>
-            <li><a href="https://fishxcode.com/console" target="_blank" class="foot-link" style="color:#a5b4fc" data-i18n="footer.console">控制台</a></li>
-            <li><a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="foot-link" style="color:#a5b4fc" data-i18n="footer.register">立即注册</a></li>
+            <li><a href="https://fishxcode.com/" target="_blank" class="foot-link" style="color:#e0c870" data-i18n="footer.home">平台首页</a></li>
+            <li><a href="https://fishxcode.com/console" target="_blank" class="foot-link" style="color:#e0c870" data-i18n="footer.console">控制台</a></li>
+            <li><a href="https://fishxcode.com/register?aff=9CTW" target="_blank" class="foot-link" style="color:#e0c870" data-i18n="footer.register">立即注册</a></li>
           </ul>
         </div>
 
@@ -1067,9 +1066,9 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         <div>
           <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider" data-i18n="footer.resources">资源</h4>
           <ul class="space-y-2.5">
-            <li><a href="https://doc.fishxcode.com/faq" target="_blank" class="foot-link" style="color:#a5b4fc" data-i18n="footer.faq">常见问题</a></li>
-            <li><a href="https://doc.fishxcode.com/models" target="_blank" class="foot-link" style="color:#a5b4fc" data-i18n="footer.models">支持的模型</a></li>
-            <li><a href="https://doc.fishxcode.com/changelog" target="_blank" class="foot-link" style="color:#a5b4fc" data-i18n="footer.changelog">更新日志</a></li>
+            <li><a href="https://doc.fishxcode.com/faq" target="_blank" class="foot-link" style="color:#e0c870" data-i18n="footer.faq">常见问题</a></li>
+            <li><a href="https://doc.fishxcode.com/models" target="_blank" class="foot-link" style="color:#e0c870" data-i18n="footer.models">支持的模型</a></li>
+            <li><a href="https://doc.fishxcode.com/changelog" target="_blank" class="foot-link" style="color:#e0c870" data-i18n="footer.changelog">更新日志</a></li>
           </ul>
         </div>
 
@@ -1077,9 +1076,9 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
         <div>
           <h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider" data-i18n="footer.support">支持</h4>
           <ul class="space-y-2.5">
-            <li><a href="mailto:support@fishxcode.com" class="foot-link" style="color:#a5b4fc" data-i18n="footer.cs">联系客服</a></li>
-            <li><a href="https://status.fishxcode.com" target="_blank" class="foot-link" style="color:#a5b4fc" data-i18n="footer.status">服务状态</a></li>
-            <li><a href="https://api-key-tool.fishxcode.com" target="_blank" class="foot-link" style="color:#a5b4fc" data-i18n="footer.quota">额度查询</a></li>
+            <li><a href="mailto:support@fishxcode.com" class="foot-link" style="color:#e0c870" data-i18n="footer.cs">联系客服</a></li>
+            <li><a href="https://status.fishxcode.com" target="_blank" class="foot-link" style="color:#e0c870" data-i18n="footer.status">服务状态</a></li>
+            <li><a href="https://api-key-tool.fishxcode.com" target="_blank" class="foot-link" style="color:#e0c870" data-i18n="footer.quota">额度查询</a></li>
           </ul>
         </div>
       </div>
@@ -1093,7 +1092,7 @@ function buildHtml(visitCount: number): string { return `<!DOCTYPE html>
           <span>&copy; 2026 FishXCode. All rights reserved.</span>
           <span style="color:#374163">·</span>
           <span><span data-i18n="footer.visits.prefix">累计访问</span>
-            <span style="color:#a5b4fc;font-weight:700">${visitCount.toLocaleString()}</span>
+            <span style="color:#e0c870;font-weight:700">${visitCount.toLocaleString()}</span>
             <span data-i18n="footer.visits.suffix">次</span>
           </span>
         </div>
