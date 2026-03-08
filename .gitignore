@@ -10,3 +10,4 @@ package-lock.json
 deno/proxy.ts
 deno/cf-worker.ts
 deno/cf-worker.js
+.action.env
