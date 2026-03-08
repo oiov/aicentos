@@ -1,8 +1,9 @@
 name: Deploy
 
 on:
-  push:
-    branches: [main]
+  schedule:
+    # 每天 UTC 4:00 (北京时间 12:00) 执行
+    - cron: '0 4 * * *'
   workflow_dispatch:
 
 permissions:
