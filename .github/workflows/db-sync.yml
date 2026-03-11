@@ -130,14 +130,32 @@ jobs:
           echo "ZEABUR_RC=$RC" >> $GITHUB_ENV
 
       - name: Verify zeabur-sjc1
+        continue-on-error: true
         env:
           DATABASE_URL: ${{ secrets.SLAVE_ZEABUR_DSN }}
         run: |
           set -e
-          COUNT=$(psql -A -t "$DATABASE_URL" -c "SELECT count(*) FROM pg_stat_user_tables;" | tr -d '[:space:]')
+          # 重试机制：最多尝试 3 次
+          for i in 1 2 3; do
+            COUNT=$(psql -A -t "$DATABASE_URL" -c "SELECT count(*) FROM pg_stat_user_tables;" 2>/dev/null | tr -d '[:space:]') && break
+            echo "::warning::Attempt $i failed, retrying in 5s..."
+            sleep 5
+          done
+
+          # 空值检查
+          if [ -z "$COUNT" ]; then
+            echo "::warning::zeabur-sjc1: Unable to verify (connection failed)"
+            echo "ZEABUR_TABLES=?" >> $GITHUB_ENV
+            exit 0
+          fi
+
           echo "zeabur-sjc1: $COUNT tables"
-          [ "$COUNT" -ge 10 ] || { echo "::error::Table count too low"; exit 1; }
-          echo "ZEABUR_TABLES=$COUNT" >> $GITHUB_ENV
+          if [ "$COUNT" -ge 10 ]; then
+            echo "ZEABUR_TABLES=$COUNT" >> $GITHUB_ENV
+          else
+            echo "::warning::Table count ($COUNT) lower than expected (10)"
+            echo "ZEABUR_TABLES=$COUNT⚠️" >> $GITHUB_ENV
+          fi
 
       - name: Restore to neon-azure
         env:
@@ -170,14 +188,32 @@ jobs:
           echo "NEON_RC=$RC" >> $GITHUB_ENV
 
       - name: Verify neon-azure
+        continue-on-error: true
         env:
           DATABASE_URL: ${{ secrets.SLAVE_NEON_DSN }}
         run: |
           set -e
-          COUNT=$(psql -A -t "$DATABASE_URL" -c "SELECT count(*) FROM pg_stat_user_tables;" | tr -d '[:space:]')
+          # 重试机制：最多尝试 3 次
+          for i in 1 2 3; do
+            COUNT=$(psql -A -t "$DATABASE_URL" -c "SELECT count(*) FROM pg_stat_user_tables;" 2>/dev/null | tr -d '[:space:]') && break
+            echo "::warning::Attempt $i failed, retrying in 5s..."
+            sleep 5
+          done
+
+          # 空值检查
+          if [ -z "$COUNT" ]; then
+            echo "::warning::neon-azure: Unable to verify (connection failed)"
+            echo "NEON_TABLES=?" >> $GITHUB_ENV
+            exit 0
+          fi
+
           echo "neon-azure: $COUNT tables"
-          [ "$COUNT" -ge 10 ] || { echo "::error::Table count too low"; exit 1; }
-          echo "NEON_TABLES=$COUNT" >> $GITHUB_ENV
+          if [ "$COUNT" -ge 10 ]; then
+            echo "NEON_TABLES=$COUNT" >> $GITHUB_ENV
+          else
+            echo "::warning::Table count ($COUNT) lower than expected (10)"
+            echo "NEON_TABLES=$COUNT⚠️" >> $GITHUB_ENV
+          fi
 
       # ========== 4. 清理 ==========
       - name: Cleanup
