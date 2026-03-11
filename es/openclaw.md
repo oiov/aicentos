@@ -8,6 +8,11 @@ OpenClaw es una plataforma de asistente de IA personal de código abierto y auto
 - GitHub: [https://github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)
 :::
 
+## Requisitos previos
+
+- OpenClaw instalado (ver la sección de instalación a continuación)
+- API Key de FishXCode ([Obtener desde la consola](https://fishxcode.com/console/token))
+
 ## Características principales
 
 ### Integración multicanal
@@ -70,39 +75,80 @@ openclaw onboard
 
 ### Ubicación del archivo de configuración
 
-El archivo de configuración de OpenClaw se encuentra en `~/.openclaw/config.json`. Puede generarse automáticamente mediante el asistente o editarse manualmente.
+El archivo de configuración de OpenClaw se encuentra en `~/.openclaw/openclaw.json`:
 
-### Ejemplo de configuración
+- **macOS**: `/Users/tu-usuario/.openclaw/openclaw.json`
+- **Linux**: `/home/tu-usuario/.openclaw/openclaw.json`
+- **Windows**: `C:\Users\tu-usuario\.openclaw\openclaw.json`
 
-A continuación se muestra un ejemplo completo usando FishXCode como proveedor de modelos:
+Si el archivo no existe, créalo primero:
+
+::: code-group
+
+```bash [macOS / Linux]
+mkdir -p ~/.openclaw
+touch ~/.openclaw/openclaw.json
+```
+
+```powershell [Windows (PowerShell)]
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.openclaw"
+New-Item -ItemType File -Force -Path "$env:USERPROFILE\.openclaw\openclaw.json"
+```
+
+:::
+
+::: tip Consejo
+Si ya has ejecutado `openclaw onboard`, el archivo de configuración se generará automáticamente. Solo necesitas modificar el contenido existente.
+:::
+
+### Estructura del archivo de configuración
+
+La estructura de `openclaw.json` consta de dos partes principales:
 
 ```json
 {
   "models": {
+    "mode": "merge",
     "providers": {
-      "fishxcode": {
-        "baseUrl": "https://fishxcode.com/v1",
+      // Configurar proveedores de modelos de IA
+    }
+  },
+  "agents": {
+    "defaults": {
+      // Configurar modelo por defecto, directorio de trabajo, etc.
+    }
+  }
+}
+```
+
+- `models.providers` — Define los proveedores de servicios (URL, clave, lista de modelos)
+- `models.mode` — Establecer en `"merge"` para fusionar la configuración personalizada con los valores predeterminados integrados, **muy recomendado**
+- `agents.defaults.model.primary` — Modelo a usar por defecto, formato: `nombre-proveedor/id-modelo`
+- `api` — Tipo de protocolo API: `"anthropic-messages"` para modelos Anthropic, `"openai-responses"` para modelos compatibles con OpenAI
+
+### Métodos de configuración
+
+#### Configurar modelos Anthropic (Claude)
+
+Añade el siguiente contenido a `openclaw.json`:
+
+```json
+{
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "fishxcode-anthropic": {
+        "baseUrl": "https://fishxcode.com",
         "apiKey": "sk-tu-token-fishxcode",
-        "auth": "api-key",
-        "api": "openai-completions",
+        "api": "anthropic-messages",
         "models": [
           {
-            "id": "claude-sonnet-4-5-20250929",
-            "name": "claude-sonnet-4-5-20250929",
-            "api": "openai-completions",
+            "id": "claude-opus-4-6",
+            "name": "Claude Opus 4.6",
             "input": ["text", "image"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
             "contextWindow": 200000,
-            "maxTokens": 64000
-          },
-          {
-            "id": "gpt-5",
-            "name": "gpt-5",
-            "api": "openai-completions",
-            "input": ["text", "image"],
-            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
-            "contextWindow": 128000,
-            "maxTokens": 64000
+            "maxTokens": 8192,
+            "reasoning": false
           }
         ]
       }
@@ -111,53 +157,166 @@ A continuación se muestra un ejemplo completo usando FishXCode como proveedor d
   "agents": {
     "defaults": {
       "model": {
-        "primary": "fishxcode/claude-sonnet-4-5-20250929",
-        "fallbacks": ["fishxcode/gpt-5"]
-      },
-      "workspace": "/home/tu-usuario/.openclaw/workspace",
-      "maxConcurrent": 4,
-      "subagents": { "maxConcurrent": 8 }
-    }
-  },
-  "channels": {
-    "lark": {
-      "enabled": true,
-      "dmPolicy": "pairing",
-      "appId": "tu-lark-app-id",
-      "appSecret": "tu-lark-app-secret",
-      "groupPolicy": "allowlist",
-      "streamMode": "partial"
-    }
-  },
-  "gateway": {
-    "port": 18789,
-    "mode": "local",
-    "bind": "loopback",
-    "auth": {
-      "mode": "token",
-      "token": "tu-token-seguro"
+        "primary": "fishxcode-anthropic/claude-opus-4-6"
+      }
     }
   }
 }
 ```
 
 ::: warning Importante
-Reemplaza `sk-tu-token-fishxcode` por tu token real obtenido en la [consola de FishXCode](https://fishxcode.com/console/token).
+- Reemplaza `sk-tu-token-fishxcode` por tu token real obtenido en la [consola de FishXCode](https://fishxcode.com/console/token)
+- **Para el protocolo Anthropic, el `baseUrl` NO debe incluir `/v1`** — el SDK añade automáticamente la ruta
 :::
 
-### Detalles de configuración
+#### Configurar modelos OpenAI (GPT)
 
-| Parámetro | Descripción |
-| --- | --- |
-| `models.providers.fishxcode.baseUrl` | Endpoint de FishXCode, fijo como `https://fishxcode.com/v1` |
-| `models.providers.fishxcode.apiKey` | Token obtenido desde la consola de FishXCode |
-| `models.providers.fishxcode.models` | Lista de modelos, añade los que necesites |
-| `agents.defaults.model.primary` | Modelo principal por defecto, formato: `proveedor/id-modelo` |
-| `agents.defaults.model.fallbacks` | Modelos de respaldo, cambia automáticamente si el principal no está disponible |
-| `channels.lark.appId` | App ID de Lark desde la plataforma abierta de Lark |
-| `channels.lark.appSecret` | App Secret de Lark desde la plataforma abierta de Lark |
-| `gateway.port` | Puerto de escucha de la pasarela |
-| `gateway.auth.token` | Token de seguridad de acceso a la pasarela |
+Al llamar a modelos OpenAI a través de FishXCode, el campo `api` debe ser `openai-responses`:
+
+```json
+{
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "fishxcode-openai": {
+        "baseUrl": "https://fishxcode.com/v1",
+        "apiKey": "sk-tu-token-fishxcode",
+        "api": "openai-responses",
+        "models": [
+          {
+            "id": "gpt-5",
+            "name": "GPT-5",
+            "input": ["text", "image"],
+            "contextWindow": 200000,
+            "maxTokens": 16384,
+            "reasoning": true
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "fishxcode-openai/gpt-5"
+      }
+    }
+  }
+}
+```
+
+::: tip
+**El protocolo OpenAI requiere `/v1`**, es decir, `https://fishxcode.com/v1`. Esto se debe a que los dos SDK tienen lógicas de concatenación de rutas diferentes.
+:::
+
+#### Configurar Anthropic + OpenAI simultáneamente (Recomendado)
+
+Añade ambos providers uno al lado del otro en `models.providers` para usar modelos de ambas familias:
+
+```json
+{
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "fishxcode-anthropic": {
+        "baseUrl": "https://fishxcode.com",
+        "apiKey": "sk-tu-token-fishxcode",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "claude-opus-4-6",
+            "name": "Claude Opus 4.6",
+            "input": ["text", "image"],
+            "contextWindow": 200000,
+            "maxTokens": 8192,
+            "reasoning": false
+          },
+          {
+            "id": "claude-sonnet-4-5-20250929",
+            "name": "Claude Sonnet 4.5",
+            "input": ["text", "image"],
+            "contextWindow": 200000,
+            "maxTokens": 8192,
+            "reasoning": false
+          }
+        ]
+      },
+      "fishxcode-openai": {
+        "baseUrl": "https://fishxcode.com/v1",
+        "apiKey": "sk-tu-token-fishxcode",
+        "api": "openai-responses",
+        "models": [
+          {
+            "id": "gpt-5",
+            "name": "GPT-5",
+            "input": ["text", "image"],
+            "contextWindow": 200000,
+            "maxTokens": 16384,
+            "reasoning": true
+          },
+          {
+            "id": "gpt-5-codex",
+            "name": "GPT-5 Codex",
+            "input": ["text", "image"],
+            "contextWindow": 200000,
+            "maxTokens": 16384,
+            "reasoning": true
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "fishxcode-anthropic/claude-opus-4-6",
+        "fallbacks": [
+          "fishxcode-anthropic/claude-sonnet-4-5-20250929",
+          "fishxcode-openai/gpt-5"
+        ]
+      }
+    }
+  }
+}
+```
+
+### Campos clave de configuración
+
+| Campo | Significado | Anthropic (Claude) | OpenAI (GPT) |
+| --- | --- | --- | --- |
+| `baseUrl` | Dirección del proxy API | `https://fishxcode.com` | `https://fishxcode.com/v1` |
+| `apiKey` | Tu clave API | `sk-tu-token-fishxcode` | `sk-tu-token-fishxcode` |
+| `api` | Tipo de protocolo API | `anthropic-messages` | `openai-responses` |
+| `mode` | Modo de fusión de config | `merge` (recomendado) | `merge` (recomendado) |
+| `models[].id` | ID del modelo | `claude-opus-4-6` | `gpt-5` |
+| `model.primary` | Modelo por defecto | `fishxcode-anthropic/claude-opus-4-6` | `fishxcode-openai/gpt-5` |
+| `reasoning` | Activar modo razonamiento | `false` (según modelo) | `true` (GPT-5.x soportado) |
+
+## Verificar la configuración
+
+Ejecuta el siguiente comando para confirmar que la configuración funciona:
+
+```bash
+openclaw
+```
+
+Ver la lista de modelos:
+
+```bash
+openclaw models list
+```
+
+Ver el estado de los modelos y la autenticación:
+
+```bash
+openclaw models status
+```
+
+Diagnóstico completo:
+
+```bash
+openclaw doctor
+```
 
 ## Iniciar el servicio
 
@@ -168,3 +327,128 @@ openclaw start
 ```
 
 Una vez iniciado, puedes interactuar con el asistente de IA a través de los canales configurados.
+
+Reiniciar la pasarela:
+
+```bash
+openclaw gateway restart
+```
+
+## Solución de problemas
+
+### 403 Bloqueado
+
+**Síntoma**: El provider está configurado, la petición curl directa a la API devuelve 200, pero las peticiones desde OpenClaw reciben un 403 "Your request was blocked".
+
+**Causa**: OpenClaw usa `@anthropic-ai/sdk` internamente, que envía peticiones con el User-Agent oficial del SDK (ej: `Anthropic/JS 0.73.0`). Algunos CDN o WAF bloquean este UA.
+
+**Solución**: Añade un campo `headers` en la config del provider para reemplazar el UA:
+
+```json
+{
+  "fishxcode-anthropic": {
+    "baseUrl": "https://fishxcode.com",
+    "apiKey": "tu-api-key",
+    "api": "anthropic-messages",
+    "headers": {
+      "User-Agent": "Mozilla/5.0"
+    },
+    "models": [...]
+  }
+}
+```
+
+### No incluir /v1 en baseUrl (Protocolo Anthropic)
+
+**Síntoma**: La petición devuelve 404, y los logs muestran que la ruta se ha convertido en `/v1/v1/messages`.
+
+**Causa**: El SDK de Anthropic añade automáticamente `/v1/messages` al baseURL. Si tu baseUrl ya incluye `/v1`, la ruta real queda duplicada.
+
+**Solución**: Para el protocolo Anthropic, solo escribe el dominio en baseUrl, sin `/v1`:
+
+```json
+{
+  "baseUrl": "https://fishxcode.com"
+}
+```
+
+::: tip
+El protocolo OpenAI requiere `/v1`, es decir, `https://fishxcode.com/v1`. Esto se debe a que los dos SDK tienen lógicas de concatenación de rutas diferentes.
+:::
+
+### El campo api solo acepta tres valores
+
+**Síntoma**: Al iniciar aparece "Config invalid", o el provider configurado no aparece en la lista de modelos.
+
+**Causa**: OpenClaw valida estrictamente el campo `api`, aceptando solo estos tres valores:
+
+| Valor | Protocolo |
+| --- | --- |
+| `anthropic-messages` | Anthropic Messages API |
+| `openai-completions` | OpenAI Chat Completions |
+| `openai-responses` | OpenAI Responses API |
+
+Valores como `openai-chat`, `openai`, `anthropic`, etc. provocarán errores.
+
+**Solución**: Al usar FishXCode, usa `anthropic-messages` para modelos Claude y `openai-responses` para modelos GPT.
+
+### Respuesta vacía con openai-completions (No usar para modelos GPT)
+
+**Síntoma**: `api` está configurado como `openai-completions`, la petición tiene éxito (`isError=false` en los logs), pero la interfaz muestra un mensaje vacío.
+
+**Causa**: OpenClaw maneja los flujos de mensajes internamente en formato Anthropic. Las respuestas en formato OpenAI de `openai-completions` pueden no mapearse correctamente en algunos casos.
+
+**Solución**: Al llamar a modelos GPT a través de FishXCode, usa `openai-responses` en lugar de `openai-completions`.
+
+### Los cambios de configuración no surten efecto
+
+**Síntoma**: Se modificó `openclaw.json` pero OpenClaw sigue usando la configuración antigua.
+
+**Causa**: OpenClaw tiene dos lugares donde las configuraciones de providers deben sincronizarse:
+
+```
+~/.openclaw/openclaw.json              → models.providers
+~/.openclaw/agents/main/agent/models.json → providers
+```
+
+Modificar solo uno puede causar problemas.
+
+**Solución**: Tras la modificación, confirma con:
+
+```bash
+openclaw models status
+```
+
+O reinicia la pasarela de OpenClaw:
+
+```bash
+openclaw gateway restart
+```
+
+### Errores de formato JSON
+
+Errores comunes de formato JSON:
+
+- **Coma extra**: El último elemento no puede tener una coma final
+- **Coma faltante**: Dos pares clave-valor adyacentes deben estar separados por una coma
+- **Problemas con comillas**: JSON solo acepta comillas dobles inglesas `"`, no comillas simples ni especiales
+- **Paréntesis no coincidentes**: Cada `{` debe tener un `}` correspondiente, cada `[` debe tener un `]` correspondiente
+
+Valida el formato con:
+
+```bash
+python3 -m json.tool ~/.openclaw/openclaw.json
+```
+
+### Referencia de comandos de diagnóstico
+
+| Comando | Propósito |
+| --- | --- |
+| `openclaw models status` | Ver estado de modelos y autenticación |
+| `openclaw models list` | Ver lista de modelos configurados |
+| `openclaw doctor` | Diagnóstico completo |
+| `openclaw gateway restart` | Reiniciar la pasarela |
+
+::: tip Estrategia de depuración
+Primero usa curl para confirmar que la API de FishXCode funciona correctamente, luego verifica qué es diferente en las peticiones enviadas por OpenClaw (UA, ruta, formato).
+:::
