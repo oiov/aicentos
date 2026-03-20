@@ -11,144 +11,17 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  prepare:
+  backup:
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.build-matrix.outputs.matrix }}
-      timestamp: ${{ steps.meta.outputs.timestamp }}
-      db_count: ${{ steps.build-matrix.outputs.db_count }}
+    timeout-minutes: 60
     env:
       MASTER_DSN: ${{ secrets.MASTER_DSN }}
       SLAVE_DSNS: ${{ secrets.SLAVE_DSNS }}
-    steps:
-      - name: Generate backup timestamp
-        id: meta
-        run: echo "timestamp=$(date -u '+%Y-%m-%d_%H%M%S')" >> "$GITHUB_OUTPUT"
-
-      - name: Build backup matrix
-        id: build-matrix
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          MATRIX_JSON="$(python3 - <<'PY'
-          import json
-          import os
-
-          entries = []
-          master_dsn = os.environ.get("MASTER_DSN", "").strip()
-          slave_dsns = os.environ.get("SLAVE_DSNS", "")
-
-          if master_dsn:
-              entries.append({"db_name": "master", "db_dsn": master_dsn})
-
-          for raw_line in slave_dsns.splitlines():
-              line = raw_line.strip()
-              if not line or line.startswith("#") or "|" not in line:
-                  continue
-              db_name, db_dsn = line.split("|", 1)
-              db_name = db_name.strip()
-              db_dsn = db_dsn.strip()
-              if not db_name or not db_dsn:
-                  continue
-              if not (db_dsn.startswith("postgresql://") or db_dsn.startswith("postgres://")):
-                  continue
-              entries.append({"db_name": db_name, "db_dsn": db_dsn})
-
-          if not entries:
-              raise SystemExit("No valid database DSNs found. Please set MASTER_DSN and/or SLAVE_DSNS.")
-
-          print(json.dumps({"include": entries}, ensure_ascii=True))
-          PY
-          )"
-
-          DB_COUNT="$(printf '%s' "$MATRIX_JSON" | python3 -c 'import json, sys; print(len(json.load(sys.stdin)["include"]))')"
-
-          echo "Found ${DB_COUNT} database(s) to back up"
-          echo "matrix=${MATRIX_JSON}" >> "$GITHUB_OUTPUT"
-          echo "db_count=${DB_COUNT}" >> "$GITHUB_OUTPUT"
-
-  dump:
-    needs: prepare
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    container:
-      image: postgres:18-bookworm
-    strategy:
-      fail-fast: false
-      max-parallel: 4
-      matrix: ${{ fromJson(needs.prepare.outputs.matrix) }}
-    steps:
-      - name: Dump ${{ matrix.db_name }}
-        id: dump-db
-        shell: bash
-        env:
-          DB_NAME: ${{ matrix.db_name }}
-          DB_DSN: ${{ matrix.db_dsn }}
-          BACKUP_TIMESTAMP: ${{ needs.prepare.outputs.timestamp }}
-        run: |
-          set -uo pipefail
-
-          PAYLOAD_DIR="${RUNNER_TEMP}/payload"
-          REPORTS_DIR="${PAYLOAD_DIR}/reports"
-          TARGET_DIR="${PAYLOAD_DIR}/pg/${DB_NAME}"
-          DUMP_FILE="${TARGET_DIR}/${BACKUP_TIMESTAMP}.dump"
-          STATUS_FILE="${RUNNER_TEMP}/status.txt"
-
-          mkdir -p "$REPORTS_DIR" "$TARGET_DIR"
-
-          START=$(date +%s)
-          if pg_dump -v -d "$DB_DSN" -F c --compress=9 -f "$DUMP_FILE"; then
-            END=$(date +%s)
-            ELAPSED=$((END-START))
-            SIZE=$(du -h "$DUMP_FILE" | cut -f1)
-            printf '%s|OK|%s|%ss\n' "$DB_NAME" "$SIZE" "$ELAPSED" > "${REPORTS_DIR}/${DB_NAME}.txt"
-            echo "status=success" >> "$GITHUB_OUTPUT"
-            echo "Dump completed for ${DB_NAME}: ${SIZE}, ${ELAPSED}s"
-            echo 0 > "$STATUS_FILE"
-          else
-            END=$(date +%s)
-            ELAPSED=$((END-START))
-            rm -f "$DUMP_FILE"
-            printf '%s|FAIL|?|%ss\n' "$DB_NAME" "$ELAPSED" > "${REPORTS_DIR}/${DB_NAME}.txt"
-            echo "status=failure" >> "$GITHUB_OUTPUT"
-            echo "::error::Dump failed for ${DB_NAME} after ${ELAPSED}s"
-            echo 1 > "$STATUS_FILE"
-          fi
-
-      - name: Upload backup artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: db-backup-${{ matrix.db_name }}
-          path: ${{ runner.temp }}/payload
-          if-no-files-found: error
-          retention-days: 1
-          compression-level: 0
-
-      - name: Finalize job status
-        if: always()
-        shell: bash
-        run: |
-          STATUS_FILE="${RUNNER_TEMP}/status.txt"
-          if [ ! -f "$STATUS_FILE" ]; then
-            echo "::error::Missing dump status file"
-            exit 1
-          fi
-          exit "$(cat "$STATUS_FILE")"
-
-  publish:
-    needs:
-      - prepare
-      - dump
-    if: always()
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    env:
       BACKUP_REPO: fishxcode/new-api
       BACKUP_BRANCH: main
       BACKUP_DIR: pg
-      BACKUP_TIMESTAMP: ${{ needs.prepare.outputs.timestamp }}
+      MAX_PARALLEL: 4
+      WORK_ROOT: /tmp/db-backup
     steps:
       - name: Checkout backup repo
         uses: actions/checkout@v4
@@ -159,30 +32,136 @@ jobs:
           fetch-depth: 1
           path: backup-repo
 
-      - name: Download backup artifacts
-        uses: actions/download-artifact@v4
-        with:
-          pattern: db-backup-*
-          path: artifacts
-          merge-multiple: true
+      - name: Ensure Git LFS
+        run: |
+          set -euo pipefail
+          if command -v git-lfs >/dev/null 2>&1; then
+            git lfs install
+            exit 0
+          fi
+          sudo apt-get update
+          sudo apt-get install -y git-lfs
+          git lfs install
+
+      - name: Dump all databases in parallel
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          TIMESTAMP="$(date -u '+%Y-%m-%d_%H%M%S')"
+          INPUT_FILE="${WORK_ROOT}/db-list.txt"
+          REPORT_DIR="${WORK_ROOT}/reports"
+          DUMP_ROOT="${WORK_ROOT}/pg"
+          STATUS_DIR="${WORK_ROOT}/status"
+
+          mkdir -p "$REPORT_DIR" "$DUMP_ROOT" "$STATUS_DIR"
+          : > "$INPUT_FILE"
+
+          if [ -n "${MASTER_DSN:-}" ]; then
+            printf 'master|%s\n' "$MASTER_DSN" >> "$INPUT_FILE"
+          fi
+
+          if [ -n "${SLAVE_DSNS:-}" ]; then
+            while IFS='|' read -r DB_NAME DB_DSN; do
+              DB_NAME="$(echo "${DB_NAME:-}" | xargs)"
+              DB_DSN="$(echo "${DB_DSN:-}" | xargs)"
+              [ -z "$DB_NAME" ] && continue
+              [[ "$DB_NAME" == \#* ]] && continue
+              [ -z "$DB_DSN" ] && continue
+              case "$DB_DSN" in
+                postgres://*|postgresql://*) ;;
+                *) continue ;;
+              esac
+              printf '%s|%s\n' "$DB_NAME" "$DB_DSN" >> "$INPUT_FILE"
+            done <<< "$SLAVE_DSNS"
+          fi
+
+          DB_COUNT=$(grep -cE '^[a-zA-Z0-9_-]+\|postgres(ql)?://' "$INPUT_FILE" || true)
+          if [ "$DB_COUNT" -eq 0 ]; then
+            echo "::error::No valid database DSNs found. Please set MASTER_DSN and/or SLAVE_DSNS."
+            exit 1
+          fi
+
+          echo "Found ${DB_COUNT} database(s) to back up"
+
+          run_dump() {
+            local db_name="$1"
+            local db_dsn="$2"
+            local target_dir="${DUMP_ROOT}/${db_name}"
+            local dump_file="${target_dir}/${TIMESTAMP}.dump"
+            local report_file="${REPORT_DIR}/${db_name}.txt"
+            local status_file="${STATUS_DIR}/${db_name}.status"
+
+            mkdir -p "$target_dir"
+            local start end elapsed size
+            start=$(date +%s)
+
+            if docker run --rm \
+              -v "${target_dir}:/backup" \
+              -e "DATABASE_URL=${db_dsn}" \
+              postgres:18-bookworm \
+              sh -lc 'pg_dump -v -d "$DATABASE_URL" -F c --compress=9 -f /backup/'"${TIMESTAMP}"'.dump'
+            then
+              end=$(date +%s)
+              elapsed=$((end-start))
+              size=$(du -h "$dump_file" | cut -f1)
+              printf '%s|OK|%s|%ss\n' "$db_name" "$size" "$elapsed" > "$report_file"
+              echo ok > "$status_file"
+              echo "${db_name}: backup completed (${size}, ${elapsed}s)"
+            else
+              end=$(date +%s)
+              elapsed=$((end-start))
+              rm -f "$dump_file"
+              printf '%s|FAIL|?|%ss\n' "$db_name" "$elapsed" > "$report_file"
+              echo fail > "$status_file"
+              echo "::error::${db_name}: backup failed after ${elapsed}s"
+            fi
+          }
+
+          active_jobs=0
+          while IFS='|' read -r DB_NAME DB_DSN; do
+            [ -z "${DB_NAME:-}" ] && continue
+            run_dump "$DB_NAME" "$DB_DSN" &
+            active_jobs=$((active_jobs+1))
+
+            if [ "$active_jobs" -ge "$MAX_PARALLEL" ]; then
+              wait -n || true
+              active_jobs=$((active_jobs-1))
+            fi
+          done < "$INPUT_FILE"
+
+          wait || true
+
+          {
+            echo "BACKUP_TIMESTAMP=$TIMESTAMP"
+          } >> "$GITHUB_ENV"
+
+          FAIL_COUNT=$(grep -Rxc 'fail' "$STATUS_DIR" || true)
+          if [ "$FAIL_COUNT" -gt 0 ]; then
+            echo "::error::${FAIL_COUNT} database backup(s) failed"
+            exit 1
+          fi
 
       - name: Publish backups
+        if: always()
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.BACKUP_REPO_TOKEN }}
         run: |
           set -euo pipefail
 
+          if [ ! -d "${WORK_ROOT}/pg" ]; then
+            echo "::warning::No backup payload generated"
+            exit 1
+          fi
+
           cd backup-repo
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${BACKUP_REPO}.git"
-          git lfs install
           grep -q '^pg/\*\* filter=lfs' .gitattributes 2>/dev/null || printf "pg/** filter=lfs diff=lfs merge=lfs -text\n" >> .gitattributes
           git add .gitattributes
 
-          if [ -d "../artifacts/pg" ]; then
-            mkdir -p "$BACKUP_DIR"
-            cp -R ../artifacts/pg/. "$BACKUP_DIR/"
-          fi
+          mkdir -p "$BACKUP_DIR"
+          cp -R "${WORK_ROOT}/pg/." "$BACKUP_DIR/"
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -204,14 +183,10 @@ jobs:
         run: |
           set -euo pipefail
 
-          REPORT_DIR="artifacts/reports"
+          REPORT_DIR="${WORK_ROOT}/reports"
           if [ ! -d "$REPORT_DIR" ]; then
             echo "::warning::No backup reports found"
-          else
-            cat "$REPORT_DIR"/*.txt
+            exit 0
           fi
 
-          if [ "${{ needs.dump.result }}" != "success" ]; then
-            echo "::error::One or more database backups failed"
-            exit 1
-          fi
+          cat "$REPORT_DIR"/*.txt
