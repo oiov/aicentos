@@ -2,6 +2,12 @@ name: DB Sync (Master → Slaves)
 
 on:
   workflow_dispatch:
+    inputs:
+      allow_partial_failure:
+        description: "允许部分从库失败但任务整体成功"
+        required: false
+        type: boolean
+        default: false
 
 concurrency:
   group: db-sync
@@ -14,7 +20,9 @@ jobs:
     env:
       DUMP_FILE: /tmp/master_dump.dump
       MAX_PARALLEL: 5
-      FAIL_ON_SLAVE_ERROR: "false"
+      FAIL_ON_SLAVE_ERROR: "true"
+      EVENT_NAME: ${{ github.event_name }}
+      MANUAL_ALLOW_PARTIAL_FAILURE: ${{ github.event.inputs.allow_partial_failure || 'false' }}
       # ── 从库列表由单个 Secret 管理，每行格式: name|dsn ──
       # 新增从库只需编辑 GitHub Secret SLAVE_DSNS，无需改 workflow
       SLAVE_DSNS: ${{ secrets.SLAVE_DSNS }}
@@ -109,18 +117,70 @@ jobs:
             exit 1
           fi
 
-      # ========== 4. 恢复到所有从库 (并发执行，单库失败不阻断其他) ==========
+      # ========== 3.1 预检从库可连接性与数据库存在性 ==========
+      - name: Precheck slave database connectivity
+        shell: bash
+        run: |
+          REPORT=""
+          VALIDATED_SLAVE_DSNS=""
+
+          while IFS='|' read -r SLAVE_NAME SLAVE_DSN; do
+            SLAVE_NAME=$(echo "$SLAVE_NAME" | xargs)
+            [ -z "$SLAVE_NAME" ] && continue
+            [[ "$SLAVE_NAME" == \#* ]] && continue
+            [ -z "$SLAVE_DSN" ] && continue
+
+            echo "::group::precheck → ${SLAVE_NAME}"
+            if ! DBNAME=$(psql -A -t "${SLAVE_DSN}" -c "SELECT current_database();" 2>/tmp/precheck_${SLAVE_NAME}.log); then
+              echo "::warning::${SLAVE_NAME} precheck failed, will skip"
+              cat /tmp/precheck_${SLAVE_NAME}.log
+              REPORT="${REPORT}${SLAVE_NAME}|PRECHECK_FAIL|?|?"$'\n'
+            else
+              DBNAME=$(echo "$DBNAME" | tr -d '[:space:]')
+              echo "${SLAVE_NAME} precheck ok, database=${DBNAME}"
+              VALIDATED_SLAVE_DSNS="${VALIDATED_SLAVE_DSNS}${SLAVE_NAME}|${SLAVE_DSN}"$'\n'
+            fi
+            echo "::endgroup::"
+          done <<< "$SLAVE_DSNS"
+
+          VALID_COUNT=$(echo "$VALIDATED_SLAVE_DSNS" | grep -cE '^[a-zA-Z0-9_-]+\|postgresql://' || true)
+          if [ "$VALID_COUNT" -eq 0 ]; then
+            {
+              echo "SYNC_REPORT<<REPORT_EOF"
+              echo "$REPORT"
+              echo "REPORT_EOF"
+            } >> $GITHUB_ENV
+            echo "::error::No reachable slave databases after precheck"
+            exit 1
+          fi
+
+          {
+            echo "PRECHECK_REPORT<<REPORT_EOF"
+            echo "$REPORT"
+            echo "REPORT_EOF"
+            echo "VALIDATED_SLAVE_DSNS<<REPORT_EOF"
+            echo "$VALIDATED_SLAVE_DSNS"
+            echo "REPORT_EOF"
+          } >> $GITHUB_ENV
+
       - name: Restore & verify all slaves
         shell: bash
         run: |
           # 不用 set -e，手动控制每个从库的错误处理
-          REPORT=""
+          REPORT="${PRECHECK_REPORT:-}"
           FAILED=0
           TOTAL=0
           SUCCESS=0
           MAX_PARALLEL="${MAX_PARALLEL:-3}"
+          EFFECTIVE_FAIL_ON_SLAVE_ERROR="${FAIL_ON_SLAVE_ERROR:-true}"
 
-          # 合法化并发参数
+          # 手动触发时可按输入放宽失败策略
+          if [ "${EVENT_NAME:-}" = "workflow_dispatch" ] && [ "${MANUAL_ALLOW_PARTIAL_FAILURE:-false}" = "true" ]; then
+            EFFECTIVE_FAIL_ON_SLAVE_ERROR="false"
+          fi
+
+          echo "Fail-on-slave-error mode: ${EFFECTIVE_FAIL_ON_SLAVE_ERROR}"
+
           if ! [[ "$MAX_PARALLEL" =~ ^[0-9]+$ ]] || [ "$MAX_PARALLEL" -lt 1 ]; then
             echo "::warning::Invalid MAX_PARALLEL=$MAX_PARALLEL, fallback to 3"
             MAX_PARALLEL=3
@@ -130,20 +190,25 @@ jobs:
           declare -a SLAVE_NAMES
           declare -a SLAVE_DSNS_ARR
 
-          # 先收集有效从库，避免并发阶段处理脏数据
+          # 仅处理预检通过的从库
           while IFS='|' read -r SLAVE_NAME SLAVE_DSN; do
             SLAVE_NAME=$(echo "$SLAVE_NAME" | xargs)  # trim whitespace
             [ -z "$SLAVE_NAME" ] && continue
             [[ "$SLAVE_NAME" == \#* ]] && continue
-            [ -z "$SLAVE_DSN" ] && { echo "::warning::${SLAVE_NAME}: missing DSN, skipped"; continue; }
+            [ -z "$SLAVE_DSN" ] && continue
 
             SLAVE_NAMES+=("$SLAVE_NAME")
             SLAVE_DSNS_ARR+=("$SLAVE_DSN")
-          done <<< "$SLAVE_DSNS"
+          done <<< "$VALIDATED_SLAVE_DSNS"
 
           TOTAL=${#SLAVE_NAMES[@]}
           if [ "$TOTAL" -eq 0 ]; then
-            echo "::error::No valid slave entries after parsing"
+            echo "::error::No validated slave entries available for restore"
+            {
+              echo "SYNC_REPORT<<REPORT_EOF"
+              echo "$REPORT"
+              echo "REPORT_EOF"
+            } >> $GITHUB_ENV
             exit 1
           fi
 
@@ -252,7 +317,7 @@ jobs:
           } >> $GITHUB_ENV
 
           if [ "$FAILED" -gt 0 ]; then
-            if [ "${FAIL_ON_SLAVE_ERROR:-true}" = "true" ]; then
+            if [ "${EFFECTIVE_FAIL_ON_SLAVE_ERROR}" = "true" ]; then
               echo "::error::${FAILED}/${TOTAL} slave(s) failed"
               exit 1
             else
@@ -260,11 +325,10 @@ jobs:
             fi
           fi
 
-
       # ========== 4. 清理 ==========
       - name: Cleanup
         if: always()
-        run: rm -f /tmp/master_dump.dump /tmp/restore_*.log && rm -rf /tmp/backup-repo
+        run: rm -f /tmp/master_dump.dump /tmp/restore_*.log /tmp/restore_result_*.txt /tmp/precheck_*.log && rm -rf /tmp/backup-repo
 
       # ========== 6. 通知 ==========
       - name: Notify PushPlus
