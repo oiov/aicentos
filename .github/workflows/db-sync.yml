@@ -20,6 +20,8 @@ jobs:
     env:
       DUMP_FILE: /tmp/master_dump.dump
       MAX_PARALLEL: 5
+      RESTORE_SINGLE_TRANSACTION: "true"
+      ALLOW_WARNING_EXIT_CODE_1: "false"
       FAIL_ON_SLAVE_ERROR: "true"
       EVENT_NAME: ${{ github.event_name }}
       MANUAL_ALLOW_PARTIAL_FAILURE: ${{ github.event.inputs.allow_partial_failure || 'false' }}
@@ -226,11 +228,30 @@ jobs:
 
             START=$(date +%s)
             RC=0
-            pg_restore -v -d "${DSN}" \
-              --clean --if-exists \
-              --no-owner --no-privileges \
-              "$DUMP_FILE" 2>"$LOG_FILE" || RC=$?
+            if [ "${RESTORE_SINGLE_TRANSACTION:-true}" = "true" ]; then
+              pg_restore -v -d "${DSN}" \
+                --single-transaction \
+                --clean --if-exists \
+                --no-owner --no-privileges \
+                "$DUMP_FILE" 2>"$LOG_FILE" &
+            else
+              pg_restore -v -d "${DSN}" \
+                --clean --if-exists \
+                --no-owner --no-privileges \
+                "$DUMP_FILE" 2>"$LOG_FILE" &
+            fi
+            RESTORE_PID=$!
 
+            while kill -0 "$RESTORE_PID" 2>/dev/null; do
+              sleep 30
+              if kill -0 "$RESTORE_PID" 2>/dev/null; then
+                NOW=$(date +%s)
+                HEARTBEAT_ELAPSED=$((NOW-START))
+                echo "::notice::${NAME} sync still running (${HEARTBEAT_ELAPSED}s elapsed)"
+              fi
+            done
+
+            wait "$RESTORE_PID" || RC=$?
             END=$(date +%s)
             ELAPSED=$((END-START))
             cat "$LOG_FILE"
@@ -244,14 +265,18 @@ jobs:
               return 0
             fi
 
-            # pg_restore exit 1 = warnings (如 relation already exists)，可接受
+            # pg_restore exit 1 通常表示 warning（如部分对象冲突），按开关决定是否视为失败
+            if [ "$RC" -eq 1 ] && [ "${ALLOW_WARNING_EXIT_CODE_1:-false}" != "true" ]; then
+              echo "::error::${NAME} pg_restore returned warning exit code 1 (treated as failure)"
+              echo "${NAME}|FAIL(rc=1)|?|${ELAPSED}s" > "$RESULT_FILE"
+              return 0
+            fi
+
             if [ "$RC" -gt 1 ]; then
               echo "::error::${NAME} pg_restore failed (exit $RC)"
               echo "${NAME}|FAIL(rc=${RC})|?|${ELAPSED}s" > "$RESULT_FILE"
               return 0
             fi
-
-            echo "${NAME} restore took ${ELAPSED}s (exit: $RC)"
 
             # 验证表数量 (重试 3 次)
             TABLE_COUNT=""
