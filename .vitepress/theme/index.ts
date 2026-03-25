@@ -11,6 +11,7 @@ import ModelCards from './components/ModelCards.vue'
 import ToolWizard from './components/ToolWizard.vue'
 import Timeline from './components/Timeline.vue'
 import VideoPlayer from './components/VideoPlayer.vue'
+import PageActionBar from './components/PageActionBar.vue'
 import { initIframeBridge, notifyRouteChange, destroyIframeBridge } from './utils/iframeBridge'
 import './style.css'
 import './dark-mode.css'
@@ -22,6 +23,7 @@ export default {
     return h(DefaultTheme.Layout, null, {
       'not-found': () => h(NotFound),
       'layout-top': () => h(AnnouncementBar),
+      'doc-before': () => h(PageActionBar),
       'layout-bottom': () => h(BackToTop),
     })
   },
