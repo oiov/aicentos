@@ -17,7 +17,8 @@ const I18N: Record<string, Record<string, string>> = {
     copyMarkdown: '复制 Markdown',
     open: '打开',
     copyRawMd: '复制原始 md',
-    copyArticleLink: '复制文章链接',
+    copyDocLink: '复制文档链接',
+    copyArticleLink: '复制源文章链接',
     openInGithub: '在 GitHub 中打开',
     openInChatClaude: '在 ChatClaude 中打开',
     openInClaude: '在 Claude 中打开',
@@ -31,7 +32,8 @@ const I18N: Record<string, Record<string, string>> = {
     copyMarkdown: 'Copy Markdown',
     open: 'Open',
     copyRawMd: 'Copy Raw md',
-    copyArticleLink: 'Copy Article Link',
+    copyDocLink: 'Copy Document Link',
+    copyArticleLink: 'Copy Source Article Link',
     openInGithub: 'Open in GitHub',
     openInChatClaude: 'Open in ChatClaude',
     openInClaude: 'Open in Claude',
@@ -45,7 +47,8 @@ const I18N: Record<string, Record<string, string>> = {
     copyMarkdown: 'Copier le Markdown',
     open: 'Ouvrir',
     copyRawMd: 'Copier le md brut',
-    copyArticleLink: "Copier le lien de l'article",
+    copyDocLink: 'Copier le lien du document',
+    copyArticleLink: "Copier le lien de l'article source",
     openInGithub: 'Ouvrir dans GitHub',
     openInChatClaude: 'Ouvrir dans ChatClaude',
     openInClaude: 'Ouvrir dans Claude',
@@ -59,7 +62,8 @@ const I18N: Record<string, Record<string, string>> = {
     copyMarkdown: 'Copiar Markdown',
     open: 'Abrir',
     copyRawMd: 'Copiar md original',
-    copyArticleLink: 'Copiar enlace del artículo',
+    copyDocLink: 'Copiar enlace del documento',
+    copyArticleLink: 'Copiar enlace del artículo fuente',
     openInGithub: 'Abrir en GitHub',
     openInChatClaude: 'Abrir en ChatClaude',
     openInClaude: 'Abrir en Claude',
@@ -73,7 +77,8 @@ const I18N: Record<string, Record<string, string>> = {
     copyMarkdown: 'Copiar Markdown',
     open: 'Abrir',
     copyRawMd: 'Copiar md bruto',
-    copyArticleLink: 'Copiar link do artigo',
+    copyDocLink: 'Copiar link do documento',
+    copyArticleLink: 'Copiar link do artigo fonte',
     openInGithub: 'Abrir no GitHub',
     openInChatClaude: 'Abrir no ChatClaude',
     openInClaude: 'Abrir no Claude',
@@ -230,9 +235,21 @@ async function handleCopyRawMd() {
   }
 }
 
+async function handleCopyDocLink() {
+  if (!PAGE_ACTION_CONFIG.copyOptions.copyArticleLink) return
+  const ok = await copyText(ctx.value.docUrl)
+  showToast(ok ? t.value.copySuccess : t.value.copyFailed)
+}
+
 async function handleCopyArticleLink() {
   if (!PAGE_ACTION_CONFIG.copyOptions.copyArticleLink) return
-  const ok = await copyText(ctx.value.preferredReadUrl)
+
+  if (!ctx.value.githubMdUrl) {
+    showToast(t.value.linkUnavailable)
+    return
+  }
+
+  const ok = await copyText(ctx.value.githubMdUrl)
   showToast(ok ? t.value.copySuccess : t.value.copyFailed)
 }
 
@@ -295,6 +312,9 @@ onUnmounted(() => {
         @click="handleCopyRawMd"
       >
         {{ t.copyRawMd }}
+      </button>
+      <button class="menu-item" type="button" role="menuitem" @click="handleCopyDocLink">
+        {{ t.copyDocLink }}
       </button>
       <button class="menu-item" type="button" role="menuitem" @click="handleCopyArticleLink">
         {{ t.copyArticleLink }}
