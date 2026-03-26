@@ -34,23 +34,6 @@ function isInIframe(): boolean {
   }
 }
 
-function isAllowedParentOrigin(origin: string): boolean {
-  let url: URL
-
-  try {
-    url = new URL(origin)
-  } catch {
-    return false
-  }
-
-  if (url.protocol !== 'https:') return false
-
-  const isAllowedHost = url.hostname === 'fishxcode.com' || url.hostname.endsWith('.fishxcode.com')
-  if (!isAllowedHost) return false
-
-  return url.port === '' || url.port === '443'
-}
-
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
@@ -289,7 +272,7 @@ export function detectParentOrigin(): ParentOriginState {
   return {
     inIframe,
     parentOrigin,
-    allowed: inIframe && parentOrigin !== null && isAllowedParentOrigin(parentOrigin),
+    allowed: inIframe && parentOrigin !== null,
   }
 }
 
@@ -307,8 +290,6 @@ export function initIframeBridge(): void {
     if (!isPlainObject(data)) return
 
     if (data.type === PARENT_HELLO_TYPE) {
-      if (!isAllowedParentOrigin(event.origin)) return
-
       trustedParentOrigin = event.origin
       enableScrollReporting()
       return
