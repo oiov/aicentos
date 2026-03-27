@@ -1005,7 +1005,7 @@ function buildHtml(visitCount: number): string {
           </div>
           <div class="terminal-body">
             <p><span class="cm" data-i18n="terminal.comment">// 配置 Claude Code（只需两行）</span></p>
-            <p><span class="kw">export</span> <span class="var">ANTHROPIC_BASE_URL</span><span class="op">=</span><span class="str">"https://aicentos.com"</span></p>
+            <p><span class="kw">export</span> <span class="var">ANTHROPIC_BASE_URL</span><span class="op">=</span><span class="str">"https://www.aicentos.com"</span></p>
             <p><span class="kw">export</span> <span class="var">ANTHROPIC_API_KEY</span><span class="op">=</span><span class="str">"sk-..."</span></p>
             <p></p>
             <p><span class="cm" data-i18n="terminal.start"># 开始编码</span></p>
