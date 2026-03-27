@@ -1,4 +1,4 @@
-# Usar FishXCode con Claude Code
+# Usar AICentos con Claude Code
 
 > ¿Primera vez? Primero completa el [Registro de cuenta](/es/account).
 
@@ -53,7 +53,7 @@ npx zcf
 
 ---
 
-## 3. Configurar FishXCode
+## 3. Configurar AICentos
 
 1. Escribe `npx zcf` en la terminal y pulsa Enter.
    Cuando aparezca `Ok to proceed? (y)`, escribe `y` y pulsa Enter.
@@ -87,11 +87,11 @@ npx zcf
 
 11. URL base de la API:
     ```
-    https://fishxcode.com
+    https://aicentos.com
     ```
 
 12. API Key:
-    Introduce el token generado en la consola de FishXCode
+    Introduce el token generado en la consola de AICentos
 
 13. Configuración del modelo:
     Pulsa Enter para saltar con los valores por defecto
@@ -195,7 +195,7 @@ Una vez instalado, el plugin ofrece tres métodos de conexión:
 
 ![Métodos de conexión del plugin Claude Code](/img/start/vscode-02-login.png)
 
-Se recomienda conectar FishXCode mediante `settings.json`. Haz clic en el **icono de engranaje** en la esquina inferior derecha del plugin → **Editar en settings.json**:
+Se recomienda conectar AICentos mediante `settings.json`. Haz clic en el **icono de engranaje** en la esquina inferior derecha del plugin → **Editar en settings.json**:
 
 ![Abrir settings.json para editar](/img/start/vscode-03-settings.png)
 
@@ -206,14 +206,14 @@ Añade lo siguiente en el `settings.json` de VSCode:
   "claudeCode.preferredLocation": "panel",
   "claudeCode.environmentVariables": [
     { "name": "ANTHROPIC_AUTH_TOKEN", "value": "reemplaza con tu API Key" },
-    { "name": "ANTHROPIC_BASE_URL", "value": "https://fishxcode.com/" }
+    { "name": "ANTHROPIC_BASE_URL", "value": "https://aicentos.com/" }
   ]
 }
 ```
 
 ![Ejemplo de configuración en settings.json](/img/start/vscode-04-config.png)
 
-Tras guardar, **cierra y vuelve a abrir VSCode**; el plugin se conectará correctamente a FishXCode.
+Tras guardar, **cierra y vuelve a abrir VSCode**; el plugin se conectará correctamente a AICentos.
 
 ![Usando Claude Code en VSCode](/img/start/vscode-05-demo.gif)
 
@@ -231,7 +231,7 @@ Ejecuta estos comandos en PowerShell para escribir variables del sistema permane
 
 ```powershell
 setx ANTHROPIC_AUTH_TOKEN "sk-xxx"
-setx ANTHROPIC_BASE_URL "https://fishxcode.com/"
+setx ANTHROPIC_BASE_URL "https://aicentos.com/"
 ```
 
 ### "Unable to connect to Anthropic services"

@@ -1,5 +1,5 @@
 /**
- * FishXCode Dark Mode — Soft Pink & Gold
+ * AICentos Dark Mode — Soft Pink & Gold
  * 深色模式：以深暖棕为底，金色为主品牌，粉色为点缀
  * -------------------------------------------------------------------------- */
 
@@ -37,12 +37,12 @@
  * 代码块
  * ========================================================================= */
 
-.dark .vp-doc div[class*='language-'] {
+.dark .vp-doc div[class*="language-"] {
   background: rgba(28, 24, 20, 0.9);
   border: 1px solid rgba(196, 148, 56, 0.14);
 }
 
-.dark .vp-doc div[class*='language-'] code {
+.dark .vp-doc div[class*="language-"] code {
   color: var(--vp-c-text-1);
 }
 
@@ -85,12 +85,17 @@
 
 .dark .VPFeature {
   border-color: rgba(196, 148, 56, 0.18) !important;
-  transition: border-color 0.3s, box-shadow 0.3s, transform 0.25s;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s,
+    transform 0.25s;
 }
 
 .dark .VPFeature:hover {
   border-color: rgba(196, 148, 56, 0.45) !important;
-  box-shadow: 0 4px 24px rgba(196, 148, 56, 0.12), 0 0 0 1px rgba(196, 148, 56, 0.08);
+  box-shadow:
+    0 4px 24px rgba(196, 148, 56, 0.12),
+    0 0 0 1px rgba(196, 148, 56, 0.08);
   transform: translateY(-2px);
 }
 
@@ -121,7 +126,9 @@
   color: var(--fishx-gold-1);
   text-decoration: underline transparent;
   text-underline-offset: 3px;
-  transition: color 0.2s, text-decoration-color 0.2s;
+  transition:
+    color 0.2s,
+    text-decoration-color 0.2s;
 }
 
 .dark .vp-doc a:hover {
@@ -177,7 +184,7 @@
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: rgba(196, 148, 56, 0.50);
+  background: rgba(196, 148, 56, 0.5);
 }
 
 /* =========================================================================

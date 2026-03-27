@@ -6,9 +6,9 @@
 
 ### 1. Register
 
-Visit [fishxcode.com](https://fishxcode.com/register?aff=9CTW) and click **Register**:
+Visit [aicentos.com](https://aicentos.com/register?aff=9CTW) and click **Register**:
 
-![FishXCode Home](/img/start/api-01-home.png)
+![AICentos Home](/img/start/api-01-home.png)
 
 Choose a registration method (GitHub, LinuxDO, or username):
 

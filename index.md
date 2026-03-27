@@ -2,16 +2,16 @@
 layout: home
 
 hero:
-  name: "FishXCode"
+  name: "AICentos"
   text: "AI Coding 中转站"
   tagline: 支持 Claude、Codex 模型在多种平台使用
   image:
     src: /img/logo.svg
-    alt: FishXCode Logo
+    alt: AICentos Logo
   actions:
     - theme: brand
       text: 立即注册
-      link: https://fishxcode.com/register?aff=9CTW
+      link: https://aicentos.com/register?aff=9CTW
     - theme: alt
       text: 使用文档
       link: /start

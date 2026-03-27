@@ -1,4 +1,4 @@
-# Using FishXCode with Codex
+# Using AICentos with Codex
 
 ## Install Codex
 
@@ -24,23 +24,23 @@ bunx --global @openai/codex
 
 ## Configure Environment Variables
 
-1. Visit [https://fishxcode.com/console/token](https://fishxcode.com/console/token) to obtain your API Key
+1. Visit [https://aicentos.com/console/token](https://aicentos.com/console/token) to obtain your API Key
 2. Create `~/.codex/config.toml` with this configuration:
 
    ```toml
    model = "gpt-5.3-codex"
-   model_provider = "fishxcode"
+   model_provider = "aicentos"
    preferred_auth_method = "apikey"
 
-   [model_providers.fishxcode]
+   [model_providers.aicentos]
    name = "OpenAI using Chat Completions"
-   base_url = "https://fishxcode.com/v1"
+   base_url = "https://aicentos.com/v1"
    wire_api = "responses"
    query_params = {}
    stream_idle_timeout_ms = 300000
    ```
 
-3. Create `~/.codex/auth.json`, setting `OPENAI_API_KEY` to your FishXCode API Key:
+3. Create `~/.codex/auth.json`, setting `OPENAI_API_KEY` to your AICentos API Key:
 
    ```json
    {
@@ -63,10 +63,10 @@ codex
 
 ```json
 {
-  "chatgpt.apiBase": "https://fishxcode.com/v1",
+  "chatgpt.apiBase": "https://aicentos.com/v1",
   "chatgpt.config": {
     "preferred_auth_method": "api_key",
-    "model_provider": "fishxcode"
+    "model_provider": "aicentos"
   }
 }
 ```

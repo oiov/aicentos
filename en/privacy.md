@@ -1,8 +1,8 @@
-# FishXCode Privacy Policy
+# AICentos Privacy Policy
 
 **Effective Date: February 11, 2026**
 
-FishXCode is committed to protecting your personal information in compliance with applicable laws including China's Personal Information Protection Law (PIPL), Cybersecurity Law, and Data Security Law.
+AICentos is committed to protecting your personal information in compliance with applicable laws including China's Personal Information Protection Law (PIPL), Cybersecurity Law, and Data Security Law.
 
 ## 1. What We Collect and Why
 
@@ -15,7 +15,7 @@ FishXCode is committed to protecting your personal information in compliance wit
 | Customer support | Contact info, communication records | Identity verification, issue resolution |
 
 ::: tip About Model Training
-Unless you explicitly enable optional features such as "History" or "Debug Mode", FishXCode does **NOT** use your inputs or outputs to train AI models.
+Unless you explicitly enable optional features such as "History" or "Debug Mode", AICentos does **NOT** use your inputs or outputs to train AI models.
 :::
 
 ## 2. How We Share Your Information
@@ -27,7 +27,7 @@ Unless you explicitly enable optional features such as "History" or "Debug Mode"
 
 ## 3. Cross-Border Data Transfers
 
-FishXCode operates within China, and personal data is stored domestically. Any cross-border transfers strictly follow PIPL requirements and obtain your separate consent where required.
+AICentos operates within China, and personal data is stored domestically. Any cross-border transfers strictly follow PIPL requirements and obtain your separate consent where required.
 
 ## 4. Data Retention & Security
 
@@ -58,6 +58,6 @@ If changes materially affect your rights, we will notify you via a prominent web
 
 | Channel | Details |
 | --- | --- |
-| Privacy inquiries | privacy@fishxcode.com |
-| General support | support@fishxcode.com |
+| Privacy inquiries | privacy@aicentos.com |
+| General support | support@aicentos.com |
 | Response time | Within 15 business days |

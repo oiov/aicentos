@@ -6,9 +6,9 @@
 
 ### 1. Criar conta
 
-Acesse [fishxcode.com](https://fishxcode.com/register?aff=9CTW) e clique em **Registrar**:
+Acesse [aicentos.com](https://aicentos.com/register?aff=9CTW) e clique em **Registrar**:
 
-![Página inicial do FishXCode](/img/start/api-01-home.png)
+![Página inicial do AICentos](/img/start/api-01-home.png)
 
 Escolha o método de registro (GitHub, LinuxDO ou nome de usuário):
 

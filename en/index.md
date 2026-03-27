@@ -2,16 +2,16 @@
 layout: home
 
 hero:
-  name: "FishXCode"
+  name: "AICentos"
   text: "AI Coding Relay"
   tagline: Use Claude and Codex models across multiple platforms
   image:
     src: /img/logo.svg
-    alt: FishXCode Logo
+    alt: AICentos Logo
   actions:
     - theme: brand
       text: Register Now
-      link: https://fishxcode.com/register?aff=9CTW
+      link: https://aicentos.com/register?aff=9CTW
     - theme: alt
       text: Documentation
       link: /en/start

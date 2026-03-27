@@ -1,4 +1,4 @@
-# Utiliser FishXCode avec OpenClaw
+# Utiliser AICentos avec OpenClaw
 
 ::: info Présentation du projet
 OpenClaw est une plateforme d'assistant IA personnel open-source et auto-hébergée qui connecte les applications de messagerie à des agents IA fonctionnant sur votre propre matériel. Conçue pour les développeurs et les utilisateurs avancés souhaitant des assistants IA autonomes sans céder le contrôle de leurs données.
@@ -11,7 +11,7 @@ OpenClaw est une plateforme d'assistant IA personnel open-source et auto-héberg
 ## Prérequis
 
 - OpenClaw installé (voir la section installation ci-dessous)
-- Clé API FishXCode ([Obtenir depuis la console](https://fishxcode.com/console/token))
+- Clé API AICentos ([Obtenir depuis la console](https://aicentos.com/console/token))
 
 ## Fonctionnalités principales
 
@@ -39,7 +39,7 @@ OpenClaw est une plateforme d'assistant IA personnel open-source et auto-héberg
 ## Installation
 
 ::: info Prérequis
-- Clé API FishXCode
+- Clé API AICentos
 - Node.js 22+ requis pour les méthodes npm/git ; le one-liner curl gère automatiquement les dépendances
 :::
 
@@ -137,9 +137,9 @@ Ajoutez le contenu suivant dans `openclaw.json` :
   "models": {
     "mode": "merge",
     "providers": {
-      "fishxcode-anthropic": {
-        "baseUrl": "https://fishxcode.com",
-        "apiKey": "sk-votre-token-fishxcode",
+      "aicentos-anthropic": {
+        "baseUrl": "https://aicentos.com",
+        "apiKey": "sk-votre-token-aicentos",
         "api": "anthropic-messages",
         "models": [
           {
@@ -157,7 +157,7 @@ Ajoutez le contenu suivant dans `openclaw.json` :
   "agents": {
     "defaults": {
       "model": {
-        "primary": "fishxcode-anthropic/claude-opus-4-6"
+        "primary": "aicentos-anthropic/claude-opus-4-6"
       }
     }
   }
@@ -165,22 +165,22 @@ Ajoutez le contenu suivant dans `openclaw.json` :
 ```
 
 ::: warning Important
-- Remplacez `sk-votre-token-fishxcode` par votre token réel obtenu depuis la [console FishXCode](https://fishxcode.com/console/token)
+- Remplacez `sk-votre-token-aicentos` par votre token réel obtenu depuis la [console AICentos](https://aicentos.com/console/token)
 - **Pour le protocole Anthropic, le `baseUrl` ne doit PAS inclure `/v1`** — le SDK ajoute automatiquement le chemin
 :::
 
 #### Configurer les modèles OpenAI (GPT)
 
-Lorsque vous appelez des modèles OpenAI via FishXCode, le champ `api` doit être `openai-responses` :
+Lorsque vous appelez des modèles OpenAI via AICentos, le champ `api` doit être `openai-responses` :
 
 ```json
 {
   "models": {
     "mode": "merge",
     "providers": {
-      "fishxcode-openai": {
-        "baseUrl": "https://fishxcode.com/v1",
-        "apiKey": "sk-votre-token-fishxcode",
+      "aicentos-openai": {
+        "baseUrl": "https://aicentos.com/v1",
+        "apiKey": "sk-votre-token-aicentos",
         "api": "openai-responses",
         "models": [
           {
@@ -198,7 +198,7 @@ Lorsque vous appelez des modèles OpenAI via FishXCode, le champ `api` doit êtr
   "agents": {
     "defaults": {
       "model": {
-        "primary": "fishxcode-openai/gpt-5"
+        "primary": "aicentos-openai/gpt-5"
       }
     }
   }
@@ -206,7 +206,7 @@ Lorsque vous appelez des modèles OpenAI via FishXCode, le champ `api` doit êtr
 ```
 
 ::: tip
-**Le protocole OpenAI nécessite `/v1`**, soit `https://fishxcode.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
+**Le protocole OpenAI nécessite `/v1`**, soit `https://aicentos.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
 :::
 
 #### Configurer Anthropic + OpenAI simultanément (Recommandé)
@@ -218,9 +218,9 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
   "models": {
     "mode": "merge",
     "providers": {
-      "fishxcode-anthropic": {
-        "baseUrl": "https://fishxcode.com",
-        "apiKey": "sk-votre-token-fishxcode",
+      "aicentos-anthropic": {
+        "baseUrl": "https://aicentos.com",
+        "apiKey": "sk-votre-token-aicentos",
         "api": "anthropic-messages",
         "models": [
           {
@@ -241,9 +241,9 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
           }
         ]
       },
-      "fishxcode-openai": {
-        "baseUrl": "https://fishxcode.com/v1",
-        "apiKey": "sk-votre-token-fishxcode",
+      "aicentos-openai": {
+        "baseUrl": "https://aicentos.com/v1",
+        "apiKey": "sk-votre-token-aicentos",
         "api": "openai-responses",
         "models": [
           {
@@ -269,10 +269,10 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
   "agents": {
     "defaults": {
       "model": {
-        "primary": "fishxcode-anthropic/claude-opus-4-6",
+        "primary": "aicentos-anthropic/claude-opus-4-6",
         "fallbacks": [
-          "fishxcode-anthropic/claude-sonnet-4-5-20250929",
-          "fishxcode-openai/gpt-5"
+          "aicentos-anthropic/claude-sonnet-4-5-20250929",
+          "aicentos-openai/gpt-5"
         ]
       }
     }
@@ -284,12 +284,12 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
 
 | Champ | Signification | Anthropic (Claude) | OpenAI (GPT) |
 | --- | --- | --- | --- |
-| `baseUrl` | Adresse du proxy API | `https://fishxcode.com` | `https://fishxcode.com/v1` |
-| `apiKey` | Votre clé API | `sk-votre-token-fishxcode` | `sk-votre-token-fishxcode` |
+| `baseUrl` | Adresse du proxy API | `https://aicentos.com` | `https://aicentos.com/v1` |
+| `apiKey` | Votre clé API | `sk-votre-token-aicentos` | `sk-votre-token-aicentos` |
 | `api` | Type de protocole API | `anthropic-messages` | `openai-responses` |
 | `mode` | Mode de fusion de config | `merge` (recommandé) | `merge` (recommandé) |
 | `models[].id` | ID du modèle | `claude-opus-4-6` | `gpt-5` |
-| `model.primary` | Modèle par défaut | `fishxcode-anthropic/claude-opus-4-6` | `fishxcode-openai/gpt-5` |
+| `model.primary` | Modèle par défaut | `aicentos-anthropic/claude-opus-4-6` | `aicentos-openai/gpt-5` |
 | `reasoning` | Activer le mode raisonnement | `false` (selon le modèle) | `true` (GPT-5.x supporté) |
 
 ## Vérifier la configuration
@@ -346,8 +346,8 @@ openclaw gateway restart
 
 ```json
 {
-  "fishxcode-anthropic": {
-    "baseUrl": "https://fishxcode.com",
+  "aicentos-anthropic": {
+    "baseUrl": "https://aicentos.com",
     "apiKey": "votre-api-key",
     "api": "anthropic-messages",
     "headers": {
@@ -368,12 +368,12 @@ openclaw gateway restart
 
 ```json
 {
-  "baseUrl": "https://fishxcode.com"
+  "baseUrl": "https://aicentos.com"
 }
 ```
 
 ::: tip
-Le protocole OpenAI nécessite `/v1`, soit `https://fishxcode.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
+Le protocole OpenAI nécessite `/v1`, soit `https://aicentos.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
 :::
 
 ### Le champ api n'accepte que trois valeurs
@@ -390,7 +390,7 @@ Le protocole OpenAI nécessite `/v1`, soit `https://fishxcode.com/v1`. Cela est 
 
 Des valeurs comme `openai-chat`, `openai`, `anthropic`, etc. provoqueront des erreurs.
 
-**Solution** : Lors de l'utilisation de FishXCode, utilisez `anthropic-messages` pour les modèles Claude et `openai-responses` pour les modèles GPT.
+**Solution** : Lors de l'utilisation de AICentos, utilisez `anthropic-messages` pour les modèles Claude et `openai-responses` pour les modèles GPT.
 
 ### Réponse vide avec openai-completions (Ne pas utiliser pour les modèles GPT)
 
@@ -398,7 +398,7 @@ Des valeurs comme `openai-chat`, `openai`, `anthropic`, etc. provoqueront des er
 
 **Cause** : OpenClaw gère les flux de messages en interne au format Anthropic. Les réponses au format OpenAI de `openai-completions` peuvent ne pas être correctement mappées dans certains cas.
 
-**Solution** : Pour appeler des modèles GPT via FishXCode, utilisez `openai-responses` plutôt que `openai-completions`.
+**Solution** : Pour appeler des modèles GPT via AICentos, utilisez `openai-responses` plutôt que `openai-completions`.
 
 ### Les modifications de configuration ne prennent pas effet
 
@@ -450,5 +450,5 @@ python3 -m json.tool ~/.openclaw/openclaw.json
 | `openclaw gateway restart` | Redémarrer la passerelle |
 
 ::: tip Stratégie de débogage
-Utilisez d'abord curl pour confirmer que l'API FishXCode elle-même fonctionne normalement, puis vérifiez ce qui est différent dans les requêtes envoyées par OpenClaw (UA, chemin, format).
+Utilisez d'abord curl pour confirmer que l'API AICentos elle-même fonctionne normalement, puis vérifiez ce qui est différent dans les requêtes envoyées par OpenClaw (UA, chemin, format).
 :::

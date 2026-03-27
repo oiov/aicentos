@@ -1,6 +1,6 @@
 # Comparacao de ferramentas
 
-Escolha a ferramenta de codificacao com IA ideal para o seu fluxo de trabalho. Veja abaixo uma comparacao completa de todas as ferramentas disponiveis na plataforma FishXCode.
+Escolha a ferramenta de codificacao com IA ideal para o seu fluxo de trabalho. Veja abaixo uma comparacao completa de todas as ferramentas disponiveis na plataforma AICentos.
 
 ## Informacoes basicas
 
@@ -46,7 +46,7 @@ Escolha a ferramenta de codificacao com IA ideal para o seu fluxo de trabalho. V
 | **Droid CLI** | - | JSON | CLI interativo |
 | **OpenCode** | :white_check_mark: | JSON | TUI interativo |
 
-## Compatibilidade com FishXCode
+## Compatibilidade com AICentos
 
 | Ferramenta | Status | Dificuldade | Observacoes |
 |------------|:------:|:-----------:|-------------|

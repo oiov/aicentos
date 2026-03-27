@@ -1,10 +1,10 @@
-# Termos de Serviço da FishXCode
+# Termos de Serviço da AICentos
 
 **Data de vigência: 11 de fevereiro de 2026**
 
 ## 1. Disposições gerais
 
-O presente acordo é celebrado entre o usuário e a plataforma de API FishXCode. Incorpora a política de privacidade e demais normas relacionadas. O uso do serviço requer que o usuário tenha completado 18 anos de idade. Qualquer pessoa que represente uma entidade jurídica deverá ter autoridade para vinculá-la contratualmente.
+O presente acordo é celebrado entre o usuário e a plataforma de API AICentos. Incorpora a política de privacidade e demais normas relacionadas. O uso do serviço requer que o usuário tenha completado 18 anos de idade. Qualquer pessoa que represente uma entidade jurídica deverá ter autoridade para vinculá-la contratualmente.
 
 ## 2. Definições
 
@@ -19,7 +19,7 @@ O usuário deve se cadastrar com informações verdadeiras e atualizadas. É res
 
 ## 4. Regras de uso
 
-A FishXCode concede ao usuário uma licença limitada, não exclusiva e intransferível. São estritamente proibidos:
+A AICentos concede ao usuário uma licença limitada, não exclusiva e intransferível. São estritamente proibidos:
 
 1. Qualquer ato que atente contra a segurança nacional;
 2. A difusão de conteúdo pornográfico, violento ou relacionado a jogos de azar ilegais;
@@ -36,25 +36,25 @@ O serviço opera com base em créditos pré-pagos. Não serão realizados reembo
 
 ## 6. Dados e privacidade
 
-O usuário mantém a propriedade dos dados que envia. A FishXCode retém os registros de rede conforme as obrigações legais vigentes na República Popular da China e os fornece às autoridades competentes quando exigido por lei.
+O usuário mantém a propriedade dos dados que envia. A AICentos retém os registros de rede conforme as obrigações legais vigentes na República Popular da China e os fornece às autoridades competentes quando exigido por lei.
 
 ## 7. Propriedade intelectual
 
-Toda a propriedade intelectual da plataforma pertence à FishXCode. Qualquer feedback ou sugestão transmitida pelo usuário concede à FishXCode uma licença mundial, permanente e irrevogável sobre tais elementos.
+Toda a propriedade intelectual da plataforma pertence à AICentos. Qualquer feedback ou sugestão transmitida pelo usuário concede à AICentos uma licença mundial, permanente e irrevogável sobre tais elementos.
 
 ## 8. Isenção de garantias e limitação de responsabilidade
 
 ::: warning
-O serviço é fornecido "no estado em que se encontra", sem garantia de qualquer natureza. A FishXCode não se responsabiliza por danos indiretos ou incidentais. A responsabilidade total da FishXCode está limitada ao montante pago nos últimos doze (12) meses ou a cem dólares americanos (USD 100), prevalecendo o valor maior.
+O serviço é fornecido "no estado em que se encontra", sem garantia de qualquer natureza. A AICentos não se responsabiliza por danos indiretos ou incidentais. A responsabilidade total da AICentos está limitada ao montante pago nos últimos doze (12) meses ou a cem dólares americanos (USD 100), prevalecendo o valor maior.
 :::
 
 ## 9. Alteração e rescisão
 
-A FishXCode reserva-se o direito de modificar os presentes termos a qualquer momento. A continuidade no uso do serviço implica a aceitação dos novos termos. O descumprimento dos presentes termos poderá acarretar a rescisão do serviço.
+A AICentos reserva-se o direito de modificar os presentes termos a qualquer momento. A continuidade no uso do serviço implica a aceitação dos novos termos. O descumprimento dos presentes termos poderá acarretar a rescisão do serviço.
 
 ## 10. Legislação aplicável
 
-Os presentes termos são regidos pela legislação da República Popular da China. Qualquer controvérsia será resolvida, primeiramente, por meio de negociação amigável. Não havendo acordo, o litígio será submetido aos tribunais competentes do local onde a FishXCode mantém seu estabelecimento.
+Os presentes termos são regidos pela legislação da República Popular da China. Qualquer controvérsia será resolvida, primeiramente, por meio de negociação amigável. Não havendo acordo, o litígio será submetido aos tribunais competentes do local onde a AICentos mantém seu estabelecimento.
 
 ## 11. Disposições diversas
 
@@ -62,4 +62,4 @@ O presente acordo constitui a totalidade do contrato entre as partes. A invalida
 
 ---
 
-Contato: [support@fishxcode.com](mailto:support@fishxcode.com)
+Contato: [support@aicentos.com](mailto:support@aicentos.com)

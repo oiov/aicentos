@@ -1,4 +1,4 @@
-# Utiliser FishXCode avec Qwen Code
+# Utiliser AICentos avec Qwen Code
 
 ## Installation
 
@@ -28,20 +28,20 @@ bunx --global @qwen-code/qwen-code
 
 ```bash [Linux/macOS]
 export OPENAI_API_KEY="sk-xxx"
-export OPENAI_BASE_URL="https://fishxcode.com/v1"
+export OPENAI_BASE_URL="https://aicentos.com/v1"
 export OPENAI_MODEL="gpt-5"
 ```
 
 ```powershell [Windows PowerShell]
 $env:OPENAI_API_KEY="sk-xxx"
-$env:OPENAI_BASE_URL="https://fishxcode.com/v1"
+$env:OPENAI_BASE_URL="https://aicentos.com/v1"
 $env:OPENAI_MODEL="gpt-5"
 ```
 
 :::
 
 ::: warning Important
-Remplacez `sk-xxx` par votre token de la [Console FishXCode](https://fishxcode.com/console/token).
+Remplacez `sk-xxx` par votre token de la [Console AICentos](https://aicentos.com/console/token).
 :::
 
 ## Lancement Direct

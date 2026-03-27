@@ -3,7 +3,7 @@ name: Deploy
 on:
   schedule:
     # 每天 UTC 4:00 (北京时间 12:00) 执行
-    - cron: '0 4 * * *'
+    - cron: "0 4 * * *"
   workflow_dispatch:
 
 permissions:
@@ -22,9 +22,9 @@ jobs:
   #
   # VITEPRESS_BASE 优先级：
   #   1. repo 变量 vars.VITEPRESS_BASE（Settings > Variables > Actions）
-  #   2. 兜底自动使用 /<仓库名>/  (e.g. /fishxcode/)
+  #   2. 兜底自动使用 /<仓库名>/  (e.g. /aicentos/)
   #
-  # 如果已绑定自定义域名 doc.fishxcode.com，在 repo Variables 设置：
+  # 如果已绑定自定义域名 doc.aicentos.com，在 repo Variables 设置：
   #   VITEPRESS_BASE = /
   # ──────────────────────────────────────────────────────────────────────────
   build-pages:

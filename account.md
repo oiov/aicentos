@@ -6,9 +6,9 @@
 
 ### 1. 注册账号
 
-访问 [fishxcode.com](https://fishxcode.com/register?aff=9CTW)，点击**注册**：
+访问 [aicentos.com](https://aicentos.com/register?aff=9CTW)，点击**注册**：
 
-![FishXCode 首页](/img/start/api-01-home.png)
+![AICentos 首页](/img/start/api-01-home.png)
 
 选择注册方式（GitHub、LinuxDO 或用户名注册）：
 

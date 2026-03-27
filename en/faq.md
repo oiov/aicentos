@@ -2,9 +2,9 @@
 
 ## General
 
-### What is FishXCode?
+### What is AICentos?
 
-FishXCode is an AI Coding relay that supports Claude and Codex models across multiple platforms.
+AICentos is an AI Coding relay that supports Claude and Codex models across multiple platforms.
 
 ### Which tools are supported?
 
@@ -19,7 +19,7 @@ Currently supported tools:
 
 ### How is my data handled?
 
-FishXCode acts solely as an API relay service. Your code and conversations are not stored on our servers. All requests are forwarded directly to the respective model providers.
+AICentos acts solely as an API relay service. Your code and conversations are not stored on our servers. All requests are forwarded directly to the respective model providers.
 
 ::: tip
 For sensitive projects, we recommend reviewing each model provider's privacy policy before use.
@@ -29,11 +29,11 @@ For sensitive projects, we recommend reviewing each model provider's privacy pol
 
 ### How do I sign up?
 
-Visit [fishxcode.com/register](https://fishxcode.com/register?aff=9CTW) and follow the prompts to create an account.
+Visit [aicentos.com/register](https://aicentos.com/register?aff=9CTW) and follow the prompts to create an account.
 
 ### How do I get an API token?
 
-After signing in, go to the [Token Management page](https://fishxcode.com/console/token) in the console to generate a new token.
+After signing in, go to the [Token Management page](https://aicentos.com/console/token) in the console to generate a new token.
 
 ### How long does a token last?
 
@@ -76,10 +76,10 @@ echo $ANTHROPIC_AUTH_TOKEN
 | RooCode | VS Code Settings JSON |
 | Qwen Code | Environment variables |
 
-### I can't connect to FishXCode
+### I can't connect to AICentos
 
-1. Confirm the `BASE_URL` is set to `https://fishxcode.com/` (note the trailing `/`)
-2. Verify that `fishxcode.com` is reachable from your network
+1. Confirm the `BASE_URL` is set to `https://aicentos.com/` (note the trailing `/`)
+2. Verify that `aicentos.com` is reachable from your network
 3. If you're behind a corporate proxy, ensure your proxy settings are configured correctly
 
 ## Model Selection
@@ -118,7 +118,7 @@ export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 - Both `API_KEY` and `AUTH_TOKEN` must be set
 :::
 
-Fix: Go to the [console](https://fishxcode.com/console/token), verify your token status, and copy-paste it again.
+Fix: Go to the [console](https://aicentos.com/console/token), verify your token status, and copy-paste it again.
 
 ### Request timeout
 
@@ -141,4 +141,4 @@ A `429` status code means you're sending requests too frequently.
 
 ### Model not available
 
-Double-check the model name you specified. Refer to the recommended model list in [Get Started](/en/start). Some models may not yet be available on FishXCode.
+Double-check the model name you specified. Refer to the recommended model list in [Get Started](/en/start). Some models may not yet be available on AICentos.

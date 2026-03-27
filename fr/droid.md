@@ -1,4 +1,4 @@
-# Utiliser FishXCode avec Droid CLI
+# Utiliser AICentos avec Droid CLI
 
 ## Installation
 
@@ -22,9 +22,9 @@ irm https://app.factory.ai/cli/windows | iex
 {
   "custom_models": [
     {
-      "model_display_name": "fishxcode-gpt5",
+      "model_display_name": "aicentos-gpt5",
       "model": "gpt-5",
-      "base_url": "https://fishxcode.com/v1",
+      "base_url": "https://aicentos.com/v1",
       "api_key": "VOTRE_CLÉ_FISHXCODE",
       "provider": "generic-chat-completion-api",
       "max_tokens": 1280000
@@ -39,4 +39,4 @@ Remplacez `VOTRE_CLÉ_FISHXCODE` par votre clé API.
 
 ## Lancement Direct
 
-Tapez `droid`, entrez `/model`, et sélectionnez `fishxcode-gpt5` dans Custom Model.
+Tapez `droid`, entrez `/model`, et sélectionnez `aicentos-gpt5` dans Custom Model.

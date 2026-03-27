@@ -1366,7 +1366,7 @@ function buildHtml(visitCount: number): string {
           <a href="https://doc.aicentos.com/terms" target="_blank" class="foot-link" style="color:#6272a4;font-size:13px" data-i18n="footer.terms">用户协议</a>
           <a href="https://doc.aicentos.com/privacy" target="_blank" class="foot-link" style="color:#6272a4;font-size:13px" data-i18n="footer.privacy">隐私政策</a>
           <a href="mailto:support@aicentos.com" class="foot-link" style="color:#6272a4;font-size:13px" data-i18n="footer.contact">联系我们</a>
-          <!-- <a href="https://github.com/fishxcode" target="_blank" class="foot-link" style="color:#6272a4;font-size:13px">GitHub</a> -->
+          <!-- <a href="https://github.com/aicentos" target="_blank" class="foot-link" style="color:#6272a4;font-size:13px">GitHub</a> -->
         </div>
       </div>
     </div>

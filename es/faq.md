@@ -2,9 +2,9 @@
 
 ## General
 
-### Que es FishXCode?
+### Que es AICentos?
 
-FishXCode es una estacion de retransmision de AI Coding que soporta los modelos Claude y Codex en multiples plataformas.
+AICentos es una estacion de retransmision de AI Coding que soporta los modelos Claude y Codex en multiples plataformas.
 
 ### Que herramientas son compatibles?
 
@@ -19,7 +19,7 @@ Herramientas disponibles actualmente:
 
 ### Como se protegen mis datos?
 
-FishXCode funciona unicamente como un servicio de retransmision de API. Tu codigo y tus conversaciones no se almacenan en nuestros servidores. Todas las solicitudes se envian directamente a los proveedores de modelos correspondientes.
+AICentos funciona unicamente como un servicio de retransmision de API. Tu codigo y tus conversaciones no se almacenan en nuestros servidores. Todas las solicitudes se envian directamente a los proveedores de modelos correspondientes.
 
 ::: tip Recomendacion
 Para proyectos sensibles, te sugerimos revisar la politica de privacidad de cada proveedor de modelos antes de usar el servicio.
@@ -29,11 +29,11 @@ Para proyectos sensibles, te sugerimos revisar la politica de privacidad de cada
 
 ### Como me registro?
 
-Visita [fishxcode.com/register](https://fishxcode.com/register?aff=9CTW) y sigue las instrucciones para crear tu cuenta.
+Visita [aicentos.com/register](https://aicentos.com/register?aff=9CTW) y sigue las instrucciones para crear tu cuenta.
 
 ### Como obtengo un token de API?
 
-Despues de iniciar sesion, ve a la [pagina de gestion de tokens](https://fishxcode.com/console/token) en la consola para generar un nuevo token.
+Despues de iniciar sesion, ve a la [pagina de gestion de tokens](https://aicentos.com/console/token) en la consola para generar un nuevo token.
 
 ### Cuanto dura un token?
 
@@ -76,10 +76,10 @@ echo $ANTHROPIC_AUTH_TOKEN
 | RooCode | Configuracion JSON de VS Code |
 | Qwen Code | Variables de entorno |
 
-### No puedo conectarme a FishXCode
+### No puedo conectarme a AICentos
 
-1. Confirma que `BASE_URL` este configurado como `https://fishxcode.com/` (ojo con la `/` al final)
-2. Verifica que `fishxcode.com` sea accesible desde tu red
+1. Confirma que `BASE_URL` este configurado como `https://aicentos.com/` (ojo con la `/` al final)
+2. Verifica que `aicentos.com` sea accesible desde tu red
 3. Si estas detras de un proxy corporativo, revisa la configuracion del proxy
 
 ## Seleccion de modelo
@@ -118,7 +118,7 @@ export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 - `API_KEY` y `AUTH_TOKEN` deben estar configurados a la vez
 :::
 
-Solucion: Ve a la [consola](https://fishxcode.com/console/token), verifica el estado de tu token y copialo de nuevo.
+Solucion: Ve a la [consola](https://aicentos.com/console/token), verifica el estado de tu token y copialo de nuevo.
 
 ### Tiempo de espera agotado (Timeout)
 
@@ -141,4 +141,4 @@ Un codigo `429` indica que estas enviando solicitudes con demasiada frecuencia.
 
 ### Modelo no disponible
 
-Verifica que el nombre del modelo sea correcto. Consulta la lista de modelos recomendados en [Comenzar](/es/start). Algunos modelos pueden no estar disponibles aun en FishXCode.
+Verifica que el nombre del modelo sea correcto. Consulta la lista de modelos recomendados en [Comenzar](/es/start). Algunos modelos pueden no estar disponibles aun en AICentos.

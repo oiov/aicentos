@@ -1,9 +1,9 @@
 {
   "timestamp": "2026-03-05T08:00:27+08:00",
-  "project": "fishxcode",
-  "description": "FishXCode - AI Coding 中转站文档站 + Landing Page",
-  "repository": "https://github.com/fishxcode/fishxcode.git",
-  "homepage": "https://doc.fishxcode.com",
+  "project": "aicentos",
+  "description": "AICentos - AI Coding 中转站文档站 + Landing Page",
+  "repository": "https://github.com/aicentos/aicentos.git",
+  "homepage": "https://doc.aicentos.com",
   "modules": [
     {
       "name": "VitePress 文档站",
@@ -12,7 +12,7 @@
       "framework": "VitePress 1.x",
       "entry": ".vitepress/config.mts",
       "interfaces": [
-        "静态站点 (doc.fishxcode.com)",
+        "静态站点 (doc.aicentos.com)",
         "RSS Feed (/feed.xml)",
         "Atom Feed (/feed.atom)",
         "Sitemap (/sitemap.xml)"
@@ -41,11 +41,22 @@
       "contentPages": {
         "languages": ["zh-CN", "en-US", "fr-FR", "es-ES", "pt-BR"],
         "pages": [
-          "index.md", "start.md", "account.md", "zcf.md",
-          "codex.md", "roocode.md", "qwencode.md",
-          "droid.md", "opencode.md", "openclaw.md",
-          "models.md", "compare.md", "faq.md", "changelog.md",
-          "terms.md", "privacy.md"
+          "index.md",
+          "start.md",
+          "account.md",
+          "zcf.md",
+          "codex.md",
+          "roocode.md",
+          "qwencode.md",
+          "droid.md",
+          "opencode.md",
+          "openclaw.md",
+          "models.md",
+          "compare.md",
+          "faq.md",
+          "changelog.md",
+          "terms.md",
+          "privacy.md"
         ],
         "totalMarkdownFiles": 85
       },
@@ -66,12 +77,8 @@
       ],
       "tests": [],
       "testDirectory": null,
-      "configFiles": [
-        "deno/deno.json"
-      ],
-      "importantPaths": [
-        "deno/landing.deno.ts"
-      ],
+      "configFiles": ["deno/deno.json"],
+      "importantPaths": ["deno/landing.deno.ts"],
       "claudeMd": "deno/CLAUDE.md"
     }
   ],
@@ -106,12 +113,12 @@
       "*.DS_Store"
     ],
     "topIgnoredDirectories": [
-      {"path": "node_modules/", "reason": ".gitignore 规则"},
-      {"path": ".git/", "reason": "版本控制内部目录"},
-      {"path": ".vitepress/cache/", "reason": ".gitignore 规则"},
-      {"path": ".vitepress/dist/", "reason": ".gitignore 规则"},
-      {"path": ".vercel/", "reason": "Vercel 内部配置与缓存"},
-      {"path": ".playwright-mcp/", "reason": "Playwright MCP 日志"}
+      { "path": "node_modules/", "reason": ".gitignore 规则" },
+      { "path": ".git/", "reason": "版本控制内部目录" },
+      { "path": ".vitepress/cache/", "reason": ".gitignore 规则" },
+      { "path": ".vitepress/dist/", "reason": ".gitignore 规则" },
+      { "path": ".vercel/", "reason": "Vercel 内部配置与缓存" },
+      { "path": ".playwright-mcp/", "reason": "Playwright MCP 日志" }
     ]
   },
   "truncated": false,

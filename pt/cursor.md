@@ -1,4 +1,4 @@
-# Usar FishXCode no Cursor
+# Usar AICentos no Cursor
 
 > Primeira vez? Conclua a [configuração da conta](/pt/account) e gere sua API Key no console.
 
@@ -14,8 +14,8 @@ No menu lateral, clique em **Models**.
 
 Clique em **Adicionar modelo** e preencha:
 
-- **API Key**: chave do FishXCode
-- **Base URL**: `https://fishxcode.com/v1`
+- **API Key**: chave do AICentos
+- **Base URL**: `https://aicentos.com/v1`
 
 ![Exemplo de configuração do Cursor Models](/img/start/cursor.png)
 

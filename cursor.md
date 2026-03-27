@@ -1,4 +1,4 @@
-# 在 Cursor 中接入 FishXCode
+# 在 Cursor 中接入 AICentos
 
 > 首次使用？请先完成 [账户注册与充值](/account)，并在控制台获取 API Key。
 
@@ -14,8 +14,8 @@
 
 先点击 **添加模型**，然后在 OpenAI API 配置区域填写：
 
-- **API Key**：FishXCode 控制台生成的 key
-- **Base URL**：`https://fishxcode.com/v1`
+- **API Key**：AICentos 控制台生成的 key
+- **Base URL**：`https://aicentos.com/v1`
 
 ![Cursor Models 配置示例](/img/start/cursor.png)
 

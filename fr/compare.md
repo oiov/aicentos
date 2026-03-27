@@ -1,6 +1,6 @@
 # Comparaison des outils
 
-Choisissez l'outil de codage IA adapte a votre flux de travail. Voici une comparaison complete de tous les outils disponibles sur la plateforme FishXCode.
+Choisissez l'outil de codage IA adapte a votre flux de travail. Voici une comparaison complete de tous les outils disponibles sur la plateforme AICentos.
 
 ## Informations generales
 
@@ -46,7 +46,7 @@ Choisissez l'outil de codage IA adapte a votre flux de travail. Voici une compar
 | **Droid CLI** | - | JSON | CLI interactif |
 | **OpenCode** | :white_check_mark: | JSON | TUI interactif |
 
-## Compatibilite FishXCode
+## Compatibilite AICentos
 
 | Outil | Statut | Difficulte | Remarques |
 |-------|:------:|:----------:|-----------|

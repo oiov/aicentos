@@ -1,61 +1,79 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { useData } from 'vitepress'
+import { ref, computed, onMounted } from "vue";
+import { useData } from "vitepress";
 
-const props = withDefaults(defineProps<{
-  storageKey?: string
-}>(), {
-  storageKey: 'announcement-dismissed'
-})
+const props = withDefaults(
+  defineProps<{
+    storageKey?: string;
+  }>(),
+  {
+    storageKey: "announcement-dismissed",
+  },
+);
 
 const I18N: Record<string, { text: string; linkText: string }> = {
-  'zh-CN': { text: '欢迎使用 FishXCode — AI Coding 中转站', linkText: '立即注册' },
-  'en-US': { text: 'Welcome to FishXCode — AI Coding Relay', linkText: 'Register Now' },
-  'fr-FR': { text: 'Bienvenue sur FishXCode — Relais AI Coding', linkText: "S'inscrire" },
-  'es-ES': { text: 'Bienvenido a FishXCode — Relay AI Coding', linkText: 'Registrarse' },
-  'pt-BR': { text: 'Bem-vindo ao FishXCode — Relay AI Coding', linkText: 'Registrar' },
-}
+  "zh-CN": {
+    text: "欢迎使用 AICentos — AI Coding 中转站",
+    linkText: "立即注册",
+  },
+  "en-US": {
+    text: "Welcome to AICentos — AI Coding Relay",
+    linkText: "Register Now",
+  },
+  "fr-FR": {
+    text: "Bienvenue sur AICentos — Relais AI Coding",
+    linkText: "S'inscrire",
+  },
+  "es-ES": {
+    text: "Bienvenido a AICentos — Relay AI Coding",
+    linkText: "Registrarse",
+  },
+  "pt-BR": {
+    text: "Bem-vindo ao AICentos — Relay AI Coding",
+    linkText: "Registrar",
+  },
+};
 
-const { lang } = useData()
-const t = computed(() => I18N[lang.value] ?? I18N['zh-CN'])
+const { lang } = useData();
+const t = computed(() => I18N[lang.value] ?? I18N["zh-CN"]);
 
-const BAR_HEIGHT = '72px'
+const BAR_HEIGHT = "72px";
 
-const visible = ref(false)
-const inIframe = ref(false)
+const visible = ref(false);
+const inIframe = ref(false);
 
 function setLayoutOffset(height: string) {
-  document.documentElement.style.setProperty('--vp-layout-top-height', height)
+  document.documentElement.style.setProperty("--vp-layout-top-height", height);
 }
 
 function checkInIframe(): boolean {
   try {
-    return window.self !== window.top
+    return window.self !== window.top;
   } catch {
-    return true
+    return true;
   }
 }
 
 onMounted(() => {
-  inIframe.value = checkInIframe()
+  inIframe.value = checkInIframe();
 
   if (inIframe.value) {
-    setLayoutOffset(BAR_HEIGHT)
+    setLayoutOffset(BAR_HEIGHT);
   }
 
   if (!localStorage.getItem(props.storageKey)) {
-    visible.value = true
+    visible.value = true;
     if (!inIframe.value) {
-      setLayoutOffset(BAR_HEIGHT)
+      setLayoutOffset(BAR_HEIGHT);
     }
   }
-})
+});
 
 function dismiss() {
-  visible.value = false
-  localStorage.setItem(props.storageKey, '1')
+  visible.value = false;
+  localStorage.setItem(props.storageKey, "1");
   if (!inIframe.value) {
-    setLayoutOffset('0px')
+    setLayoutOffset("0px");
   }
 }
 </script>
@@ -65,7 +83,9 @@ function dismiss() {
     <div v-if="visible" class="announcement-bar">
       <div class="content">
         <span>{{ t.text }}</span>
-        <a href="https://fishxcode.com/register?aff=9CTW" class="link">{{ t.linkText }}</a>
+        <a href="https://aicentos.com/register?aff=9CTW" class="link">{{
+          t.linkText
+        }}</a>
       </div>
       <button class="close" aria-label="Close" @click="dismiss">&times;</button>
     </div>

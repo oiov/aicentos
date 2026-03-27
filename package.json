@@ -1,11 +1,11 @@
 {
-  "name": "fishxcode-docs",
+  "name": "aicentos-docs",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "FishXCode - AI Coding 中转站，支持 Claude、Codex 模型在多种平台使用",
+  "description": "AICentos - AI Coding 中转站，支持 Claude、Codex 模型在多种平台使用",
   "keywords": [
-    "fishxcode",
+    "aicentos",
     "ai-coding",
     "claude-code",
     "codex",
@@ -15,10 +15,10 @@
     "api-relay",
     "documentation"
   ],
-  "homepage": "https://doc.fishxcode.com",
+  "homepage": "https://doc.aicentos.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fishxcode/fishxcode.git"
+    "url": "https://github.com/aicentos/aicentos.git"
   },
   "license": "MIT",
   "scripts": {

@@ -12,17 +12,17 @@
 
 | Parámetro | Descripción |
 |---|---|
-| `-p custom` | Usar proveedor personalizado (FishXCode usa este modo) |
+| `-p custom` | Usar proveedor personalizado (AICentos usa este modo) |
 | `-t api_key` | Equivalente a `-p custom`, mismo efecto |
 | `-k "sk-xxx"` | API Key |
-| `-u "https://fishxcode.com/"` | URL base de FishXCode |
+| `-u "https://aicentos.com/"` | URL base de AICentos |
 | `-M "claude-sonnet-4-5-20250929"` | Especificar modelo principal |
 | `-H "claude-haiku-4-5-20251001"` | Especificar modelo rápido |
 
 Ejemplo con modelos específicos:
 
 ```bash
-npx zcf i -s -t api_key -k "sk-xxx" -u "https://fishxcode.com/" \
+npx zcf i -s -t api_key -k "sk-xxx" -u "https://aicentos.com/" \
   -M "claude-sonnet-4-5-20250929" \
   -H "claude-haiku-4-5-20251001"
 ```

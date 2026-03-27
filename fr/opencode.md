@@ -1,4 +1,4 @@
-# Utiliser FishXCode avec OpenCode
+# Utiliser AICentos avec OpenCode
 
 ## Installer OpenCode
 
@@ -18,9 +18,9 @@ scoop install opencode
 
 :::
 
-## Configurer FishXCode
+## Configurer AICentos
 
-1. Obtenez votre cle API sur [https://fishxcode.com/console/token](https://fishxcode.com/console/token)
+1. Obtenez votre cle API sur [https://aicentos.com/console/token](https://aicentos.com/console/token)
 2. Definissez la variable d'environnement :
 
 ::: code-group
@@ -41,11 +41,11 @@ $env:FISHXCODE_TOKEN="sk-xxx"
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "fishxcode-anthropic": {
+    "aicentos-anthropic": {
       "npm": "@ai-sdk/anthropic",
-      "name": "fishxcode-anthropic",
+      "name": "aicentos-anthropic",
       "options": {
-        "baseURL": "https://fishxcode.com/v1",
+        "baseURL": "https://aicentos.com/v1",
         "apiKey": "{env:FISHXCODE_TOKEN}"
       },
       "models": {
@@ -54,11 +54,11 @@ $env:FISHXCODE_TOKEN="sk-xxx"
         }
       }
     },
-    "fishxcode-openai": {
+    "aicentos-openai": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "fishxcode-openai",
+      "name": "aicentos-openai",
       "options": {
-        "baseURL": "https://fishxcode.com/v1",
+        "baseURL": "https://aicentos.com/v1",
         "apiKey": "{env:FISHXCODE_TOKEN}"
       },
       "models": {
@@ -72,7 +72,7 @@ $env:FISHXCODE_TOKEN="sk-xxx"
 ```
 
 ::: warning Important
-Remplacez `sk-xxx` par votre token reel obtenu depuis la [console FishXCode](https://fishxcode.com/console/token).
+Remplacez `sk-xxx` par votre token reel obtenu depuis la [console AICentos](https://aicentos.com/console/token).
 :::
 
 ## Demarrage
@@ -82,4 +82,4 @@ cd my-project
 opencode
 ```
 
-Une fois lance, selectionnez un modele sous le fournisseur FishXCode pour commencer.
+Une fois lance, selectionnez un modele sous le fournisseur AICentos pour commencer.
