@@ -161,7 +161,10 @@ export default withPwa(
                 {
                   text: "常用链接",
                   items: [
-                    { text: "控制台", link: "https://aicentos.com/console" },
+                    {
+                      text: "控制台",
+                      link: "https://www.aicentos.com/console",
+                    },
                     { text: "服务状态", link: "https://status.aicentos.com" },
                     {
                       text: "额度查询",
@@ -173,7 +176,7 @@ export default withPwa(
             },
             {
               text: "立即注册",
-              link: "https://aicentos.com/register?aff=Dptp",
+              link: "https://www.aicentos.com/register?aff=Dptp",
             },
           ],
           sidebar: [
@@ -258,7 +261,10 @@ export default withPwa(
                 {
                   text: "Quick Links",
                   items: [
-                    { text: "Console", link: "https://aicentos.com/console" },
+                    {
+                      text: "Console",
+                      link: "https://www.aicentos.com/console",
+                    },
                     {
                       text: "Service Status",
                       link: "https://status.aicentos.com",
@@ -271,7 +277,7 @@ export default withPwa(
                 },
               ],
             },
-            { text: "Register Now", link: "https://aicentos.com/register" },
+            { text: "Register Now", link: "https://www.aicentos.com/register" },
           ],
           sidebar: [
             {
@@ -358,7 +364,10 @@ export default withPwa(
                 {
                   text: "Liens utiles",
                   items: [
-                    { text: "Console", link: "https://aicentos.com/console" },
+                    {
+                      text: "Console",
+                      link: "https://www.aicentos.com/console",
+                    },
                     {
                       text: "État du service",
                       link: "https://status.aicentos.com",
@@ -373,7 +382,7 @@ export default withPwa(
             },
             {
               text: "S'inscrire",
-              link: "https://aicentos.com/register?aff=Dptp",
+              link: "https://www.aicentos.com/register?aff=Dptp",
             },
           ],
           sidebar: [
@@ -461,7 +470,10 @@ export default withPwa(
                 {
                   text: "Enlaces útiles",
                   items: [
-                    { text: "Consola", link: "https://aicentos.com/console" },
+                    {
+                      text: "Consola",
+                      link: "https://www.aicentos.com/console",
+                    },
                     {
                       text: "Estado del servicio",
                       link: "https://status.aicentos.com",
@@ -476,7 +488,7 @@ export default withPwa(
             },
             {
               text: "Registrarse",
-              link: "https://aicentos.com/register?aff=Dptp",
+              link: "https://www.aicentos.com/register?aff=Dptp",
             },
           ],
           sidebar: [
@@ -561,7 +573,10 @@ export default withPwa(
                 {
                   text: "Links úteis",
                   items: [
-                    { text: "Console", link: "https://aicentos.com/console" },
+                    {
+                      text: "Console",
+                      link: "https://www.aicentos.com/console",
+                    },
                     {
                       text: "Status do serviço",
                       link: "https://status.aicentos.com",
@@ -576,7 +591,7 @@ export default withPwa(
             },
             {
               text: "Registrar",
-              link: "https://aicentos.com/register?aff=Dptp",
+              link: "https://www.aicentos.com/register?aff=Dptp",
             },
           ],
           sidebar: [
@@ -702,7 +717,7 @@ export default withPwa(
       ],
       footer: {
         message:
-          '<a href="https://aicentos.com" target="_blank">主站</a> | <a href="https://doc.aicentos.com/feed.xml" target="_blank">RSS</a> | <a href="https://doc.aicentos.com/feed.atom" target="_blank">Atom</a> | <a href="https://doc.aicentos.com/sitemap.xml" target="_blank">Sitemap</a> | <a href="https://github.com/aicentos" target="_blank">GitHub</a>',
+          '<a href="https://www.aicentos.com" target="_blank">主站</a> | <a href="https://doc.aicentos.com/feed.xml" target="_blank">RSS</a> | <a href="https://doc.aicentos.com/feed.atom" target="_blank">Atom</a> | <a href="https://doc.aicentos.com/sitemap.xml" target="_blank">Sitemap</a> | <a href="https://github.com/aicentos" target="_blank">GitHub</a>',
         copyright: `Copyright © ${new Date().getFullYear()} AICentOS`,
       },
     },

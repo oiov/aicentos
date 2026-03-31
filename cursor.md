@@ -15,7 +15,7 @@
 先点击 **添加模型**，然后在 OpenAI API 配置区域填写：
 
 - **API Key**：AICentOS 控制台生成的 key
-- **Base URL**：`https://aicentos.com/v1`
+- **Base URL**：`https://www.aicentos.com/v1`
 
 ![Cursor Models 配置示例](/img/start/cursor.png)
 

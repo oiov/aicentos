@@ -29,11 +29,11 @@ AICentOS 仅作为 API 中转服务，不存储你的代码和对话内容。所
 
 ### 如何注册？
 
-访问 [aicentos.com/register](https://aicentos.com/register?aff=9CTW)，按提示完成注册即可。
+访问 [aicentos.com/register](https://www.aicentos.com/register?aff=9CTW)，按提示完成注册即可。
 
 ### 如何获取 API Token？
 
-注册后登录控制台，前往 [Token 管理页](https://aicentos.com/console/token) 创建新的 Token。
+注册后登录控制台，前往 [Token 管理页](https://www.aicentos.com/console/token) 创建新的 Token。
 
 ### Token 有效期多长？
 
@@ -78,7 +78,7 @@ echo $ANTHROPIC_AUTH_TOKEN
 
 ### 连接不上 AICentOS 服务怎么办？
 
-1. 确认 `BASE_URL` 设置为 `https://aicentos.com/`（注意末尾的 `/`）
+1. 确认 `BASE_URL` 设置为 `https://www.aicentos.com/`（注意末尾的 `/`）
 2. 检查网络是否能访问 `aicentos.com`
 3. 如果在公司网络中，确认代理设置是否正确
 
@@ -118,7 +118,7 @@ export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 - `API_KEY` 和 `AUTH_TOKEN` 未同时设置
 :::
 
-解决方法：前往 [控制台](https://aicentos.com/console/token) 确认 Token 状态，重新复制粘贴。
+解决方法：前往 [控制台](https://www.aicentos.com/console/token) 确认 Token 状态，重新复制粘贴。
 
 ### 请求超时（Timeout）
 

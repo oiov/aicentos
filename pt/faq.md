@@ -29,11 +29,11 @@ Para projetos sensiveis, recomendamos consultar a politica de privacidade de cad
 
 ### Como me cadastro?
 
-Acesse [aicentos.com/register](https://aicentos.com/register?aff=9CTW) e siga as instrucoes para criar sua conta.
+Acesse [aicentos.com/register](https://www.aicentos.com/register?aff=9CTW) e siga as instrucoes para criar sua conta.
 
 ### Como obtenho um token de API?
 
-Apos fazer login, acesse a [pagina de gerenciamento de tokens](https://aicentos.com/console/token) no console para gerar um novo token.
+Apos fazer login, acesse a [pagina de gerenciamento de tokens](https://www.aicentos.com/console/token) no console para gerar um novo token.
 
 ### Quanto tempo um token e valido?
 
@@ -78,7 +78,7 @@ echo $ANTHROPIC_AUTH_TOKEN
 
 ### Nao consigo me conectar ao AICentOS
 
-1. Confirme que o `BASE_URL` esta configurado como `https://aicentos.com/` (atencao para a `/` no final)
+1. Confirme que o `BASE_URL` esta configurado como `https://www.aicentos.com/` (atencao para a `/` no final)
 2. Verifique se `aicentos.com` esta acessivel pela sua rede
 3. Se voce estiver atras de um proxy corporativo, confira as configuracoes do proxy
 
@@ -118,7 +118,7 @@ export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 - `API_KEY` e `AUTH_TOKEN` precisam estar configurados simultaneamente
 :::
 
-Solucao: Acesse o [console](https://aicentos.com/console/token), verifique o status do seu token e copie-o novamente.
+Solucao: Acesse o [console](https://www.aicentos.com/console/token), verifique o status do seu token e copie-o novamente.
 
 ### Tempo limite esgotado (Timeout)
 

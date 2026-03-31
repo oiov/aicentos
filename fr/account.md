@@ -6,7 +6,7 @@
 
 ### 1. Créer un compte
 
-Rendez-vous sur [aicentos.com](https://aicentos.com/register?aff=9CTW) et cliquez sur **S'inscrire** :
+Rendez-vous sur [aicentos.com](https://www.aicentos.com/register?aff=9CTW) et cliquez sur **S'inscrire** :
 
 ![Page d'accueil AICentOS](/img/start/api-01-home.png)
 

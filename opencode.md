@@ -20,17 +20,17 @@ scoop install opencode
 
 ## 配置 AICentOS
 
-1. 访问 [https://aicentos.com/console/token](https://aicentos.com/console/token) 获取 API Key
+1. 访问 [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token) 获取 API Key
 2. 设置环境变量：
 
 ::: code-group
 
 ```bash [Linux/macOS]
-export FISHXCODE_TOKEN=sk-xxx
+export AICENTOS_TOKEN=sk-xxx
 ```
 
 ```powershell [Windows PowerShell]
-$env:FISHXCODE_TOKEN="sk-xxx"
+$env:AICENTOS_TOKEN="sk-xxx"
 ```
 
 :::
@@ -45,8 +45,8 @@ $env:FISHXCODE_TOKEN="sk-xxx"
       "npm": "@ai-sdk/anthropic",
       "name": "aicentos-anthropic",
       "options": {
-        "baseURL": "https://aicentos.com/v1",
-        "apiKey": "{env:FISHXCODE_TOKEN}"
+        "baseURL": "https://www.aicentos.com/v1",
+        "apiKey": "{env:AICENTOS_TOKEN}"
       },
       "models": {
         "claude-sonnet-4-6": {
@@ -58,8 +58,8 @@ $env:FISHXCODE_TOKEN="sk-xxx"
       "npm": "@ai-sdk/openai-compatible",
       "name": "aicentos-openai",
       "options": {
-        "baseURL": "https://aicentos.com/v1",
-        "apiKey": "{env:FISHXCODE_TOKEN}"
+        "baseURL": "https://www.aicentos.com/v1",
+        "apiKey": "{env:AICENTOS_TOKEN}"
       },
       "models": {
         "gpt-5.2-codex": {
@@ -72,7 +72,7 @@ $env:FISHXCODE_TOKEN="sk-xxx"
 ```
 
 ::: warning 重要
-请将 `sk-xxx` 替换为你在 [AICentOS 控制台](https://aicentos.com/console/token) 获取的实际 Token。
+请将 `sk-xxx` 替换为你在 [AICentOS 控制台](https://www.aicentos.com/console/token) 获取的实际 Token。
 :::
 
 ## 启动使用

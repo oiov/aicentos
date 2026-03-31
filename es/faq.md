@@ -29,11 +29,11 @@ Para proyectos sensibles, te sugerimos revisar la politica de privacidad de cada
 
 ### Como me registro?
 
-Visita [aicentos.com/register](https://aicentos.com/register?aff=9CTW) y sigue las instrucciones para crear tu cuenta.
+Visita [aicentos.com/register](https://www.aicentos.com/register?aff=9CTW) y sigue las instrucciones para crear tu cuenta.
 
 ### Como obtengo un token de API?
 
-Despues de iniciar sesion, ve a la [pagina de gestion de tokens](https://aicentos.com/console/token) en la consola para generar un nuevo token.
+Despues de iniciar sesion, ve a la [pagina de gestion de tokens](https://www.aicentos.com/console/token) en la consola para generar un nuevo token.
 
 ### Cuanto dura un token?
 
@@ -78,7 +78,7 @@ echo $ANTHROPIC_AUTH_TOKEN
 
 ### No puedo conectarme a AICentOS
 
-1. Confirma que `BASE_URL` este configurado como `https://aicentos.com/` (ojo con la `/` al final)
+1. Confirma que `BASE_URL` este configurado como `https://www.aicentos.com/` (ojo con la `/` al final)
 2. Verifica que `aicentos.com` sea accesible desde tu red
 3. Si estas detras de un proxy corporativo, revisa la configuracion del proxy
 
@@ -118,7 +118,7 @@ export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 - `API_KEY` y `AUTH_TOKEN` deben estar configurados a la vez
 :::
 
-Solucion: Ve a la [consola](https://aicentos.com/console/token), verifica el estado de tu token y copialo de nuevo.
+Solucion: Ve a la [consola](https://www.aicentos.com/console/token), verifica el estado de tu token y copialo de nuevo.
 
 ### Tiempo de espera agotado (Timeout)
 

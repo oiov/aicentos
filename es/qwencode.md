@@ -28,20 +28,20 @@ bunx --global @qwen-code/qwen-code
 
 ```bash [Linux/macOS]
 export OPENAI_API_KEY="sk-xxx"
-export OPENAI_BASE_URL="https://aicentos.com/v1"
+export OPENAI_BASE_URL="https://www.aicentos.com/v1"
 export OPENAI_MODEL="gpt-5"
 ```
 
 ```powershell [Windows PowerShell]
 $env:OPENAI_API_KEY="sk-xxx"
-$env:OPENAI_BASE_URL="https://aicentos.com/v1"
+$env:OPENAI_BASE_URL="https://www.aicentos.com/v1"
 $env:OPENAI_MODEL="gpt-5"
 ```
 
 :::
 
 ::: warning Importante
-Reemplaza `sk-xxx` con tu token de la [Consola AICentOS](https://aicentos.com/console/token).
+Reemplaza `sk-xxx` con tu token de la [Consola AICentOS](https://www.aicentos.com/console/token).
 :::
 
 ## Lanzamiento Directo

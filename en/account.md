@@ -6,7 +6,7 @@
 
 ### 1. Register
 
-Visit [aicentos.com](https://aicentos.com/register?aff=9CTW) and click **Register**:
+Visit [aicentos.com](https://www.aicentos.com/register?aff=9CTW) and click **Register**:
 
 ![AICentOS Home](/img/start/api-01-home.png)
 

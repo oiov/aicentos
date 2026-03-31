@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: 立即注册
-      link: https://aicentos.com/register?aff=9CTW
+      link: https://www.aicentos.com/register?aff=9CTW
     - theme: alt
       text: 使用文档
       link: /start

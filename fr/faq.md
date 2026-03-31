@@ -29,11 +29,11 @@ Pour les projets sensibles, nous vous recommandons de consulter la politique de 
 
 ### Comment creer un compte ?
 
-Rendez-vous sur [aicentos.com/register](https://aicentos.com/register?aff=9CTW) et suivez les instructions pour vous inscrire.
+Rendez-vous sur [aicentos.com/register](https://www.aicentos.com/register?aff=9CTW) et suivez les instructions pour vous inscrire.
 
 ### Comment obtenir un token API ?
 
-Apres connexion, accedez a la [page de gestion des tokens](https://aicentos.com/console/token) dans la console pour generer un nouveau token.
+Apres connexion, accedez a la [page de gestion des tokens](https://www.aicentos.com/console/token) dans la console pour generer un nouveau token.
 
 ### Quelle est la duree de validite d'un token ?
 
@@ -78,7 +78,7 @@ echo $ANTHROPIC_AUTH_TOKEN
 
 ### Impossible de se connecter a AICentOS
 
-1. Verifiez que le `BASE_URL` est bien `https://aicentos.com/` (attention au `/` final)
+1. Verifiez que le `BASE_URL` est bien `https://www.aicentos.com/` (attention au `/` final)
 2. Assurez-vous que `aicentos.com` est accessible depuis votre reseau
 3. Si vous etes derriere un proxy d'entreprise, verifiez la configuration du proxy
 
@@ -118,7 +118,7 @@ export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 - `API_KEY` et `AUTH_TOKEN` doivent etre definis simultanement
 :::
 
-Solution : Accedez a la [console](https://aicentos.com/console/token), verifiez l'etat de votre token et copiez-le a nouveau.
+Solution : Accedez a la [console](https://www.aicentos.com/console/token), verifiez l'etat de votre token et copiez-le a nouveau.
 
 ### Delai d'attente depasse (Timeout)
 

@@ -11,7 +11,7 @@ OpenClaw é uma plataforma de assistente de IA pessoal de código aberto e auto-
 ## Pré-requisitos
 
 - OpenClaw instalado (consulte a seção de instalação abaixo)
-- API Key do AICentOS ([Obter no console](https://aicentos.com/console/token))
+- API Key do AICentOS ([Obter no console](https://www.aicentos.com/console/token))
 
 ## Recursos principais
 
@@ -138,7 +138,7 @@ Adicione o seguinte conteúdo ao `openclaw.json`:
     "mode": "merge",
     "providers": {
       "aicentos-anthropic": {
-        "baseUrl": "https://aicentos.com",
+        "baseUrl": "https://www.aicentos.com",
         "apiKey": "sk-seu-token-aicentos",
         "api": "anthropic-messages",
         "models": [
@@ -165,7 +165,7 @@ Adicione o seguinte conteúdo ao `openclaw.json`:
 ```
 
 ::: warning Importante
-- Substitua `sk-seu-token-aicentos` pelo seu token real obtido no [console AICentOS](https://aicentos.com/console/token)
+- Substitua `sk-seu-token-aicentos` pelo seu token real obtido no [console AICentOS](https://www.aicentos.com/console/token)
 - **Para o protocolo Anthropic, o `baseUrl` NÃO deve incluir `/v1`** — o SDK adiciona o caminho automaticamente
 :::
 
@@ -179,7 +179,7 @@ Ao chamar modelos OpenAI via AICentOS, o campo `api` deve ser `openai-responses`
     "mode": "merge",
     "providers": {
       "aicentos-openai": {
-        "baseUrl": "https://aicentos.com/v1",
+        "baseUrl": "https://www.aicentos.com/v1",
         "apiKey": "sk-seu-token-aicentos",
         "api": "openai-responses",
         "models": [
@@ -206,7 +206,7 @@ Ao chamar modelos OpenAI via AICentOS, o campo `api` deve ser `openai-responses`
 ```
 
 ::: tip
-**O protocolo OpenAI requer `/v1`**, ou seja, `https://aicentos.com/v1`. Isso ocorre porque os dois SDKs têm lógicas de concatenação de caminho diferentes.
+**O protocolo OpenAI requer `/v1`**, ou seja, `https://www.aicentos.com/v1`. Isso ocorre porque os dois SDKs têm lógicas de concatenação de caminho diferentes.
 :::
 
 #### Configurar Anthropic + OpenAI simultaneamente (Recomendado)
@@ -219,7 +219,7 @@ Adicione ambos os providers lado a lado em `models.providers` para usar modelos 
     "mode": "merge",
     "providers": {
       "aicentos-anthropic": {
-        "baseUrl": "https://aicentos.com",
+        "baseUrl": "https://www.aicentos.com",
         "apiKey": "sk-seu-token-aicentos",
         "api": "anthropic-messages",
         "models": [
@@ -242,7 +242,7 @@ Adicione ambos os providers lado a lado em `models.providers` para usar modelos 
         ]
       },
       "aicentos-openai": {
-        "baseUrl": "https://aicentos.com/v1",
+        "baseUrl": "https://www.aicentos.com/v1",
         "apiKey": "sk-seu-token-aicentos",
         "api": "openai-responses",
         "models": [
@@ -284,7 +284,7 @@ Adicione ambos os providers lado a lado em `models.providers` para usar modelos 
 
 | Campo | Significado | Anthropic (Claude) | OpenAI (GPT) |
 | --- | --- | --- | --- |
-| `baseUrl` | Endereço do proxy API | `https://aicentos.com` | `https://aicentos.com/v1` |
+| `baseUrl` | Endereço do proxy API | `https://www.aicentos.com` | `https://www.aicentos.com/v1` |
 | `apiKey` | Sua chave API | `sk-seu-token-aicentos` | `sk-seu-token-aicentos` |
 | `api` | Tipo de protocolo API | `anthropic-messages` | `openai-responses` |
 | `mode` | Modo de mesclagem de config | `merge` (recomendado) | `merge` (recomendado) |
@@ -347,7 +347,7 @@ openclaw gateway restart
 ```json
 {
   "aicentos-anthropic": {
-    "baseUrl": "https://aicentos.com",
+    "baseUrl": "https://www.aicentos.com",
     "apiKey": "sua-api-key",
     "api": "anthropic-messages",
     "headers": {
@@ -368,12 +368,12 @@ openclaw gateway restart
 
 ```json
 {
-  "baseUrl": "https://aicentos.com"
+  "baseUrl": "https://www.aicentos.com"
 }
 ```
 
 ::: tip
-O protocolo OpenAI requer `/v1`, ou seja, `https://aicentos.com/v1`. Isso ocorre porque os dois SDKs têm lógicas de concatenação de caminho diferentes.
+O protocolo OpenAI requer `/v1`, ou seja, `https://www.aicentos.com/v1`. Isso ocorre porque os dois SDKs têm lógicas de concatenação de caminho diferentes.
 :::
 
 ### O campo api aceita apenas três valores

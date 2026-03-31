@@ -11,7 +11,7 @@ OpenClaw is an open-source, self-hosted personal AI assistant platform that brid
 ## Prerequisites
 
 - OpenClaw installed (see installation section below)
-- AICentOS API Key ([Get from Console](https://aicentos.com/console/token))
+- AICentOS API Key ([Get from Console](https://www.aicentos.com/console/token))
 
 ## Core Features
 
@@ -138,7 +138,7 @@ Add the following to `openclaw.json`:
     "mode": "merge",
     "providers": {
       "aicentos-anthropic": {
-        "baseUrl": "https://aicentos.com",
+        "baseUrl": "https://www.aicentos.com",
         "apiKey": "sk-your-aicentos-token",
         "api": "anthropic-messages",
         "models": [
@@ -165,7 +165,7 @@ Add the following to `openclaw.json`:
 ```
 
 ::: warning Important
-- Replace `sk-your-aicentos-token` with your actual Token from the [AICentOS console](https://aicentos.com/console/token)
+- Replace `sk-your-aicentos-token` with your actual Token from the [AICentOS console](https://www.aicentos.com/console/token)
 - **For Anthropic protocol, `baseUrl` should NOT include `/v1`** — the SDK automatically appends the path
 :::
 
@@ -179,7 +179,7 @@ When calling OpenAI models through AICentOS, the `api` field must be set to `ope
     "mode": "merge",
     "providers": {
       "aicentos-openai": {
-        "baseUrl": "https://aicentos.com/v1",
+        "baseUrl": "https://www.aicentos.com/v1",
         "apiKey": "sk-your-aicentos-token",
         "api": "openai-responses",
         "models": [
@@ -206,7 +206,7 @@ When calling OpenAI models through AICentOS, the `api` field must be set to `ope
 ```
 
 ::: tip
-**OpenAI protocol requires `/v1`**, i.e., `https://aicentos.com/v1`. This is because the two SDKs have different path concatenation logic.
+**OpenAI protocol requires `/v1`**, i.e., `https://www.aicentos.com/v1`. This is because the two SDKs have different path concatenation logic.
 :::
 
 #### Configure Both Anthropic + OpenAI (Recommended)
@@ -219,7 +219,7 @@ Add both providers side-by-side under `models.providers` to use models from both
     "mode": "merge",
     "providers": {
       "aicentos-anthropic": {
-        "baseUrl": "https://aicentos.com",
+        "baseUrl": "https://www.aicentos.com",
         "apiKey": "sk-your-aicentos-token",
         "api": "anthropic-messages",
         "models": [
@@ -242,7 +242,7 @@ Add both providers side-by-side under `models.providers` to use models from both
         ]
       },
       "aicentos-openai": {
-        "baseUrl": "https://aicentos.com/v1",
+        "baseUrl": "https://www.aicentos.com/v1",
         "apiKey": "sk-your-aicentos-token",
         "api": "openai-responses",
         "models": [
@@ -291,7 +291,7 @@ To switch the default model, simply modify the `model.primary` value:
 
 | Field | Meaning | Anthropic (Claude) | OpenAI (GPT) |
 | --- | --- | --- | --- |
-| `baseUrl` | API proxy address | `https://aicentos.com` | `https://aicentos.com/v1` |
+| `baseUrl` | API proxy address | `https://www.aicentos.com` | `https://www.aicentos.com/v1` |
 | `apiKey` | Your API Key | `sk-your-aicentos-token` | `sk-your-aicentos-token` |
 | `api` | API protocol type | `anthropic-messages` | `openai-responses` |
 | `mode` | Config merge mode | `merge` (recommended) | `merge` (recommended) |
@@ -356,7 +356,7 @@ openclaw gateway restart
 ```json
 {
   "aicentos-anthropic": {
-    "baseUrl": "https://aicentos.com",
+    "baseUrl": "https://www.aicentos.com",
     "apiKey": "your-api-key",
     "api": "anthropic-messages",
     "headers": {
@@ -377,12 +377,12 @@ openclaw gateway restart
 
 ```json
 {
-  "baseUrl": "https://aicentos.com"
+  "baseUrl": "https://www.aicentos.com"
 }
 ```
 
 ::: tip
-OpenAI protocol requires `/v1`, i.e., `https://aicentos.com/v1`. This is because the two SDKs have different path concatenation logic.
+OpenAI protocol requires `/v1`, i.e., `https://www.aicentos.com/v1`. This is because the two SDKs have different path concatenation logic.
 :::
 
 ### The api Field Only Accepts Three Values

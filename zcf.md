@@ -15,14 +15,14 @@
 | `-p custom` | 使用自定义提供商（AICentOS 即用此方式） |
 | `-t api_key` | 等价写法，与 `-p custom` 效果相同 |
 | `-k "sk-xxx"` | API Key |
-| `-u "https://aicentos.com/"` | AICentOS Base URL |
+| `-u "https://www.aicentos.com/"` | AICentOS Base URL |
 | `-M "claude-sonnet-4-5-20250929"` | 指定主模型 |
 | `-H "claude-haiku-4-5-20251001"` | 指定快速模型 |
 
 指定模型示例：
 
 ```bash
-npx zcf i -s -t api_key -k "sk-xxx" -u "https://aicentos.com/" \
+npx zcf i -s -t api_key -k "sk-xxx" -u "https://www.aicentos.com/" \
   -M "claude-sonnet-4-5-20250929" \
   -H "claude-haiku-4-5-20251001"
 ```

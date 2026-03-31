@@ -24,7 +24,7 @@ bunx --global @openai/codex
 
 ## 配置环境变量
 
-1. 访问 [https://aicentos.com/console/token](https://aicentos.com/console/token) 获取 API Key
+1. 访问 [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token) 获取 API Key
 2. 创建 `~/.codex/config.toml` 文件，添加配置：
 
    ```toml
@@ -34,7 +34,7 @@ bunx --global @openai/codex
 
    [model_providers.aicentos]
    name = "OpenAI using Chat Completions"
-   base_url = "https://aicentos.com/v1"
+   base_url = "https://www.aicentos.com/v1"
    wire_api = "responses"
    query_params = {}
    stream_idle_timeout_ms = 300000
@@ -63,7 +63,7 @@ codex
 
    ```json
    {
-     "chatgpt.apiBase": "https://aicentos.com/v1",
+     "chatgpt.apiBase": "https://www.aicentos.com/v1",
      "chatgpt.config": {
        "preferred_auth_method": "api_key",
        "model_provider": "aicentos"

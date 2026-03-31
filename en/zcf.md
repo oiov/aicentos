@@ -15,14 +15,14 @@
 | `-p custom` | Use a custom provider (this is the mode AICentOS uses) |
 | `-t api_key` | Equivalent shorthand, same effect as `-p custom` |
 | `-k "sk-xxx"` | API Key |
-| `-u "https://aicentos.com/"` | AICentOS Base URL |
+| `-u "https://www.aicentos.com/"` | AICentOS Base URL |
 | `-M "claude-sonnet-4-5-20250929"` | Primary model |
 | `-H "claude-haiku-4-5-20251001"` | Fast model |
 
 Pin specific models example:
 
 ```bash
-npx zcf i -s -t api_key -k "sk-xxx" -u "https://aicentos.com/" \
+npx zcf i -s -t api_key -k "sk-xxx" -u "https://www.aicentos.com/" \
   -M "claude-sonnet-4-5-20250929" \
   -H "claude-haiku-4-5-20251001"
 ```

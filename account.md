@@ -6,7 +6,7 @@
 
 ### 1. 注册账号
 
-访问 [aicentos.com](https://aicentos.com/register?aff=9CTW)，点击**注册**：
+访问 [aicentos.com](https://www.aicentos.com/register?aff=9CTW)，点击**注册**：
 
 ![AICentOS 首页](/img/start/api-01-home.png)
 

@@ -11,7 +11,7 @@ hero:
   actions:
     - theme: brand
       text: Cadastrar
-      link: https://aicentos.com/register?aff=9CTW
+      link: https://www.aicentos.com/register?aff=9CTW
     - theme: alt
       text: Documentação
       link: /pt/start

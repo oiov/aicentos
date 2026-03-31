@@ -6,7 +6,7 @@
 
 ### 1. Registrarse
 
-Visita [aicentos.com](https://aicentos.com/register?aff=9CTW) y haz clic en **Registrarse**:
+Visita [aicentos.com](https://www.aicentos.com/register?aff=9CTW) y haz clic en **Registrarse**:
 
 ![Página de inicio de AICentOS](/img/start/api-01-home.png)
 

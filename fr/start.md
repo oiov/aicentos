@@ -2,10 +2,6 @@
 
 > Première utilisation ? Commencez par [créer votre compte](/fr/account).
 
-## Tutoriel vidéo
-
-<VideoPlayer src="https://s3.hi168.com/hi168-27900-8344owwk/fishxcode_claude.mp4" />
-
 ## 1. Préparation de l'environnement
 
 ### Installer Node.js
@@ -87,7 +83,7 @@ npx zcf
 
 11. URL de base de l'API :
     ```
-    https://aicentos.com
+    https://www.aicentos.com
     ```
 
 12. Clé API :
@@ -206,7 +202,7 @@ Ajoutez les éléments suivants dans le `settings.json` de VSCode :
   "claudeCode.preferredLocation": "panel",
   "claudeCode.environmentVariables": [
     { "name": "ANTHROPIC_AUTH_TOKEN", "value": "Remplacez par votre clé API" },
-    { "name": "ANTHROPIC_BASE_URL", "value": "https://aicentos.com/" }
+    { "name": "ANTHROPIC_BASE_URL", "value": "https://www.aicentos.com/" }
   ]
 }
 ```
@@ -231,7 +227,7 @@ Exécutez à nouveau la commande `setx` dans PowerShell pour écrire les variabl
 
 ```powershell
 setx ANTHROPIC_AUTH_TOKEN "sk-xxx"
-setx ANTHROPIC_BASE_URL "https://aicentos.com/"
+setx ANTHROPIC_BASE_URL "https://www.aicentos.com/"
 ```
 
 ### "Unable to connect to Anthropic services"

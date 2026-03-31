@@ -43,7 +43,7 @@ const visible = ref(false);
 const inIframe = ref(false);
 
 function setLayoutOffset(height: string) {
-  document.documentElement.style.setProperty("--vp-layout-top-height", height);
+  // document.documentElement.style.setProperty('--vp-layout-top-height', height)
 }
 
 function checkInIframe(): boolean {
@@ -83,7 +83,7 @@ function dismiss() {
     <div v-if="visible" class="announcement-bar">
       <div class="content">
         <span>{{ t.text }}</span>
-        <a href="https://aicentos.com/register?aff=9CTW" class="link">{{
+        <a href="https://www.aicentos.com/register?aff=9CTW" class="link">{{
           t.linkText
         }}</a>
       </div>

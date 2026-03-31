@@ -3,7 +3,7 @@
 ## 在 VSCode 中安装 RooCode
 
 1. 在 VSCode 中搜索 [RooCode](https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline) 并安装
-2. 访问 [https://aicentos.com/console/token](https://aicentos.com/console/token) 获取你的 API Key
+2. 访问 [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token) 获取你的 API Key
 
 ## 新增提供商
 
@@ -11,7 +11,7 @@
 
 | 配置项 | 值 |
 |--------|-----|
-| **OpenAI 基础 URL** | `https://aicentos.com/v1` |
+| **OpenAI 基础 URL** | `https://www.aicentos.com/v1` |
 | **API 密钥** | 你在 AICentOS 创建的 Key |
 | **模型** | `gpt-5` |
 

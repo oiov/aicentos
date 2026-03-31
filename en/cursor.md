@@ -15,7 +15,7 @@ In the left sidebar, click **Models**.
 Click **Add model**, then fill in:
 
 - **API Key**: your AICentOS key
-- **Base URL**: `https://aicentos.com/v1`
+- **Base URL**: `https://www.aicentos.com/v1`
 
 ![Cursor Models Configuration Example](/img/start/cursor.png)
 

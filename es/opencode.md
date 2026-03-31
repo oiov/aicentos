@@ -20,17 +20,17 @@ scoop install opencode
 
 ## Configurar AICentOS
 
-1. Obtén tu API Key en [https://aicentos.com/console/token](https://aicentos.com/console/token)
+1. Obtén tu API Key en [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token)
 2. Configura la variable de entorno:
 
 ::: code-group
 
 ```bash [Linux/macOS]
-export FISHXCODE_TOKEN=sk-xxx
+export AICENTOS_TOKEN=sk-xxx
 ```
 
 ```powershell [Windows PowerShell]
-$env:FISHXCODE_TOKEN="sk-xxx"
+$env:AICENTOS_TOKEN="sk-xxx"
 ```
 
 :::
@@ -45,8 +45,8 @@ $env:FISHXCODE_TOKEN="sk-xxx"
       "npm": "@ai-sdk/anthropic",
       "name": "aicentos-anthropic",
       "options": {
-        "baseURL": "https://aicentos.com/v1",
-        "apiKey": "{env:FISHXCODE_TOKEN}"
+        "baseURL": "https://www.aicentos.com/v1",
+        "apiKey": "{env:AICENTOS_TOKEN}"
       },
       "models": {
         "claude-sonnet-4-6": {
@@ -58,8 +58,8 @@ $env:FISHXCODE_TOKEN="sk-xxx"
       "npm": "@ai-sdk/openai-compatible",
       "name": "aicentos-openai",
       "options": {
-        "baseURL": "https://aicentos.com/v1",
-        "apiKey": "{env:FISHXCODE_TOKEN}"
+        "baseURL": "https://www.aicentos.com/v1",
+        "apiKey": "{env:AICENTOS_TOKEN}"
       },
       "models": {
         "gpt-5.2-codex": {
@@ -72,7 +72,7 @@ $env:FISHXCODE_TOKEN="sk-xxx"
 ```
 
 ::: warning Importante
-Reemplaza `sk-xxx` por tu token real obtenido en la [consola de AICentOS](https://aicentos.com/console/token).
+Reemplaza `sk-xxx` por tu token real obtenido en la [consola de AICentOS](https://www.aicentos.com/console/token).
 :::
 
 ## Iniciar

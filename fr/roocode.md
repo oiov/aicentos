@@ -3,7 +3,7 @@
 ## Installation dans VSCode
 
 1. Recherchez [RooCode](https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline) dans VSCode et installez-le
-2. Visitez [https://aicentos.com/console/token](https://aicentos.com/console/token) pour obtenir votre clé API
+2. Visitez [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token) pour obtenir votre clé API
 
 ## Ajouter un Fournisseur
 
@@ -11,7 +11,7 @@ Après l'installation, ouvrez RooCode et ajoutez un fournisseur compatible OpenA
 
 | Paramètre | Valeur |
 |-----------|--------|
-| **URL de base OpenAI** | `https://aicentos.com/v1` |
+| **URL de base OpenAI** | `https://www.aicentos.com/v1` |
 | **Clé API** | Votre clé de AICentOS |
 | **Modèle** | `gpt-5` |
 

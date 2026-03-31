@@ -11,7 +11,7 @@ OpenClaw est une plateforme d'assistant IA personnel open-source et auto-héberg
 ## Prérequis
 
 - OpenClaw installé (voir la section installation ci-dessous)
-- Clé API AICentOS ([Obtenir depuis la console](https://aicentos.com/console/token))
+- Clé API AICentOS ([Obtenir depuis la console](https://www.aicentos.com/console/token))
 
 ## Fonctionnalités principales
 
@@ -138,7 +138,7 @@ Ajoutez le contenu suivant dans `openclaw.json` :
     "mode": "merge",
     "providers": {
       "aicentos-anthropic": {
-        "baseUrl": "https://aicentos.com",
+        "baseUrl": "https://www.aicentos.com",
         "apiKey": "sk-votre-token-aicentos",
         "api": "anthropic-messages",
         "models": [
@@ -165,7 +165,7 @@ Ajoutez le contenu suivant dans `openclaw.json` :
 ```
 
 ::: warning Important
-- Remplacez `sk-votre-token-aicentos` par votre token réel obtenu depuis la [console AICentOS](https://aicentos.com/console/token)
+- Remplacez `sk-votre-token-aicentos` par votre token réel obtenu depuis la [console AICentOS](https://www.aicentos.com/console/token)
 - **Pour le protocole Anthropic, le `baseUrl` ne doit PAS inclure `/v1`** — le SDK ajoute automatiquement le chemin
 :::
 
@@ -179,7 +179,7 @@ Lorsque vous appelez des modèles OpenAI via AICentOS, le champ `api` doit être
     "mode": "merge",
     "providers": {
       "aicentos-openai": {
-        "baseUrl": "https://aicentos.com/v1",
+        "baseUrl": "https://www.aicentos.com/v1",
         "apiKey": "sk-votre-token-aicentos",
         "api": "openai-responses",
         "models": [
@@ -206,7 +206,7 @@ Lorsque vous appelez des modèles OpenAI via AICentOS, le champ `api` doit être
 ```
 
 ::: tip
-**Le protocole OpenAI nécessite `/v1`**, soit `https://aicentos.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
+**Le protocole OpenAI nécessite `/v1`**, soit `https://www.aicentos.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
 :::
 
 #### Configurer Anthropic + OpenAI simultanément (Recommandé)
@@ -219,7 +219,7 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
     "mode": "merge",
     "providers": {
       "aicentos-anthropic": {
-        "baseUrl": "https://aicentos.com",
+        "baseUrl": "https://www.aicentos.com",
         "apiKey": "sk-votre-token-aicentos",
         "api": "anthropic-messages",
         "models": [
@@ -242,7 +242,7 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
         ]
       },
       "aicentos-openai": {
-        "baseUrl": "https://aicentos.com/v1",
+        "baseUrl": "https://www.aicentos.com/v1",
         "apiKey": "sk-votre-token-aicentos",
         "api": "openai-responses",
         "models": [
@@ -284,7 +284,7 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
 
 | Champ | Signification | Anthropic (Claude) | OpenAI (GPT) |
 | --- | --- | --- | --- |
-| `baseUrl` | Adresse du proxy API | `https://aicentos.com` | `https://aicentos.com/v1` |
+| `baseUrl` | Adresse du proxy API | `https://www.aicentos.com` | `https://www.aicentos.com/v1` |
 | `apiKey` | Votre clé API | `sk-votre-token-aicentos` | `sk-votre-token-aicentos` |
 | `api` | Type de protocole API | `anthropic-messages` | `openai-responses` |
 | `mode` | Mode de fusion de config | `merge` (recommandé) | `merge` (recommandé) |
@@ -347,7 +347,7 @@ openclaw gateway restart
 ```json
 {
   "aicentos-anthropic": {
-    "baseUrl": "https://aicentos.com",
+    "baseUrl": "https://www.aicentos.com",
     "apiKey": "votre-api-key",
     "api": "anthropic-messages",
     "headers": {
@@ -368,12 +368,12 @@ openclaw gateway restart
 
 ```json
 {
-  "baseUrl": "https://aicentos.com"
+  "baseUrl": "https://www.aicentos.com"
 }
 ```
 
 ::: tip
-Le protocole OpenAI nécessite `/v1`, soit `https://aicentos.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
+Le protocole OpenAI nécessite `/v1`, soit `https://www.aicentos.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
 :::
 
 ### Le champ api n'accepte que trois valeurs

@@ -24,8 +24,8 @@ irm https://app.factory.ai/cli/windows | iex
     {
       "model_display_name": "aicentos-gpt5",
       "model": "gpt-5",
-      "base_url": "https://aicentos.com/v1",
-      "api_key": "YOUR_FISHXCODE_KEY",
+      "base_url": "https://www.aicentos.com/v1",
+      "api_key": "YOUR_AICENTOS_KEY",
       "provider": "generic-chat-completion-api",
       "max_tokens": 1280000
     }
@@ -34,7 +34,7 @@ irm https://app.factory.ai/cli/windows | iex
 ```
 
 ::: warning 重要
-请将 `YOUR_FISHXCODE_KEY` 替换为你的 AICentOS API Key。
+请将 `YOUR_AICENTOS_KEY` 替换为你的 AICentOS API Key。
 :::
 
 ## 直接启动使用

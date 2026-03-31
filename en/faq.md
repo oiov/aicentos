@@ -29,11 +29,11 @@ For sensitive projects, we recommend reviewing each model provider's privacy pol
 
 ### How do I sign up?
 
-Visit [aicentos.com/register](https://aicentos.com/register?aff=9CTW) and follow the prompts to create an account.
+Visit [aicentos.com/register](https://www.aicentos.com/register?aff=9CTW) and follow the prompts to create an account.
 
 ### How do I get an API token?
 
-After signing in, go to the [Token Management page](https://aicentos.com/console/token) in the console to generate a new token.
+After signing in, go to the [Token Management page](https://www.aicentos.com/console/token) in the console to generate a new token.
 
 ### How long does a token last?
 
@@ -78,7 +78,7 @@ echo $ANTHROPIC_AUTH_TOKEN
 
 ### I can't connect to AICentOS
 
-1. Confirm the `BASE_URL` is set to `https://aicentos.com/` (note the trailing `/`)
+1. Confirm the `BASE_URL` is set to `https://www.aicentos.com/` (note the trailing `/`)
 2. Verify that `aicentos.com` is reachable from your network
 3. If you're behind a corporate proxy, ensure your proxy settings are configured correctly
 
@@ -118,7 +118,7 @@ export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 - Both `API_KEY` and `AUTH_TOKEN` must be set
 :::
 
-Fix: Go to the [console](https://aicentos.com/console/token), verify your token status, and copy-paste it again.
+Fix: Go to the [console](https://www.aicentos.com/console/token), verify your token status, and copy-paste it again.
 
 ### Request timeout
 

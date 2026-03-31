@@ -11,7 +11,7 @@
 <p align="center">
   <a href="https://doc.aicentos.com">文档</a> ·
   <a href="https://doc.aicentos.com/en/">English</a> ·
-  <a href="https://aicentos.com/register?aff=9CTW">注册</a> ·
+  <a href="https://www.aicentos.com/register?aff=9CTW">注册</a> ·
   <a href="https://doc.aicentos.com/faq">FAQ</a>
 </p>
 

@@ -2,10 +2,6 @@
 
 > 首次使用？请先完成 [账户注册与充值](/account)。
 
-## 视频教程
-
-<VideoPlayer src="https://s3.hi168.com/hi168-27900-8344owwk/fishxcode_claude.mp4" />
-
 ## 一、环境准备
 
 ### 安装 Node.js
@@ -86,7 +82,7 @@ npx zcf
 
 11. API 基础 URL：
     ```
-    https://aicentos.com
+    https://www.aicentos.com
     ```
 
 12. API 密钥：
@@ -205,7 +201,7 @@ npm install -g @anthropic-ai/claude-code
   "claudeCode.preferredLocation": "panel",
   "claudeCode.environmentVariables": [
     { "name": "ANTHROPIC_AUTH_TOKEN", "value": "替换为您的 API Key" },
-    { "name": "ANTHROPIC_BASE_URL", "value": "https://aicentos.com/" }
+    { "name": "ANTHROPIC_BASE_URL", "value": "https://www.aicentos.com/" }
   ]
 }
 ```
@@ -230,7 +226,7 @@ Token 余额不足，前往控制台充值后重试。
 
 ```powershell
 setx ANTHROPIC_AUTH_TOKEN "sk-xxx"
-setx ANTHROPIC_BASE_URL "https://aicentos.com/"
+setx ANTHROPIC_BASE_URL "https://www.aicentos.com/"
 ```
 
 ### 提示"Unable to connect to Anthropic services"

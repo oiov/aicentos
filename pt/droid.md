@@ -24,8 +24,8 @@ Edite `~/.factory/config.json`:
     {
       "model_display_name": "aicentos-gpt5",
       "model": "gpt-5",
-      "base_url": "https://aicentos.com/v1",
-      "api_key": "SUA_CHAVE_FISHXCODE",
+      "base_url": "https://www.aicentos.com/v1",
+      "api_key": "SUA_CHAVE_AICENTOS",
       "provider": "generic-chat-completion-api",
       "max_tokens": 1280000
     }
@@ -34,7 +34,7 @@ Edite `~/.factory/config.json`:
 ```
 
 ::: warning Importante
-Substitua `SUA_CHAVE_FISHXCODE` pela sua API Key.
+Substitua `SUA_CHAVE_AICENTOS` pela sua API Key.
 :::
 
 ## Iniciar Diretamente
