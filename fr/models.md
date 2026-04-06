@@ -1,6 +1,6 @@
 # Modeles supportes
 
-AICentOS prend en charge une variete de modeles d'IA de plusieurs fournisseurs, couvrant differents cas d'utilisation et chaines d'outils. Vous pouvez librement choisir et changer de modele selon vos besoins.
+NBility prend en charge une variete de modeles d'IA de plusieurs fournisseurs, couvrant differents cas d'utilisation et chaines d'outils. Vous pouvez librement choisir et changer de modele selon vos besoins.
 
 ## Anthropic (Claude)
 

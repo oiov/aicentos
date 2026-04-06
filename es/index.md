@@ -2,16 +2,16 @@
 layout: home
 
 hero:
-  name: "AICentOS"
+  name: "NBility"
   text: "Estación AI Coding"
   tagline: Usa modelos Claude y Codex en múltiples plataformas
   image:
     src: /img/logo.svg
-    alt: AICentOS Logo
+    alt: NBility Logo
   actions:
     - theme: brand
       text: Registrarse
-      link: https://www.aicentos.com/register?aff=Dptp
+      link: https://nbility.dev/register?aff=Dptp
     - theme: alt
       text: Documentación
       link: /es/start

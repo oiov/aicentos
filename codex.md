@@ -1,4 +1,4 @@
-# 在 Codex 中使用 AICentOS
+# 在 Codex 中使用 NBility
 
 ## 安装 Codex
 
@@ -24,23 +24,23 @@ bunx --global @openai/codex
 
 ## 配置环境变量
 
-1. 访问 [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token) 获取 API Key
+1. 访问 [https://nbility.dev/console/token](https://nbility.dev/console/token) 获取 API Key
 2. 创建 `~/.codex/config.toml` 文件，添加配置：
 
    ```toml
    model = "gpt-5.3-codex"
-   model_provider = "aicentos"
+   model_provider = "nbility"
    preferred_auth_method = "apikey"
 
-   [model_providers.aicentos]
+   [model_providers.nbility]
    name = "OpenAI using Chat Completions"
-   base_url = "https://www.aicentos.com/v1"
+   base_url = "https://nbility.dev/v1"
    wire_api = "responses"
    query_params = {}
    stream_idle_timeout_ms = 300000
    ```
 
-3. 创建 `~/.codex/auth.json` 文件，将 `OPENAI_API_KEY` 的值设置为你的 AICentOS API Key：
+3. 创建 `~/.codex/auth.json` 文件，将 `OPENAI_API_KEY` 的值设置为你的 NBility API Key：
 
    ```json
    {
@@ -63,10 +63,10 @@ codex
 
    ```json
    {
-     "chatgpt.apiBase": "https://www.aicentos.com/v1",
+     "chatgpt.apiBase": "https://nbility.dev/v1",
      "chatgpt.config": {
        "preferred_auth_method": "api_key",
-       "model_provider": "aicentos"
+       "model_provider": "nbility"
      }
    }
    ```

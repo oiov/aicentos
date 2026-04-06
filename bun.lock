@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "aicentos-docs",
+      "name": "nbility-docs",
       "devDependencies": {
         "@giscus/vue": "^3.1.1",
         "@vite-pwa/vitepress": "^1.1.0",

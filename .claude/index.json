@@ -1,9 +1,9 @@
 {
   "timestamp": "2026-03-05T08:00:27+08:00",
-  "project": "aicentos",
-  "description": "AICentOS - AI Coding 中转站文档站 + Landing Page",
-  "repository": "https://github.com/aicentos/aicentos.git",
-  "homepage": "https://doc.aicentos.com",
+  "project": "nbility",
+  "description": "NBility - AI Coding 中转站文档站 + Landing Page",
+  "repository": "https://github.com/nbility/nbility.git",
+  "homepage": "https://doc.nbility.dev",
   "modules": [
     {
       "name": "VitePress 文档站",
@@ -12,7 +12,7 @@
       "framework": "VitePress 1.x",
       "entry": ".vitepress/config.mts",
       "interfaces": [
-        "静态站点 (doc.aicentos.com)",
+        "静态站点 (doc.nbility.dev)",
         "RSS Feed (/feed.xml)",
         "Atom Feed (/feed.atom)",
         "Sitemap (/sitemap.xml)"

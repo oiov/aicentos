@@ -1,4 +1,4 @@
-# 在 Cursor 中接入 AICentOS
+# 在 Cursor 中接入 NBility
 
 > 首次使用？请先完成 [账户注册与充值](/account)，并在控制台获取 API Key。
 
@@ -14,8 +14,8 @@
 
 先点击 **添加模型**，然后在 OpenAI API 配置区域填写：
 
-- **API Key**：AICentOS 控制台生成的 key
-- **Base URL**：`https://www.aicentos.com/v1`
+- **API Key**：NBility 控制台生成的 key
+- **Base URL**：`https://nbility.dev/v1`
 
 ![Cursor Models 配置示例](/img/start/cursor.png)
 

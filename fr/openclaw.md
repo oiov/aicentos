@@ -1,4 +1,4 @@
-# Utiliser AICentOS avec OpenClaw
+# Utiliser NBility avec OpenClaw
 
 ::: info Présentation du projet
 OpenClaw est une plateforme d'assistant IA personnel open-source et auto-hébergée qui connecte les applications de messagerie à des agents IA fonctionnant sur votre propre matériel. Conçue pour les développeurs et les utilisateurs avancés souhaitant des assistants IA autonomes sans céder le contrôle de leurs données.
@@ -11,7 +11,7 @@ OpenClaw est une plateforme d'assistant IA personnel open-source et auto-héberg
 ## Prérequis
 
 - OpenClaw installé (voir la section installation ci-dessous)
-- Clé API AICentOS ([Obtenir depuis la console](https://www.aicentos.com/console/token))
+- Clé API NBility ([Obtenir depuis la console](https://nbility.dev/console/token))
 
 ## Fonctionnalités principales
 
@@ -39,7 +39,7 @@ OpenClaw est une plateforme d'assistant IA personnel open-source et auto-héberg
 ## Installation
 
 ::: info Prérequis
-- Clé API AICentOS
+- Clé API NBility
 - Node.js 22+ requis pour les méthodes npm/git ; le one-liner curl gère automatiquement les dépendances
 :::
 
@@ -137,9 +137,9 @@ Ajoutez le contenu suivant dans `openclaw.json` :
   "models": {
     "mode": "merge",
     "providers": {
-      "aicentos-anthropic": {
-        "baseUrl": "https://www.aicentos.com",
-        "apiKey": "sk-votre-token-aicentos",
+      "nbility-anthropic": {
+        "baseUrl": "https://nbility.dev",
+        "apiKey": "sk-votre-token-nbility",
         "api": "anthropic-messages",
         "models": [
           {
@@ -157,7 +157,7 @@ Ajoutez le contenu suivant dans `openclaw.json` :
   "agents": {
     "defaults": {
       "model": {
-        "primary": "aicentos-anthropic/claude-opus-4-6"
+        "primary": "nbility-anthropic/claude-opus-4-6"
       }
     }
   }
@@ -165,22 +165,22 @@ Ajoutez le contenu suivant dans `openclaw.json` :
 ```
 
 ::: warning Important
-- Remplacez `sk-votre-token-aicentos` par votre token réel obtenu depuis la [console AICentOS](https://www.aicentos.com/console/token)
+- Remplacez `sk-votre-token-nbility` par votre token réel obtenu depuis la [console NBility](https://nbility.dev/console/token)
 - **Pour le protocole Anthropic, le `baseUrl` ne doit PAS inclure `/v1`** — le SDK ajoute automatiquement le chemin
 :::
 
 #### Configurer les modèles OpenAI (GPT)
 
-Lorsque vous appelez des modèles OpenAI via AICentOS, le champ `api` doit être `openai-responses` :
+Lorsque vous appelez des modèles OpenAI via NBility, le champ `api` doit être `openai-responses` :
 
 ```json
 {
   "models": {
     "mode": "merge",
     "providers": {
-      "aicentos-openai": {
-        "baseUrl": "https://www.aicentos.com/v1",
-        "apiKey": "sk-votre-token-aicentos",
+      "nbility-openai": {
+        "baseUrl": "https://nbility.dev/v1",
+        "apiKey": "sk-votre-token-nbility",
         "api": "openai-responses",
         "models": [
           {
@@ -198,7 +198,7 @@ Lorsque vous appelez des modèles OpenAI via AICentOS, le champ `api` doit être
   "agents": {
     "defaults": {
       "model": {
-        "primary": "aicentos-openai/gpt-5"
+        "primary": "nbility-openai/gpt-5"
       }
     }
   }
@@ -206,7 +206,7 @@ Lorsque vous appelez des modèles OpenAI via AICentOS, le champ `api` doit être
 ```
 
 ::: tip
-**Le protocole OpenAI nécessite `/v1`**, soit `https://www.aicentos.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
+**Le protocole OpenAI nécessite `/v1`**, soit `https://nbility.dev/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
 :::
 
 #### Configurer Anthropic + OpenAI simultanément (Recommandé)
@@ -218,9 +218,9 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
   "models": {
     "mode": "merge",
     "providers": {
-      "aicentos-anthropic": {
-        "baseUrl": "https://www.aicentos.com",
-        "apiKey": "sk-votre-token-aicentos",
+      "nbility-anthropic": {
+        "baseUrl": "https://nbility.dev",
+        "apiKey": "sk-votre-token-nbility",
         "api": "anthropic-messages",
         "models": [
           {
@@ -241,9 +241,9 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
           }
         ]
       },
-      "aicentos-openai": {
-        "baseUrl": "https://www.aicentos.com/v1",
-        "apiKey": "sk-votre-token-aicentos",
+      "nbility-openai": {
+        "baseUrl": "https://nbility.dev/v1",
+        "apiKey": "sk-votre-token-nbility",
         "api": "openai-responses",
         "models": [
           {
@@ -269,10 +269,10 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
   "agents": {
     "defaults": {
       "model": {
-        "primary": "aicentos-anthropic/claude-opus-4-6",
+        "primary": "nbility-anthropic/claude-opus-4-6",
         "fallbacks": [
-          "aicentos-anthropic/claude-sonnet-4-5-20250929",
-          "aicentos-openai/gpt-5"
+          "nbility-anthropic/claude-sonnet-4-5-20250929",
+          "nbility-openai/gpt-5"
         ]
       }
     }
@@ -284,12 +284,12 @@ Ajoutez les deux providers côte à côte dans `models.providers` pour utiliser 
 
 | Champ | Signification | Anthropic (Claude) | OpenAI (GPT) |
 | --- | --- | --- | --- |
-| `baseUrl` | Adresse du proxy API | `https://www.aicentos.com` | `https://www.aicentos.com/v1` |
-| `apiKey` | Votre clé API | `sk-votre-token-aicentos` | `sk-votre-token-aicentos` |
+| `baseUrl` | Adresse du proxy API | `https://nbility.dev` | `https://nbility.dev/v1` |
+| `apiKey` | Votre clé API | `sk-votre-token-nbility` | `sk-votre-token-nbility` |
 | `api` | Type de protocole API | `anthropic-messages` | `openai-responses` |
 | `mode` | Mode de fusion de config | `merge` (recommandé) | `merge` (recommandé) |
 | `models[].id` | ID du modèle | `claude-opus-4-6` | `gpt-5` |
-| `model.primary` | Modèle par défaut | `aicentos-anthropic/claude-opus-4-6` | `aicentos-openai/gpt-5` |
+| `model.primary` | Modèle par défaut | `nbility-anthropic/claude-opus-4-6` | `nbility-openai/gpt-5` |
 | `reasoning` | Activer le mode raisonnement | `false` (selon le modèle) | `true` (GPT-5.x supporté) |
 
 ## Vérifier la configuration
@@ -346,8 +346,8 @@ openclaw gateway restart
 
 ```json
 {
-  "aicentos-anthropic": {
-    "baseUrl": "https://www.aicentos.com",
+  "nbility-anthropic": {
+    "baseUrl": "https://nbility.dev",
     "apiKey": "votre-api-key",
     "api": "anthropic-messages",
     "headers": {
@@ -368,12 +368,12 @@ openclaw gateway restart
 
 ```json
 {
-  "baseUrl": "https://www.aicentos.com"
+  "baseUrl": "https://nbility.dev"
 }
 ```
 
 ::: tip
-Le protocole OpenAI nécessite `/v1`, soit `https://www.aicentos.com/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
+Le protocole OpenAI nécessite `/v1`, soit `https://nbility.dev/v1`. Cela est dû au fait que les deux SDK ont des logiques de concaténation de chemin différentes.
 :::
 
 ### Le champ api n'accepte que trois valeurs
@@ -390,7 +390,7 @@ Le protocole OpenAI nécessite `/v1`, soit `https://www.aicentos.com/v1`. Cela e
 
 Des valeurs comme `openai-chat`, `openai`, `anthropic`, etc. provoqueront des erreurs.
 
-**Solution** : Lors de l'utilisation de AICentOS, utilisez `anthropic-messages` pour les modèles Claude et `openai-responses` pour les modèles GPT.
+**Solution** : Lors de l'utilisation de NBility, utilisez `anthropic-messages` pour les modèles Claude et `openai-responses` pour les modèles GPT.
 
 ### Réponse vide avec openai-completions (Ne pas utiliser pour les modèles GPT)
 
@@ -398,7 +398,7 @@ Des valeurs comme `openai-chat`, `openai`, `anthropic`, etc. provoqueront des er
 
 **Cause** : OpenClaw gère les flux de messages en interne au format Anthropic. Les réponses au format OpenAI de `openai-completions` peuvent ne pas être correctement mappées dans certains cas.
 
-**Solution** : Pour appeler des modèles GPT via AICentOS, utilisez `openai-responses` plutôt que `openai-completions`.
+**Solution** : Pour appeler des modèles GPT via NBility, utilisez `openai-responses` plutôt que `openai-completions`.
 
 ### Les modifications de configuration ne prennent pas effet
 
@@ -450,5 +450,5 @@ python3 -m json.tool ~/.openclaw/openclaw.json
 | `openclaw gateway restart` | Redémarrer la passerelle |
 
 ::: tip Stratégie de débogage
-Utilisez d'abord curl pour confirmer que l'API AICentOS elle-même fonctionne normalement, puis vérifiez ce qui est différent dans les requêtes envoyées par OpenClaw (UA, chemin, format).
+Utilisez d'abord curl pour confirmer que l'API NBility elle-même fonctionne normalement, puis vérifiez ce qui est différent dans les requêtes envoyées par OpenClaw (UA, chemin, format).
 :::

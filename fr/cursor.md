@@ -1,4 +1,4 @@
-# Utiliser AICentOS dans Cursor
+# Utiliser NBility dans Cursor
 
 > Première utilisation ? Terminez la [création de compte](/fr/account) puis générez votre API Key dans la console.
 
@@ -14,8 +14,8 @@ Dans le menu latéral, cliquez sur **Models**.
 
 Cliquez sur **Ajouter un modèle**, puis renseignez :
 
-- **API Key** : clé AICentOS
-- **Base URL** : `https://www.aicentos.com/v1`
+- **API Key** : clé NBility
+- **Base URL** : `https://nbility.dev/v1`
 
 ![Exemple de configuration Cursor Models](/img/start/cursor.png)
 

@@ -12,17 +12,17 @@
 
 | Parámetro | Descripción |
 |---|---|
-| `-p custom` | Usar proveedor personalizado (AICentOS usa este modo) |
+| `-p custom` | Usar proveedor personalizado (NBility usa este modo) |
 | `-t api_key` | Equivalente a `-p custom`, mismo efecto |
 | `-k "sk-xxx"` | API Key |
-| `-u "https://www.aicentos.com/"` | URL base de AICentOS |
+| `-u "https://nbility.dev/"` | URL base de NBility |
 | `-M "claude-sonnet-4-5-20250929"` | Especificar modelo principal |
 | `-H "claude-haiku-4-5-20251001"` | Especificar modelo rápido |
 
 Ejemplo con modelos específicos:
 
 ```bash
-npx zcf i -s -t api_key -k "sk-xxx" -u "https://www.aicentos.com/" \
+npx zcf i -s -t api_key -k "sk-xxx" -u "https://nbility.dev/" \
   -M "claude-sonnet-4-5-20250929" \
   -H "claude-haiku-4-5-20251001"
 ```

@@ -17,7 +17,7 @@ jobs:
     env:
       MASTER_DSN: ${{ secrets.MASTER_DSN }}
       SLAVE_DSNS: ${{ secrets.SLAVE_DSNS }}
-      BACKUP_REPO: aicentos/new-api
+      BACKUP_REPO: nbility/new-api
       BACKUP_BRANCH: main
       BACKUP_DIR: pg
       MAX_PARALLEL: 4

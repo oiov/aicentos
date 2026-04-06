@@ -1,9 +1,9 @@
-# Usando AICentOS com RooCode
+# Usando NBility com RooCode
 
 ## Instalação no VSCode
 
 1. Pesquise [RooCode](https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline) no VSCode e instale
-2. Visite [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token) para obter sua API Key
+2. Visite [https://nbility.dev/console/token](https://nbility.dev/console/token) para obter sua API Key
 
 ## Adicionar Provedor
 
@@ -11,8 +11,8 @@ Abra RooCode e adicione um provedor compatível com OpenAI:
 
 | Configuração | Valor |
 |--------------|-------|
-| **URL base OpenAI** | `https://www.aicentos.com/v1` |
-| **API Key** | Sua chave do AICentOS |
+| **URL base OpenAI** | `https://nbility.dev/v1` |
+| **API Key** | Sua chave do NBility |
 | **Modelo** | `gpt-5` |
 
 ::: tip Dica

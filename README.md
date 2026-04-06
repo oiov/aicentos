@@ -1,25 +1,25 @@
 <p align="center">
-  <img src="https://doc.aicentos.com/img/logo.svg" width="120" alt="AICentOS Logo">
+  <img src="https://doc.nbility.dev/img/logo.svg" width="120" alt="NBility Logo">
 </p>
 
-<h1 align="center">AICentOS</h1>
+<h1 align="center">NBility</h1>
 
 <p align="center">
   AI Coding 中转站 — 支持 Claude、Codex 模型在多种平台使用
 </p>
 
 <p align="center">
-  <a href="https://doc.aicentos.com">文档</a> ·
-  <a href="https://doc.aicentos.com/en/">English</a> ·
-  <a href="https://www.aicentos.com/register?aff=Dptp">注册</a> ·
-  <a href="https://doc.aicentos.com/faq">FAQ</a>
+  <a href="https://doc.nbility.dev">文档</a> ·
+  <a href="https://doc.nbility.dev/en/">English</a> ·
+  <a href="https://nbility.dev/register?aff=Dptp">注册</a> ·
+  <a href="https://doc.nbility.dev/faq">FAQ</a>
 </p>
 
 ---
 
 ## 简介
 
-AICentOS 是一个 AI Coding 中转站，支持 Claude、Codex 模型在多种平台使用。
+NBility 是一个 AI Coding 中转站，支持 Claude、Codex 模型在多种平台使用。
 
 **支持的工具：**
 

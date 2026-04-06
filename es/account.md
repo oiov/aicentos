@@ -6,7 +6,7 @@
 
 ### 1. Registrarse
 
-Visita [aicentos.com](https://www.aicentos.com/register?aff=Dptp) y haz clic en **Registrarse**:
+Visita [nbility.dev](https://nbility.dev/register?aff=Dptp) y haz clic en **Registrarse**:
 
 
 Elige el método de registro (GitHub, LinuxDO o nombre de usuario):

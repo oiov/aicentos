@@ -1,4 +1,4 @@
-# Utiliser AICentOS avec Codex
+# Utiliser NBility avec Codex
 
 ## Installation
 
@@ -24,23 +24,23 @@ bunx --global @openai/codex
 
 ## Configuration des Variables d'Environnement
 
-1. Obtenez votre clé API sur [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token)
+1. Obtenez votre clé API sur [https://nbility.dev/console/token](https://nbility.dev/console/token)
 2. Créez `~/.codex/config.toml` :
 
    ```toml
    model = "gpt-5.3-codex"
-   model_provider = "aicentos"
+   model_provider = "nbility"
    preferred_auth_method = "apikey"
 
-   [model_providers.aicentos]
+   [model_providers.nbility]
    name = "OpenAI using Chat Completions"
-   base_url = "https://www.aicentos.com/v1"
+   base_url = "https://nbility.dev/v1"
    wire_api = "responses"
    query_params = {}
    stream_idle_timeout_ms = 300000
    ```
 
-3. Créez `~/.codex/auth.json`, en définissant `OPENAI_API_KEY` avec votre clé API AICentOS :
+3. Créez `~/.codex/auth.json`, en définissant `OPENAI_API_KEY` avec votre clé API NBility :
 
    ```json
    {
@@ -63,10 +63,10 @@ codex
 
 ```json
 {
-  "chatgpt.apiBase": "https://www.aicentos.com/v1",
+  "chatgpt.apiBase": "https://nbility.dev/v1",
   "chatgpt.config": {
     "preferred_auth_method": "api_key",
-    "model_provider": "aicentos"
+    "model_provider": "nbility"
   }
 }
 ```

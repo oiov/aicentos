@@ -6,7 +6,7 @@
 
 ### 1. Register
 
-Visit [aicentos.com](https://www.aicentos.com/register?aff=Dptp) and click **Register**:
+Visit [nbility.dev](https://nbility.dev/register?aff=Dptp) and click **Register**:
 
 
 

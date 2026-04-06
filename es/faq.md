@@ -2,9 +2,9 @@
 
 ## General
 
-### Que es AICentOS?
+### Que es NBility?
 
-AICentOS es una estacion de retransmision de AI Coding que soporta los modelos Claude y Codex en multiples plataformas.
+NBility es una estacion de retransmision de AI Coding que soporta los modelos Claude y Codex en multiples plataformas.
 
 ### Que herramientas son compatibles?
 
@@ -19,7 +19,7 @@ Herramientas disponibles actualmente:
 
 ### Como se protegen mis datos?
 
-AICentOS funciona unicamente como un servicio de retransmision de API. Tu codigo y tus conversaciones no se almacenan en nuestros servidores. Todas las solicitudes se envian directamente a los proveedores de modelos correspondientes.
+NBility funciona unicamente como un servicio de retransmision de API. Tu codigo y tus conversaciones no se almacenan en nuestros servidores. Todas las solicitudes se envian directamente a los proveedores de modelos correspondientes.
 
 ::: tip Recomendacion
 Para proyectos sensibles, te sugerimos revisar la politica de privacidad de cada proveedor de modelos antes de usar el servicio.
@@ -29,11 +29,11 @@ Para proyectos sensibles, te sugerimos revisar la politica de privacidad de cada
 
 ### Como me registro?
 
-Visita [aicentos.com/register](https://www.aicentos.com/register?aff=Dptp) y sigue las instrucciones para crear tu cuenta.
+Visita [nbility.dev/register](https://nbility.dev/register?aff=Dptp) y sigue las instrucciones para crear tu cuenta.
 
 ### Como obtengo un token de API?
 
-Despues de iniciar sesion, ve a la [pagina de gestion de tokens](https://www.aicentos.com/console/token) en la consola para generar un nuevo token.
+Despues de iniciar sesion, ve a la [pagina de gestion de tokens](https://nbility.dev/console/token) en la consola para generar un nuevo token.
 
 ### Cuanto dura un token?
 
@@ -76,10 +76,10 @@ echo $ANTHROPIC_AUTH_TOKEN
 | RooCode | Configuracion JSON de VS Code |
 | Qwen Code | Variables de entorno |
 
-### No puedo conectarme a AICentOS
+### No puedo conectarme a NBility
 
-1. Confirma que `BASE_URL` este configurado como `https://www.aicentos.com/` (ojo con la `/` al final)
-2. Verifica que `aicentos.com` sea accesible desde tu red
+1. Confirma que `BASE_URL` este configurado como `https://nbility.dev/` (ojo con la `/` al final)
+2. Verifica que `nbility.dev` sea accesible desde tu red
 3. Si estas detras de un proxy corporativo, revisa la configuracion del proxy
 
 ## Seleccion de modelo
@@ -118,7 +118,7 @@ export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 - `API_KEY` y `AUTH_TOKEN` deben estar configurados a la vez
 :::
 
-Solucion: Ve a la [consola](https://www.aicentos.com/console/token), verifica el estado de tu token y copialo de nuevo.
+Solucion: Ve a la [consola](https://nbility.dev/console/token), verifica el estado de tu token y copialo de nuevo.
 
 ### Tiempo de espera agotado (Timeout)
 
@@ -141,4 +141,4 @@ Un codigo `429` indica que estas enviando solicitudes con demasiada frecuencia.
 
 ### Modelo no disponible
 
-Verifica que el nombre del modelo sea correcto. Consulta la lista de modelos recomendados en [Comenzar](/es/start). Algunos modelos pueden no estar disponibles aun en AICentOS.
+Verifica que el nombre del modelo sea correcto. Consulta la lista de modelos recomendados en [Comenzar](/es/start). Algunos modelos pueden no estar disponibles aun en NBility.

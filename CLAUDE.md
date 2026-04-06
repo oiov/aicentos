@@ -1,11 +1,11 @@
-# AICentOS - 项目文档 (CLAUDE.md)
+# NBility - 项目文档 (CLAUDE.md)
 
 ## 项目愿景
 
-AICentOS 是一个 **AI Coding 中转站**，支持 Claude、Codex 等主流 AI 模型在多种平台使用。本仓库包含两个核心部分：
+NBility 是一个 **AI Coding 中转站**，支持 Claude、Codex 等主流 AI 模型在多种平台使用。本仓库包含两个核心部分：
 
-1. **文档站** (VitePress) -- 面向用户的多语言文档门户，部署于 `doc.aicentos.com`
-2. **Landing Page** (Deno) -- 独立的单文件 Deno 服务器，服务于 `aicentos.com` 主站着陆页
+1. **文档站** (VitePress) -- 面向用户的多语言文档门户，部署于 `doc.nbility.dev`
+2. **Landing Page** (Deno) -- 独立的单文件 Deno 服务器，服务于 `nbility.dev` 主站着陆页
 
 ## 架构总览
 
@@ -19,7 +19,7 @@ AICentOS 是一个 **AI Coding 中转站**，支持 Claude、Codex 等主流 AI 
 
 ```mermaid
 graph TD
-    A["(根) AICentOS"] --> B[".vitepress/"];
+    A["(根) NBility"] --> B[".vitepress/"];
     A --> C["deno/"];
     A --> D["内容目录 (*.md)"];
     A --> E["public/"];
@@ -54,7 +54,7 @@ graph TD
 | 模块 | 路径 | 语言/框架 | 职责 |
 |------|------|-----------|------|
 | VitePress 文档站 | `/` (根) | TypeScript + Vue 3 + VitePress | 多语言文档门户，包含工具指南、模型列表、FAQ 等 |
-| Deno Landing Page | `deno/` | TypeScript + Deno | AICentOS 主站着陆页单文件服务器，含 i18n、SEO、KV 访问计数 |
+| Deno Landing Page | `deno/` | TypeScript + Deno | NBility 主站着陆页单文件服务器，含 i18n、SEO、KV 访问计数 |
 | 自定义主题 | `.vitepress/theme/` | Vue 3 + CSS | 自定义 404 页面、公告栏、回到顶部、模型卡片、工具向导、时间线组件 |
 | CI/CD | `.github/workflows/` | YAML | GitHub Actions 自动构建部署到 GitHub Pages |
 
@@ -92,7 +92,7 @@ deno run --allow-net --allow-env --unstable-kv landing.deno.ts
 ## 目录结构详解
 
 ```
-aicentos/
+nbility/
 ├── .github/workflows/deploy.yml  # GitHub Actions: 构建 + 部署 GitHub Pages
 ├── .vitepress/
 │   ├── config.mts                # VitePress 主配置 (i18n, SEO, Feed, PWA, 导航/侧边栏)

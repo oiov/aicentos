@@ -1,11 +1,11 @@
 {
-  "name": "aicentos-docs",
+  "name": "nbility-docs",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "AICentOS - AI Coding 中转站，支持 Claude、Codex 模型在多种平台使用",
+  "description": "NBility - AI Coding 中转站，支持 Claude、Codex 模型在多种平台使用",
   "keywords": [
-    "aicentos",
+    "nbility",
     "ai-coding",
     "claude-code",
     "codex",
@@ -15,10 +15,10 @@
     "api-relay",
     "documentation"
   ],
-  "homepage": "https://doc.aicentos.com",
+  "homepage": "https://doc.nbility.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aicentos/aicentos.git"
+    "url": "https://github.com/nbility/nbility.git"
   },
   "license": "MIT",
   "scripts": {

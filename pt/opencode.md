@@ -1,4 +1,4 @@
-# Usar AICentOS com OpenCode
+# Usar NBility com OpenCode
 
 ## Instalar OpenCode
 
@@ -18,19 +18,19 @@ scoop install opencode
 
 :::
 
-## Configurar AICentOS
+## Configurar NBility
 
-1. Obtenha sua API Key em [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token)
+1. Obtenha sua API Key em [https://nbility.dev/console/token](https://nbility.dev/console/token)
 2. Configure a variavel de ambiente:
 
 ::: code-group
 
 ```bash [Linux/macOS]
-export AICENTOS_TOKEN=sk-xxx
+export NBility_TOKEN=sk-xxx
 ```
 
 ```powershell [Windows PowerShell]
-$env:AICENTOS_TOKEN="sk-xxx"
+$env:NBility_TOKEN="sk-xxx"
 ```
 
 :::
@@ -41,12 +41,12 @@ $env:AICENTOS_TOKEN="sk-xxx"
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "aicentos-anthropic": {
+    "nbility-anthropic": {
       "npm": "@ai-sdk/anthropic",
-      "name": "aicentos-anthropic",
+      "name": "nbility-anthropic",
       "options": {
-        "baseURL": "https://www.aicentos.com/v1",
-        "apiKey": "{env:AICENTOS_TOKEN}"
+        "baseURL": "https://nbility.dev/v1",
+        "apiKey": "{env:NBility_TOKEN}"
       },
       "models": {
         "claude-sonnet-4-6": {
@@ -54,12 +54,12 @@ $env:AICENTOS_TOKEN="sk-xxx"
         }
       }
     },
-    "aicentos-openai": {
+    "nbility-openai": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "aicentos-openai",
+      "name": "nbility-openai",
       "options": {
-        "baseURL": "https://www.aicentos.com/v1",
-        "apiKey": "{env:AICENTOS_TOKEN}"
+        "baseURL": "https://nbility.dev/v1",
+        "apiKey": "{env:NBility_TOKEN}"
       },
       "models": {
         "gpt-5.2-codex": {
@@ -72,7 +72,7 @@ $env:AICENTOS_TOKEN="sk-xxx"
 ```
 
 ::: warning Importante
-Substitua `sk-xxx` pelo seu token real obtido no [console do AICentOS](https://www.aicentos.com/console/token).
+Substitua `sk-xxx` pelo seu token real obtido no [console do NBility](https://nbility.dev/console/token).
 :::
 
 ## Iniciar
@@ -82,4 +82,4 @@ cd my-project
 opencode
 ```
 
-Apos iniciar, selecione um modelo do provedor AICentOS para comecar.
+Apos iniciar, selecione um modelo do provedor NBility para comecar.

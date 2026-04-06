@@ -1,4 +1,4 @@
-# Usar AICentOS con Claude Code
+# Usar NBility con Claude Code
 
 > ¿Primera vez? Primero completa el [Registro de cuenta](/es/account).
 
@@ -49,7 +49,7 @@ npx zcf
 
 ---
 
-## 3. Configurar AICentOS
+## 3. Configurar NBility
 
 1. Escribe `npx zcf` en la terminal y pulsa Enter.
    Cuando aparezca `Ok to proceed? (y)`, escribe `y` y pulsa Enter.
@@ -83,11 +83,11 @@ npx zcf
 
 11. URL base de la API:
     ```
-    https://www.aicentos.com
+    https://nbility.dev
     ```
 
 12. API Key:
-    Introduce el token generado en la consola de AICentOS
+    Introduce el token generado en la consola de NBility
 
 13. Configuración del modelo:
     Pulsa Enter para saltar con los valores por defecto
@@ -191,7 +191,7 @@ Una vez instalado, el plugin ofrece tres métodos de conexión:
 
 ![Métodos de conexión del plugin Claude Code](/img/start/vscode-02-login.png)
 
-Se recomienda conectar AICentOS mediante `settings.json`. Haz clic en el **icono de engranaje** en la esquina inferior derecha del plugin → **Editar en settings.json**:
+Se recomienda conectar NBility mediante `settings.json`. Haz clic en el **icono de engranaje** en la esquina inferior derecha del plugin → **Editar en settings.json**:
 
 ![Abrir settings.json para editar](/img/start/vscode-03-settings.png)
 
@@ -202,14 +202,14 @@ Añade lo siguiente en el `settings.json` de VSCode:
   "claudeCode.preferredLocation": "panel",
   "claudeCode.environmentVariables": [
     { "name": "ANTHROPIC_AUTH_TOKEN", "value": "reemplaza con tu API Key" },
-    { "name": "ANTHROPIC_BASE_URL", "value": "https://www.aicentos.com/" }
+    { "name": "ANTHROPIC_BASE_URL", "value": "https://nbility.dev/" }
   ]
 }
 ```
 
 ![Ejemplo de configuración en settings.json](/img/start/vscode-04-config.png)
 
-Tras guardar, **cierra y vuelve a abrir VSCode**; el plugin se conectará correctamente a AICentOS.
+Tras guardar, **cierra y vuelve a abrir VSCode**; el plugin se conectará correctamente a NBility.
 
 ![Usando Claude Code en VSCode](/img/start/vscode-05-demo.gif)
 
@@ -227,7 +227,7 @@ Ejecuta estos comandos en PowerShell para escribir variables del sistema permane
 
 ```powershell
 setx ANTHROPIC_AUTH_TOKEN "sk-xxx"
-setx ANTHROPIC_BASE_URL "https://www.aicentos.com/"
+setx ANTHROPIC_BASE_URL "https://nbility.dev/"
 ```
 
 ### "Unable to connect to Anthropic services"

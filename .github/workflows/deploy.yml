@@ -22,9 +22,9 @@ jobs:
   #
   # VITEPRESS_BASE 优先级：
   #   1. repo 变量 vars.VITEPRESS_BASE（Settings > Variables > Actions）
-  #   2. 兜底自动使用 /<仓库名>/  (e.g. /aicentos/)
+  #   2. 兜底自动使用 /<仓库名>/  (e.g. /nbility/)
   #
-  # 如果已绑定自定义域名 doc.aicentos.com，在 repo Variables 设置：
+  # 如果已绑定自定义域名 doc.nbility.dev，在 repo Variables 设置：
   #   VITEPRESS_BASE = /
   # ──────────────────────────────────────────────────────────────────────────
   build-pages:

@@ -75,11 +75,11 @@ jobs:
             echo "::warning::Dump file is ${FILE_SIZE_MB}MB, consider cleanup"
           fi
 
-          gh repo clone aicentos/new-api /tmp/backup-repo -- --depth 1 --single-branch --branch main
+          gh repo clone nbility/new-api /tmp/backup-repo -- --depth 1 --single-branch --branch main
           cd /tmp/backup-repo
 
           # 配置 git 凭证，确保 push 时能认证
-          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/aicentos/new-api.git"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/nbility/new-api.git"
 
           git lfs install
           grep -q 'pg/\*.dump' .gitattributes 2>/dev/null || git lfs track "pg/*.dump"
@@ -100,7 +100,7 @@ jobs:
               git pull --rebase origin main
               git push origin main
             }
-            echo "Pushed pg/${FILENAME} to aicentos/new-api"
+            echo "Pushed pg/${FILENAME} to nbility/new-api"
           fi
           rm -rf /tmp/backup-repo
 

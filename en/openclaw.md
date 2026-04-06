@@ -1,4 +1,4 @@
-# Using AICentOS with OpenClaw
+# Using NBility with OpenClaw
 
 ::: info Project Introduction
 OpenClaw is an open-source, self-hosted personal AI assistant platform that bridges messaging apps to AI agents running on your own hardware. Designed for developers and power users who want autonomous AI assistants without surrendering data control.
@@ -11,7 +11,7 @@ OpenClaw is an open-source, self-hosted personal AI assistant platform that brid
 ## Prerequisites
 
 - OpenClaw installed (see installation section below)
-- AICentOS API Key ([Get from Console](https://www.aicentos.com/console/token))
+- NBility API Key ([Get from Console](https://nbility.dev/console/token))
 
 ## Core Features
 
@@ -39,7 +39,7 @@ OpenClaw is an open-source, self-hosted personal AI assistant platform that brid
 ## Installation
 
 ::: info Requirements
-- AICentOS API Key
+- NBility API Key
 - Node.js 22+ required for npm/git methods; the curl one-liner handles dependencies automatically
 :::
 
@@ -137,9 +137,9 @@ Add the following to `openclaw.json`:
   "models": {
     "mode": "merge",
     "providers": {
-      "aicentos-anthropic": {
-        "baseUrl": "https://www.aicentos.com",
-        "apiKey": "sk-your-aicentos-token",
+      "nbility-anthropic": {
+        "baseUrl": "https://nbility.dev",
+        "apiKey": "sk-your-nbility-token",
         "api": "anthropic-messages",
         "models": [
           {
@@ -157,7 +157,7 @@ Add the following to `openclaw.json`:
   "agents": {
     "defaults": {
       "model": {
-        "primary": "aicentos-anthropic/claude-opus-4-6"
+        "primary": "nbility-anthropic/claude-opus-4-6"
       }
     }
   }
@@ -165,22 +165,22 @@ Add the following to `openclaw.json`:
 ```
 
 ::: warning Important
-- Replace `sk-your-aicentos-token` with your actual Token from the [AICentOS console](https://www.aicentos.com/console/token)
+- Replace `sk-your-nbility-token` with your actual Token from the [NBility console](https://nbility.dev/console/token)
 - **For Anthropic protocol, `baseUrl` should NOT include `/v1`** — the SDK automatically appends the path
 :::
 
 #### Configure OpenAI (GPT) Models
 
-When calling OpenAI models through AICentOS, the `api` field must be set to `openai-responses`:
+When calling OpenAI models through NBility, the `api` field must be set to `openai-responses`:
 
 ```json
 {
   "models": {
     "mode": "merge",
     "providers": {
-      "aicentos-openai": {
-        "baseUrl": "https://www.aicentos.com/v1",
-        "apiKey": "sk-your-aicentos-token",
+      "nbility-openai": {
+        "baseUrl": "https://nbility.dev/v1",
+        "apiKey": "sk-your-nbility-token",
         "api": "openai-responses",
         "models": [
           {
@@ -198,7 +198,7 @@ When calling OpenAI models through AICentOS, the `api` field must be set to `ope
   "agents": {
     "defaults": {
       "model": {
-        "primary": "aicentos-openai/gpt-5"
+        "primary": "nbility-openai/gpt-5"
       }
     }
   }
@@ -206,7 +206,7 @@ When calling OpenAI models through AICentOS, the `api` field must be set to `ope
 ```
 
 ::: tip
-**OpenAI protocol requires `/v1`**, i.e., `https://www.aicentos.com/v1`. This is because the two SDKs have different path concatenation logic.
+**OpenAI protocol requires `/v1`**, i.e., `https://nbility.dev/v1`. This is because the two SDKs have different path concatenation logic.
 :::
 
 #### Configure Both Anthropic + OpenAI (Recommended)
@@ -218,9 +218,9 @@ Add both providers side-by-side under `models.providers` to use models from both
   "models": {
     "mode": "merge",
     "providers": {
-      "aicentos-anthropic": {
-        "baseUrl": "https://www.aicentos.com",
-        "apiKey": "sk-your-aicentos-token",
+      "nbility-anthropic": {
+        "baseUrl": "https://nbility.dev",
+        "apiKey": "sk-your-nbility-token",
         "api": "anthropic-messages",
         "models": [
           {
@@ -241,9 +241,9 @@ Add both providers side-by-side under `models.providers` to use models from both
           }
         ]
       },
-      "aicentos-openai": {
-        "baseUrl": "https://www.aicentos.com/v1",
-        "apiKey": "sk-your-aicentos-token",
+      "nbility-openai": {
+        "baseUrl": "https://nbility.dev/v1",
+        "apiKey": "sk-your-nbility-token",
         "api": "openai-responses",
         "models": [
           {
@@ -269,10 +269,10 @@ Add both providers side-by-side under `models.providers` to use models from both
   "agents": {
     "defaults": {
       "model": {
-        "primary": "aicentos-anthropic/claude-opus-4-6",
+        "primary": "nbility-anthropic/claude-opus-4-6",
         "fallbacks": [
-          "aicentos-anthropic/claude-sonnet-4-5-20250929",
-          "aicentos-openai/gpt-5"
+          "nbility-anthropic/claude-sonnet-4-5-20250929",
+          "nbility-openai/gpt-5"
         ]
       }
     }
@@ -282,21 +282,21 @@ Add both providers side-by-side under `models.providers` to use models from both
 
 To switch the default model, simply modify the `model.primary` value:
 
-- `"aicentos-anthropic/claude-opus-4-6"` → Claude Opus 4.6
-- `"aicentos-anthropic/claude-sonnet-4-5-20250929"` → Claude Sonnet 4.5
-- `"aicentos-openai/gpt-5"` → GPT-5
-- `"aicentos-openai/gpt-5-codex"` → GPT-5 Codex
+- `"nbility-anthropic/claude-opus-4-6"` → Claude Opus 4.6
+- `"nbility-anthropic/claude-sonnet-4-5-20250929"` → Claude Sonnet 4.5
+- `"nbility-openai/gpt-5"` → GPT-5
+- `"nbility-openai/gpt-5-codex"` → GPT-5 Codex
 
 ### Key Configuration Fields
 
 | Field | Meaning | Anthropic (Claude) | OpenAI (GPT) |
 | --- | --- | --- | --- |
-| `baseUrl` | API proxy address | `https://www.aicentos.com` | `https://www.aicentos.com/v1` |
-| `apiKey` | Your API Key | `sk-your-aicentos-token` | `sk-your-aicentos-token` |
+| `baseUrl` | API proxy address | `https://nbility.dev` | `https://nbility.dev/v1` |
+| `apiKey` | Your API Key | `sk-your-nbility-token` | `sk-your-nbility-token` |
 | `api` | API protocol type | `anthropic-messages` | `openai-responses` |
 | `mode` | Config merge mode | `merge` (recommended) | `merge` (recommended) |
 | `models[].id` | Model ID | `claude-opus-4-6` | `gpt-5` |
-| `model.primary` | Default model | `aicentos-anthropic/claude-opus-4-6` | `aicentos-openai/gpt-5` |
+| `model.primary` | Default model | `nbility-anthropic/claude-opus-4-6` | `nbility-openai/gpt-5` |
 | `reasoning` | Enable reasoning mode | `false` (depends on model) | `true` (GPT-5.x supports) |
 
 ## Verify Configuration
@@ -307,7 +307,7 @@ Run the following command to confirm the configuration is working:
 openclaw
 ```
 
-If configured correctly, OpenClaw will start normally and route requests through AICentOS.
+If configured correctly, OpenClaw will start normally and route requests through NBility.
 
 You can also check the model list:
 
@@ -355,8 +355,8 @@ openclaw gateway restart
 
 ```json
 {
-  "aicentos-anthropic": {
-    "baseUrl": "https://www.aicentos.com",
+  "nbility-anthropic": {
+    "baseUrl": "https://nbility.dev",
     "apiKey": "your-api-key",
     "api": "anthropic-messages",
     "headers": {
@@ -377,12 +377,12 @@ openclaw gateway restart
 
 ```json
 {
-  "baseUrl": "https://www.aicentos.com"
+  "baseUrl": "https://nbility.dev"
 }
 ```
 
 ::: tip
-OpenAI protocol requires `/v1`, i.e., `https://www.aicentos.com/v1`. This is because the two SDKs have different path concatenation logic.
+OpenAI protocol requires `/v1`, i.e., `https://nbility.dev/v1`. This is because the two SDKs have different path concatenation logic.
 :::
 
 ### The api Field Only Accepts Three Values
@@ -399,7 +399,7 @@ OpenAI protocol requires `/v1`, i.e., `https://www.aicentos.com/v1`. This is bec
 
 Values like `openai-chat`, `openai`, `anthropic`, etc. will cause errors.
 
-**Fix**: When using AICentOS, use `anthropic-messages` for Claude models and `openai-responses` for GPT models.
+**Fix**: When using NBility, use `anthropic-messages` for Claude models and `openai-responses` for GPT models.
 
 ### Empty Response with openai-completions (Don't Use for GPT Models)
 
@@ -407,7 +407,7 @@ Values like `openai-chat`, `openai`, `anthropic`, etc. will cause errors.
 
 **Cause**: OpenClaw internally handles message streams in Anthropic format. OpenAI-format responses from `openai-completions` may not map correctly in some cases.
 
-**Fix**: When calling GPT models via AICentOS, use `openai-responses` instead of `openai-completions`.
+**Fix**: When calling GPT models via NBility, use `openai-responses` instead of `openai-completions`.
 
 ### Configuration Changes Not Taking Effect
 
@@ -457,8 +457,8 @@ GPT-5.x Codex series generally supports `reasoning`. For Claude models, it depen
 
 ### What's the Difference Between openai-completions and openai-responses?
 
-- **openai-responses** — Corresponds to OpenAI Responses API (`/v1/responses`). **Use this when accessing GPT models via AICentOS.**
-- **openai-completions** — Corresponds to OpenAI Chat Completions API (`/v1/chat/completions`), a universal compatibility format, but may cause empty responses with AICentOS's GPT models. **Not recommended.**
+- **openai-responses** — Corresponds to OpenAI Responses API (`/v1/responses`). **Use this when accessing GPT models via NBility.**
+- **openai-completions** — Corresponds to OpenAI Chat Completions API (`/v1/chat/completions`), a universal compatibility format, but may cause empty responses with NBility's GPT models. **Not recommended.**
 
 ### Diagnostic Command Reference
 
@@ -470,5 +470,5 @@ GPT-5.x Codex series generally supports `reasoning`. For Claude models, it depen
 | `openclaw gateway restart` | Restart Gateway |
 
 ::: tip Debugging Strategy
-First use curl to confirm the AICentOS API itself is working normally, then check what's different in the requests sent by OpenClaw (UA, path, format).
+First use curl to confirm the NBility API itself is working normally, then check what's different in the requests sent by OpenClaw (UA, path, format).
 :::

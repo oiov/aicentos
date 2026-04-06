@@ -1,9 +1,9 @@
-# 在 RooCode 中使用 AICentOS
+# 在 RooCode 中使用 NBility
 
 ## 在 VSCode 中安装 RooCode
 
 1. 在 VSCode 中搜索 [RooCode](https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline) 并安装
-2. 访问 [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token) 获取你的 API Key
+2. 访问 [https://nbility.dev/console/token](https://nbility.dev/console/token) 获取你的 API Key
 
 ## 新增提供商
 
@@ -11,8 +11,8 @@
 
 | 配置项 | 值 |
 |--------|-----|
-| **OpenAI 基础 URL** | `https://www.aicentos.com/v1` |
-| **API 密钥** | 你在 AICentOS 创建的 Key |
+| **OpenAI 基础 URL** | `https://nbility.dev/v1` |
+| **API 密钥** | 你在 NBility 创建的 Key |
 | **模型** | `gpt-5` |
 
 ::: tip 提示

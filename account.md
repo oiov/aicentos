@@ -6,7 +6,7 @@
 
 ### 1. 注册账号
 
-访问 [aicentos.com](https://www.aicentos.com/register?aff=Dptp)，点击**注册**：
+访问 [nbility.dev](https://nbility.dev/register?aff=Dptp)，点击**注册**：
 
 
 

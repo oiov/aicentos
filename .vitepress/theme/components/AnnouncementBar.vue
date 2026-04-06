@@ -13,23 +13,23 @@ const props = withDefaults(
 
 const I18N: Record<string, { text: string; linkText: string }> = {
   "zh-CN": {
-    text: "欢迎使用 AICentOS — AI Coding 中转站",
+    text: "欢迎使用 NBility — AI Coding 中转站",
     linkText: "立即注册",
   },
   "en-US": {
-    text: "Welcome to AICentOS — AI Coding Relay",
+    text: "Welcome to NBility — AI Coding Relay",
     linkText: "Register Now",
   },
   "fr-FR": {
-    text: "Bienvenue sur AICentOS — Relais AI Coding",
+    text: "Bienvenue sur NBility — Relais AI Coding",
     linkText: "S'inscrire",
   },
   "es-ES": {
-    text: "Bienvenido a AICentOS — Relay AI Coding",
+    text: "Bienvenido a NBility — Relay AI Coding",
     linkText: "Registrarse",
   },
   "pt-BR": {
-    text: "Bem-vindo ao AICentOS — Relay AI Coding",
+    text: "Bem-vindo ao NBility — Relay AI Coding",
     linkText: "Registrar",
   },
 };
@@ -83,7 +83,7 @@ function dismiss() {
     <div v-if="visible" class="announcement-bar">
       <div class="content">
         <span>{{ t.text }}</span>
-        <a href="https://www.aicentos.com/register?aff=Dptp" class="link">{{
+        <a href="https://nbility.dev/register?aff=Dptp" class="link">{{
           t.linkText
         }}</a>
       </div>

@@ -1,4 +1,4 @@
-# Using AICentOS with Claude  Code
+# Using NBility with Claude  Code
 
 > New here? Complete [Account Setup](/en/account) first.
 
@@ -49,7 +49,7 @@ npx zcf
 
 ---
 
-## 3. Configure AICentOS
+## 3. Configure NBility
 
 1. In the terminal, type `npx zcf` and press Enter.
    When prompted `Ok to proceed? (y)`, type `y` and press Enter.
@@ -83,11 +83,11 @@ npx zcf
 
 11. API Base URL:
     ```
-    https://www.aicentos.com
+    https://nbility.dev
     ```
 
 12. API Key:
-    Enter the token generated from your AICentOS console
+    Enter the token generated from your NBility console
 
 13. Model-related configuration:
     Press Enter to skip with defaults
@@ -191,7 +191,7 @@ After installation, the extension offers three connection methods:
 
 ![Claude  Code Extension Connection Methods](/img/start/vscode-02-login.png)
 
-It is recommended to connect to AICentOS via `settings.json`. Click the **gear icon** in the bottom-right of the extension → **Edit in settings.json**:
+It is recommended to connect to NBility via `settings.json`. Click the **gear icon** in the bottom-right of the extension → **Edit in settings.json**:
 
 ![Open settings.json for Editing](/img/start/vscode-03-settings.png)
 
@@ -202,14 +202,14 @@ Add the following to VSCode's `settings.json`:
   "claudeCode.preferredLocation": "panel",
   "claudeCode.environmentVariables": [
     { "name": "ANTHROPIC_AUTH_TOKEN", "value": "replace with your API Key" },
-    { "name": "ANTHROPIC_BASE_URL", "value": "https://www.aicentos.com/" }
+    { "name": "ANTHROPIC_BASE_URL", "value": "https://nbility.dev/" }
   ]
 }
 ```
 
 ![settings.json Configuration Example](/img/start/vscode-04-config.png)
 
-After saving, **quit and reopen VSCode** — the extension will connect to AICentOS normally.
+After saving, **quit and reopen VSCode** — the extension will connect to NBility normally.
 
 ![Using Claude  Code in VSCode](/img/start/vscode-05-demo.gif)
 
@@ -227,7 +227,7 @@ Re-run the `setx` commands in PowerShell to write system variables, then reopen 
 
 ```powershell
 setx ANTHROPIC_AUTH_TOKEN "sk-xxx"
-setx ANTHROPIC_BASE_URL "https://www.aicentos.com/"
+setx ANTHROPIC_BASE_URL "https://nbility.dev/"
 ```
 
 ### "Unable to connect to Anthropic services"

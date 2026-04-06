@@ -1,6 +1,6 @@
 # Modelos suportados
 
-O AICentOS oferece suporte a uma variedade de modelos de IA de diversos provedores, cobrindo diferentes casos de uso e cadeias de ferramentas. Voce pode escolher e trocar de modelo livremente conforme suas necessidades.
+O NBility oferece suporte a uma variedade de modelos de IA de diversos provedores, cobrindo diferentes casos de uso e cadeias de ferramentas. Voce pode escolher e trocar de modelo livremente conforme suas necessidades.
 
 ## Anthropic (Claude)
 

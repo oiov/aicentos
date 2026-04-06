@@ -2,9 +2,9 @@
 
 ## General
 
-### What is AICentOS?
+### What is NBility?
 
-AICentOS is an AI Coding relay that supports Claude and Codex models across multiple platforms.
+NBility is an AI Coding relay that supports Claude and Codex models across multiple platforms.
 
 ### Which tools are supported?
 
@@ -19,7 +19,7 @@ Currently supported tools:
 
 ### How is my data handled?
 
-AICentOS acts solely as an API relay service. Your code and conversations are not stored on our servers. All requests are forwarded directly to the respective model providers.
+NBility acts solely as an API relay service. Your code and conversations are not stored on our servers. All requests are forwarded directly to the respective model providers.
 
 ::: tip
 For sensitive projects, we recommend reviewing each model provider's privacy policy before use.
@@ -29,11 +29,11 @@ For sensitive projects, we recommend reviewing each model provider's privacy pol
 
 ### How do I sign up?
 
-Visit [aicentos.com/register](https://www.aicentos.com/register?aff=Dptp) and follow the prompts to create an account.
+Visit [nbility.dev/register](https://nbility.dev/register?aff=Dptp) and follow the prompts to create an account.
 
 ### How do I get an API token?
 
-After signing in, go to the [Token Management page](https://www.aicentos.com/console/token) in the console to generate a new token.
+After signing in, go to the [Token Management page](https://nbility.dev/console/token) in the console to generate a new token.
 
 ### How long does a token last?
 
@@ -76,10 +76,10 @@ echo $ANTHROPIC_AUTH_TOKEN
 | RooCode | VS Code Settings JSON |
 | Qwen Code | Environment variables |
 
-### I can't connect to AICentOS
+### I can't connect to NBility
 
-1. Confirm the `BASE_URL` is set to `https://www.aicentos.com/` (note the trailing `/`)
-2. Verify that `aicentos.com` is reachable from your network
+1. Confirm the `BASE_URL` is set to `https://nbility.dev/` (note the trailing `/`)
+2. Verify that `nbility.dev` is reachable from your network
 3. If you're behind a corporate proxy, ensure your proxy settings are configured correctly
 
 ## Model Selection
@@ -118,7 +118,7 @@ export ANTHROPIC_MODEL=claude-sonnet-4-5-20250929
 - Both `API_KEY` and `AUTH_TOKEN` must be set
 :::
 
-Fix: Go to the [console](https://www.aicentos.com/console/token), verify your token status, and copy-paste it again.
+Fix: Go to the [console](https://nbility.dev/console/token), verify your token status, and copy-paste it again.
 
 ### Request timeout
 
@@ -141,4 +141,4 @@ A `429` status code means you're sending requests too frequently.
 
 ### Model not available
 
-Double-check the model name you specified. Refer to the recommended model list in [Get Started](/en/start). Some models may not yet be available on AICentOS.
+Double-check the model name you specified. Refer to the recommended model list in [Get Started](/en/start). Some models may not yet be available on NBility.

@@ -1,4 +1,4 @@
-# Usando AICentOS com Qwen Code
+# Usando NBility com Qwen Code
 
 ## Instalação
 
@@ -28,20 +28,20 @@ bunx --global @qwen-code/qwen-code
 
 ```bash [Linux/macOS]
 export OPENAI_API_KEY="sk-xxx"
-export OPENAI_BASE_URL="https://www.aicentos.com/v1"
+export OPENAI_BASE_URL="https://nbility.dev/v1"
 export OPENAI_MODEL="gpt-5"
 ```
 
 ```powershell [Windows PowerShell]
 $env:OPENAI_API_KEY="sk-xxx"
-$env:OPENAI_BASE_URL="https://www.aicentos.com/v1"
+$env:OPENAI_BASE_URL="https://nbility.dev/v1"
 $env:OPENAI_MODEL="gpt-5"
 ```
 
 :::
 
 ::: warning Importante
-Substitua `sk-xxx` pelo seu token do [Console AICentOS](https://www.aicentos.com/console/token).
+Substitua `sk-xxx` pelo seu token do [Console NBility](https://nbility.dev/console/token).
 :::
 
 ## Iniciar Diretamente

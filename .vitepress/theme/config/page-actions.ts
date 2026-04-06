@@ -19,10 +19,10 @@ export type PageActionPlatform = {
 };
 
 export const PAGE_ACTION_CONFIG = {
-  siteBaseUrl: "https://doc.aicentos.com",
+  siteBaseUrl: "https://doc.nbility.dev",
   github: {
-    owner: "aicentos",
-    repo: "aicentos",
+    owner: "nbility",
+    repo: "nbility",
     branch: "main",
     pathPrefix: "",
   },

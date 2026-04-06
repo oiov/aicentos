@@ -1,6 +1,6 @@
 # Comparacion de herramientas
 
-Elige la herramienta de codificacion con IA que mejor se adapte a tu flujo de trabajo. A continuacion, una comparacion completa de todas las herramientas disponibles en la plataforma AICentOS.
+Elige la herramienta de codificacion con IA que mejor se adapte a tu flujo de trabajo. A continuacion, una comparacion completa de todas las herramientas disponibles en la plataforma NBility.
 
 ## Informacion basica
 
@@ -46,7 +46,7 @@ Elige la herramienta de codificacion con IA que mejor se adapte a tu flujo de tr
 | **Droid CLI** | - | JSON | CLI interactivo |
 | **OpenCode** | :white_check_mark: | JSON | TUI interactivo |
 
-## Compatibilidad con AICentOS
+## Compatibilidad con NBility
 
 | Herramienta | Estado | Dificultad | Notas |
 |-------------|:------:|:----------:|-------|

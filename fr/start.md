@@ -1,4 +1,4 @@
-# Utiliser AICentOS avec Claude Code
+# Utiliser NBility avec Claude Code
 
 > Première utilisation ? Commencez par [créer votre compte](/fr/account).
 
@@ -49,7 +49,7 @@ npx zcf
 
 ---
 
-## 3. Configurer AICentOS
+## 3. Configurer NBility
 
 1. Dans le terminal, saisissez `npx zcf` et appuyez sur Entrée.
    Lorsque `Ok to proceed? (y)` apparaît, saisissez `y` et appuyez sur Entrée.
@@ -83,11 +83,11 @@ npx zcf
 
 11. URL de base de l'API :
     ```
-    https://www.aicentos.com
+    https://nbility.dev
     ```
 
 12. Clé API :
-    Saisissez le token généré dans la console AICentOS
+    Saisissez le token généré dans la console NBility
 
 13. Configuration liée au modèle :
     Appuyez sur Entrée pour ignorer les valeurs par défaut
@@ -191,7 +191,7 @@ Une fois installé, le plugin propose trois méthodes de connexion :
 
 ![Méthodes de connexion du plugin Claude Code](/img/start/vscode-02-login.png)
 
-Il est recommandé de configurer la connexion à AICentOS via `settings.json`. Cliquez sur l'**icône d'engrenage** en bas à droite du plugin → **Modifier dans settings.json** :
+Il est recommandé de configurer la connexion à NBility via `settings.json`. Cliquez sur l'**icône d'engrenage** en bas à droite du plugin → **Modifier dans settings.json** :
 
 ![Ouvrir l'édition de settings.json](/img/start/vscode-03-settings.png)
 
@@ -202,14 +202,14 @@ Ajoutez les éléments suivants dans le `settings.json` de VSCode :
   "claudeCode.preferredLocation": "panel",
   "claudeCode.environmentVariables": [
     { "name": "ANTHROPIC_AUTH_TOKEN", "value": "Remplacez par votre clé API" },
-    { "name": "ANTHROPIC_BASE_URL", "value": "https://www.aicentos.com/" }
+    { "name": "ANTHROPIC_BASE_URL", "value": "https://nbility.dev/" }
   ]
 }
 ```
 
 ![Exemple de configuration settings.json](/img/start/vscode-04-config.png)
 
-Après avoir sauvegardé, **quittez et rouvrez VSCode** ; le plugin se connectera normalement à AICentOS.
+Après avoir sauvegardé, **quittez et rouvrez VSCode** ; le plugin se connectera normalement à NBility.
 
 ![Utiliser Claude Code dans VSCode](/img/start/vscode-05-demo.gif)
 
@@ -227,7 +227,7 @@ Exécutez à nouveau la commande `setx` dans PowerShell pour écrire les variabl
 
 ```powershell
 setx ANTHROPIC_AUTH_TOKEN "sk-xxx"
-setx ANTHROPIC_BASE_URL "https://www.aicentos.com/"
+setx ANTHROPIC_BASE_URL "https://nbility.dev/"
 ```
 
 ### "Unable to connect to Anthropic services"

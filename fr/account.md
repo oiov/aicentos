@@ -6,7 +6,7 @@
 
 ### 1. Créer un compte
 
-Rendez-vous sur [aicentos.com](https://www.aicentos.com/register?aff=Dptp) et cliquez sur **S'inscrire** :
+Rendez-vous sur [nbility.dev](https://nbility.dev/register?aff=Dptp) et cliquez sur **S'inscrire** :
 
 
 Choisissez votre méthode d'inscription (GitHub, LinuxDO ou nom d'utilisateur) :

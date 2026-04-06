@@ -5,13 +5,13 @@ import { Feed } from "feed";
 import { writeFileSync, mkdirSync } from "fs";
 import { resolve } from "path";
 
-const SITE_URL = "https://doc.aicentos.com";
-const SITE_TITLE = "AICentOS";
+const SITE_URL = "https://doc.nbility.dev";
+const SITE_TITLE = "NBility";
 const SITE_DESC = "AI Coding 中转站 - 支持 Claude、Codex 模型在多种平台使用";
 
 // GitHub Pages 子路径支持：
 //   - 本地开发 / Docker / 自定义域名：BASE = '/'
-//   - GitHub Pages 无自定义域名：CI 传入 VITEPRESS_BASE=/aicentos/
+//   - GitHub Pages 无自定义域名：CI 传入 VITEPRESS_BASE=/nbility/
 const BASE = (process.env.VITEPRESS_BASE ?? "/").replace(/([^/])$/, "$1/");
 
 /** 将站内绝对路径加上 base 前缀（供 head 标签使用，VitePress 不自动处理） */
@@ -28,7 +28,7 @@ async function generateFeed(siteConfig: SiteConfig) {
     language: "zh-CN",
     image: `${SITE_URL}/img/logo.jpg`,
     favicon: `${SITE_URL}/img/logo.svg`,
-    copyright: `Copyright © ${new Date().getFullYear()} AICentOS`,
+    copyright: `Copyright © ${new Date().getFullYear()} NBility`,
     updated: new Date(),
   });
 
@@ -74,7 +74,7 @@ export default withPwa(
         {
           rel: "alternate",
           type: "application/rss+xml",
-          title: "AICentOS RSS",
+          title: "NBility RSS",
           href: p("/feed.xml"),
         },
       ],
@@ -83,21 +83,18 @@ export default withPwa(
         {
           rel: "alternate",
           type: "application/atom+xml",
-          title: "AICentOS Atom",
+          title: "NBility Atom",
           href: p("/feed.atom"),
         },
       ],
       ["meta", { property: "og:type", content: "website" }],
-      ["meta", { property: "og:site_name", content: "AICentOS" }],
-      [
-        "meta",
-        { property: "og:title", content: "AICentOS - AI Coding 中转站" },
-      ],
+      ["meta", { property: "og:site_name", content: "NBility" }],
+      ["meta", { property: "og:title", content: "NBility - AI Coding 中转站" }],
       ["meta", { property: "og:description", content: SITE_DESC }],
       ["meta", { property: "og:image", content: `${SITE_URL}/img/logo.svg` }],
       ["meta", { property: "og:url", content: SITE_URL }],
       ["meta", { name: "twitter:card", content: "summary" }],
-      ["meta", { name: "twitter:site", content: "@aicentos" }],
+      ["meta", { name: "twitter:site", content: "@nbility" }],
       ["meta", { name: "twitter:image", content: `${SITE_URL}/img/logo.jpg` }],
       [
         "script",
@@ -115,8 +112,8 @@ export default withPwa(
     pwa: {
       registerType: "autoUpdate",
       manifest: {
-        name: "AICentOS - AI Coding 中转站",
-        short_name: "AICentOS",
+        name: "NBility - AI Coding 中转站",
+        short_name: "NBility",
         description: SITE_DESC,
         theme_color: "#6366f1",
         icons: [
@@ -171,12 +168,12 @@ export default withPwa(
                   items: [
                     {
                       text: "控制台",
-                      link: "https://www.aicentos.com/console",
+                      link: "https://nbility.dev/console",
                     },
-                    { text: "服务状态", link: "https://status.aicentos.com" },
+                    { text: "服务状态", link: "https://status.nbility.dev" },
                     {
                       text: "额度查询",
-                      link: "https://api-key-tool.aicentos.com",
+                      link: "https://api-key-tool.nbility.dev",
                     },
                   ],
                 },
@@ -184,7 +181,7 @@ export default withPwa(
             },
             {
               text: "立即注册",
-              link: "https://www.aicentos.com/register?aff=Dptp",
+              link: "https://nbility.dev/register?aff=Dptp",
             },
           ],
           sidebar: [
@@ -216,7 +213,7 @@ export default withPwa(
             },
           ],
           editLink: {
-            pattern: "https://github.com/aicentos/aicentos/edit/main/:path",
+            pattern: "https://github.com/nbility/nbility/edit/main/:path",
             text: "在 GitHub 上编辑此页",
           },
           lastUpdated: {
@@ -271,21 +268,21 @@ export default withPwa(
                   items: [
                     {
                       text: "Console",
-                      link: "https://www.aicentos.com/console",
+                      link: "https://nbility.dev/console",
                     },
                     {
                       text: "Service Status",
-                      link: "https://status.aicentos.com",
+                      link: "https://status.nbility.dev",
                     },
                     {
                       text: "Credit Balance",
-                      link: "https://api-key-tool.aicentos.com",
+                      link: "https://api-key-tool.nbility.dev",
                     },
                   ],
                 },
               ],
             },
-            { text: "Register Now", link: "https://www.aicentos.com/register" },
+            { text: "Register Now", link: "https://nbility.dev/register" },
           ],
           sidebar: [
             {
@@ -316,7 +313,7 @@ export default withPwa(
             },
           ],
           editLink: {
-            pattern: "https://github.com/aicentos/aicentos/edit/main/:path",
+            pattern: "https://github.com/nbility/nbility/edit/main/:path",
             text: "Edit this page on GitHub",
           },
           lastUpdated: {
@@ -374,15 +371,15 @@ export default withPwa(
                   items: [
                     {
                       text: "Console",
-                      link: "https://www.aicentos.com/console",
+                      link: "https://nbility.dev/console",
                     },
                     {
                       text: "État du service",
-                      link: "https://status.aicentos.com",
+                      link: "https://status.nbility.dev",
                     },
                     {
                       text: "Vérifier le solde",
-                      link: "https://api-key-tool.aicentos.com",
+                      link: "https://api-key-tool.nbility.dev",
                     },
                   ],
                 },
@@ -390,7 +387,7 @@ export default withPwa(
             },
             {
               text: "S'inscrire",
-              link: "https://www.aicentos.com/register?aff=Dptp",
+              link: "https://nbility.dev/register?aff=Dptp",
             },
           ],
           sidebar: [
@@ -422,7 +419,7 @@ export default withPwa(
             },
           ],
           editLink: {
-            pattern: "https://github.com/aicentos/aicentos/edit/main/:path",
+            pattern: "https://github.com/nbility/nbility/edit/main/:path",
             text: "Modifier cette page sur GitHub",
           },
           lastUpdated: {
@@ -480,15 +477,15 @@ export default withPwa(
                   items: [
                     {
                       text: "Consola",
-                      link: "https://www.aicentos.com/console",
+                      link: "https://nbility.dev/console",
                     },
                     {
                       text: "Estado del servicio",
-                      link: "https://status.aicentos.com",
+                      link: "https://status.nbility.dev",
                     },
                     {
                       text: "Consultar saldo",
-                      link: "https://api-key-tool.aicentos.com",
+                      link: "https://api-key-tool.nbility.dev",
                     },
                   ],
                 },
@@ -496,7 +493,7 @@ export default withPwa(
             },
             {
               text: "Registrarse",
-              link: "https://www.aicentos.com/register?aff=Dptp",
+              link: "https://nbility.dev/register?aff=Dptp",
             },
           ],
           sidebar: [
@@ -528,7 +525,7 @@ export default withPwa(
             },
           ],
           editLink: {
-            pattern: "https://github.com/aicentos/aicentos/edit/main/:path",
+            pattern: "https://github.com/nbility/nbility/edit/main/:path",
             text: "Editar esta página en GitHub",
           },
           lastUpdated: {
@@ -583,15 +580,15 @@ export default withPwa(
                   items: [
                     {
                       text: "Console",
-                      link: "https://www.aicentos.com/console",
+                      link: "https://nbility.dev/console",
                     },
                     {
                       text: "Status do serviço",
-                      link: "https://status.aicentos.com",
+                      link: "https://status.nbility.dev",
                     },
                     {
                       text: "Verificar saldo",
-                      link: "https://api-key-tool.aicentos.com",
+                      link: "https://api-key-tool.nbility.dev",
                     },
                   ],
                 },
@@ -599,7 +596,7 @@ export default withPwa(
             },
             {
               text: "Registrar",
-              link: "https://www.aicentos.com/register?aff=Dptp",
+              link: "https://nbility.dev/register?aff=Dptp",
             },
           ],
           sidebar: [
@@ -631,7 +628,7 @@ export default withPwa(
             },
           ],
           editLink: {
-            pattern: "https://github.com/aicentos/aicentos/edit/main/:path",
+            pattern: "https://github.com/nbility/nbility/edit/main/:path",
             text: "Editar esta página no GitHub",
           },
           lastUpdated: {
@@ -720,13 +717,13 @@ export default withPwa(
         },
       },
       socialLinks: [
-        { icon: "x", link: "https://x.com/aicentos" },
-        { icon: "github", link: "https://github.com/aicentos" },
+        { icon: "x", link: "https://x.com/nbility" },
+        { icon: "github", link: "https://github.com/nbility" },
       ],
       footer: {
         message:
-          '<a href="https://www.aicentos.com" target="_blank">主站</a> | <a href="https://doc.aicentos.com/feed.xml" target="_blank">RSS</a> | <a href="https://doc.aicentos.com/feed.atom" target="_blank">Atom</a> | <a href="https://doc.aicentos.com/sitemap.xml" target="_blank">Sitemap</a> | <a href="https://github.com/aicentos" target="_blank">GitHub</a>',
-        copyright: `Copyright © ${new Date().getFullYear()} AICentOS`,
+          '<a href="https://nbility.dev" target="_blank">主站</a> | <a href="https://doc.nbility.dev/feed.xml" target="_blank">RSS</a> | <a href="https://doc.nbility.dev/feed.atom" target="_blank">Atom</a> | <a href="https://doc.nbility.dev/sitemap.xml" target="_blank">Sitemap</a> | <a href="https://github.com/nbility" target="_blank">GitHub</a>',
+        copyright: `Copyright © ${new Date().getFullYear()} NBility`,
       },
     },
   }),

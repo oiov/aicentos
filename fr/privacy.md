@@ -1,4 +1,4 @@
-# Politique de confidentialité de AICentOS
+# Politique de confidentialité de NBility
 
 **Date d'entrée en vigueur : 11 février 2026**
 
@@ -14,7 +14,7 @@ La présente politique est conforme à la loi chinoise sur la protection des inf
 ## 2. Utilisation des données soumises
 
 ::: info
-AICentOS **n'utilise pas** vos entrées ni les sorties générées pour entraîner des modèles d'IA, sauf si vous activez explicitement le mode historique ou débogage.
+NBility **n'utilise pas** vos entrées ni les sorties générées pour entraîner des modèles d'IA, sauf si vous activez explicitement le mode historique ou débogage.
 :::
 
 ## 3. Partage des données
@@ -53,15 +53,15 @@ Conformément à la PIPL, vous disposez des droits suivants :
 
 ## 8. Mineurs
 
-AICentOS ne collecte pas intentionnellement de données provenant de mineurs.
+NBility ne collecte pas intentionnellement de données provenant de mineurs.
 
 ## 9. Contact
 
 ::: tip
 Pour exercer vos droits ou pour toute question relative à la confidentialité, contactez-nous :
 
-- **E-mail dédié** : [privacy@aicentos.com](mailto:privacy@aicentos.com)
-- **Support général** : [support@aicentos.com](mailto:support@aicentos.com)
+- **E-mail dédié** : [privacy@nbility.dev](mailto:privacy@nbility.dev)
+- **Support général** : [support@nbility.dev](mailto:support@nbility.dev)
 
 Délai de réponse : 15 jours ouvrés.
 :::

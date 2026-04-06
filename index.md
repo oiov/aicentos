@@ -2,16 +2,16 @@
 layout: home
 
 hero:
-  name: "AICentOS"
+  name: "NBility"
   text: "AI Coding 中转站"
   tagline: 支持 Claude、Codex 模型在多种平台使用
   image:
     src: /img/cc-b.png
-    alt: AICentOS
+    alt: NBility
   actions:
     - theme: brand
       text: 立即注册
-      link: https://www.aicentos.com/register?aff=Dptp
+      link: https://nbility.dev/register?aff=Dptp
     - theme: alt
       text: 使用文档
       link: /start

@@ -1,4 +1,4 @@
-# Utiliser AICentOS avec Droid CLI
+# Utiliser NBility avec Droid CLI
 
 ## Installation
 
@@ -22,10 +22,10 @@ irm https://app.factory.ai/cli/windows | iex
 {
   "custom_models": [
     {
-      "model_display_name": "aicentos-gpt5",
+      "model_display_name": "nbility-gpt5",
       "model": "gpt-5",
-      "base_url": "https://www.aicentos.com/v1",
-      "api_key": "VOTRE_CLÉ_AICENTOS",
+      "base_url": "https://nbility.dev/v1",
+      "api_key": "VOTRE_CLÉ_NBility",
       "provider": "generic-chat-completion-api",
       "max_tokens": 1280000
     }
@@ -34,9 +34,9 @@ irm https://app.factory.ai/cli/windows | iex
 ```
 
 ::: warning Important
-Remplacez `VOTRE_CLÉ_AICENTOS` par votre clé API.
+Remplacez `VOTRE_CLÉ_NBility` par votre clé API.
 :::
 
 ## Lancement Direct
 
-Tapez `droid`, entrez `/model`, et sélectionnez `aicentos-gpt5` dans Custom Model.
+Tapez `droid`, entrez `/model`, et sélectionnez `nbility-gpt5` dans Custom Model.

@@ -1,4 +1,4 @@
-# Usando AICentOS com Droid CLI
+# Usando NBility com Droid CLI
 
 ## Instalação
 
@@ -22,10 +22,10 @@ Edite `~/.factory/config.json`:
 {
   "custom_models": [
     {
-      "model_display_name": "aicentos-gpt5",
+      "model_display_name": "nbility-gpt5",
       "model": "gpt-5",
-      "base_url": "https://www.aicentos.com/v1",
-      "api_key": "SUA_CHAVE_AICENTOS",
+      "base_url": "https://nbility.dev/v1",
+      "api_key": "SUA_CHAVE_NBility",
       "provider": "generic-chat-completion-api",
       "max_tokens": 1280000
     }
@@ -34,9 +34,9 @@ Edite `~/.factory/config.json`:
 ```
 
 ::: warning Importante
-Substitua `SUA_CHAVE_AICENTOS` pela sua API Key.
+Substitua `SUA_CHAVE_NBility` pela sua API Key.
 :::
 
 ## Iniciar Diretamente
 
-Digite `droid`, entre `/model`, e selecione `aicentos-gpt5` em Custom Model.
+Digite `droid`, entre `/model`, e selecione `nbility-gpt5` em Custom Model.

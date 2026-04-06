@@ -1,4 +1,4 @@
-# Use AICentOS in Cursor
+# Use NBility in Cursor
 
 > First time here? Complete [Account Setup](/en/account) and generate your API Key in the console.
 
@@ -14,8 +14,8 @@ In the left sidebar, click **Models**.
 
 Click **Add model**, then fill in:
 
-- **API Key**: your AICentOS key
-- **Base URL**: `https://www.aicentos.com/v1`
+- **API Key**: your NBility key
+- **Base URL**: `https://nbility.dev/v1`
 
 ![Cursor Models Configuration Example](/img/start/cursor.png)
 

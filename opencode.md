@@ -1,4 +1,4 @@
-# 在 OpenCode 中使用 AICentOS
+# 在 OpenCode 中使用 NBility
 
 ## 安装 OpenCode
 
@@ -18,19 +18,19 @@ scoop install opencode
 
 :::
 
-## 配置 AICentOS
+## 配置 NBility
 
-1. 访问 [https://www.aicentos.com/console/token](https://www.aicentos.com/console/token) 获取 API Key
+1. 访问 [https://nbility.dev/console/token](https://nbility.dev/console/token) 获取 API Key
 2. 设置环境变量：
 
 ::: code-group
 
 ```bash [Linux/macOS]
-export AICENTOS_TOKEN=sk-xxx
+export NBility_TOKEN=sk-xxx
 ```
 
 ```powershell [Windows PowerShell]
-$env:AICENTOS_TOKEN="sk-xxx"
+$env:NBility_TOKEN="sk-xxx"
 ```
 
 :::
@@ -41,12 +41,12 @@ $env:AICENTOS_TOKEN="sk-xxx"
 {
   "$schema": "https://opencode.ai/config.json",
   "provider": {
-    "aicentos-anthropic": {
+    "nbility-anthropic": {
       "npm": "@ai-sdk/anthropic",
-      "name": "aicentos-anthropic",
+      "name": "nbility-anthropic",
       "options": {
-        "baseURL": "https://www.aicentos.com/v1",
-        "apiKey": "{env:AICENTOS_TOKEN}"
+        "baseURL": "https://nbility.dev/v1",
+        "apiKey": "{env:NBility_TOKEN}"
       },
       "models": {
         "claude-sonnet-4-6": {
@@ -54,12 +54,12 @@ $env:AICENTOS_TOKEN="sk-xxx"
         }
       }
     },
-    "aicentos-openai": {
+    "nbility-openai": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "aicentos-openai",
+      "name": "nbility-openai",
       "options": {
-        "baseURL": "https://www.aicentos.com/v1",
-        "apiKey": "{env:AICENTOS_TOKEN}"
+        "baseURL": "https://nbility.dev/v1",
+        "apiKey": "{env:NBility_TOKEN}"
       },
       "models": {
         "gpt-5.2-codex": {
@@ -72,7 +72,7 @@ $env:AICENTOS_TOKEN="sk-xxx"
 ```
 
 ::: warning 重要
-请将 `sk-xxx` 替换为你在 [AICentOS 控制台](https://www.aicentos.com/console/token) 获取的实际 Token。
+请将 `sk-xxx` 替换为你在 [NBility 控制台](https://nbility.dev/console/token) 获取的实际 Token。
 :::
 
 ## 启动使用
@@ -82,4 +82,4 @@ cd my-project
 opencode
 ```
 
-启动后通过界面选择 AICentOS 提供商下的模型即可开始使用。
+启动后通过界面选择 NBility 提供商下的模型即可开始使用。

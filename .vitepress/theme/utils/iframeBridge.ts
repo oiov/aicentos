@@ -4,9 +4,9 @@ export type ParentOriginState = {
   allowed: boolean;
 };
 
-const PARENT_HELLO_TYPE = "aicentos:parent-hello";
-const SET_LANG_TYPE = "aicentos:set-lang";
-const DOC_SCROLL_TYPE = "aicentos:doc-scroll";
+const PARENT_HELLO_TYPE = "nbility:parent-hello";
+const SET_LANG_TYPE = "nbility:set-lang";
+const DOC_SCROLL_TYPE = "nbility:doc-scroll";
 const MAX_SCROLL_REPORT_INTERVAL_MS = 100;
 
 const SUPPORTED_LOCALE_PREFIXES = ["/en/", "/fr/", "/es/", "/pt/"] as const;
