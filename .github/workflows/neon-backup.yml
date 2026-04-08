@@ -12,10 +12,18 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: 安装 PostgreSQL 客户端
+      - name: 安装 PostgreSQL 17 客户端
         run: |
           sudo apt-get update -q
-          sudo apt-get install -y postgresql-client
+          sudo apt-get install -y curl ca-certificates
+          sudo install -d /usr/share/postgresql-common/pgdg
+          curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+            | sudo tee /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc > /dev/null
+          sudo sh -c 'echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] \
+            https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" \
+            > /etc/apt/sources.list.d/pgdg.list'
+          sudo apt-get update -q
+          sudo apt-get install -y postgresql-client-17
 
       - name: 备份 main 数据库
         run: |
