@@ -33,5 +33,5 @@ jobs:
             postgres:17-bookworm \
             sh -c 'pg_restore -v --clean --if-exists --no-owner --no-privileges -d "$DB_URL" /backup/sync.dump'
 
-          rm -f /tmp/sync.dump
-          echo "同步完成 ✓"
+          # rm -f /tmp/sync.dump
+          # echo "同步完成 ✓"
