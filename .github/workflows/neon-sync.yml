@@ -2,9 +2,9 @@ name: Sync main → back
 
 on:
   schedule:
-    # 每天 UTC 18:00 执行（台北时间凌晨 2:00）
+    # 每天 UTC 18:00（台北时间凌晨 2:00）
     - cron: '0 18 * * *'
-  workflow_dispatch: # 允许手动触发
+  workflow_dispatch:
 
 jobs:
   sync:
@@ -12,35 +12,26 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: 安装 PostgreSQL 17 客户端
+      - name: 同步 main → back
+        env:
+          MAIN_DB_URL: ${{ secrets.MAIN_DB_URL }}
+          BACK_DB_URL: ${{ secrets.BACK_DB_URL }}
         run: |
-          sudo apt-get update -q
-          sudo apt-get install -y curl ca-certificates
-          sudo install -d /usr/share/postgresql-common/pgdg
-          curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
-            | sudo tee /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc > /dev/null
-          sudo sh -c 'echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] \
-            https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" \
-            > /etc/apt/sources.list.d/pgdg.list'
-          sudo apt-get update -q
-          sudo apt-get install -y postgresql-client-17
+          set -euo pipefail
 
-      - name: 导出 main 数据库
-        run: |
-          pg_dump -Fc -v \
-            -d "${{ secrets.MAIN_DB_URL }}" \
-            -f /tmp/sync.dump
+          echo "导出 main..."
+          docker run --rm \
+            -v /tmp:/backup \
+            -e "DB_URL=${MAIN_DB_URL}" \
+            postgres:17-bookworm \
+            sh -c 'pg_dump -Fc -v -d "$DB_URL" -f /backup/sync.dump'
 
-      - name: 同步到 back 数据库
-        run: |
-          pg_restore -v \
-            --clean \
-            --if-exists \
-            --no-owner \
-            --no-privileges \
-            -d "${{ secrets.BACK_DB_URL }}" \
-            /tmp/sync.dump
+          echo "同步到 back..."
+          docker run --rm \
+            -v /tmp:/backup \
+            -e "DB_URL=${BACK_DB_URL}" \
+            postgres:17-bookworm \
+            sh -c 'pg_restore -v --clean --if-exists --no-owner --no-privileges -d "$DB_URL" /backup/sync.dump'
 
-      - name: 清理临时文件
-        if: always()
-        run: rm -f /tmp/sync.dump
+          rm -f /tmp/sync.dump
+          echo "同步完成 ✓"

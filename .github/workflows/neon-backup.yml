@@ -2,9 +2,9 @@ name: Backup main & back
 
 on:
   schedule:
-    # 每天 UTC 19:00 执行（台北时间凌晨 3:00）
+    # 每天 UTC 19:00（台北时间凌晨 3:00）
     - cron: '0 19 * * *'
-  workflow_dispatch: # 允许手动触发
+  workflow_dispatch:
 
 jobs:
   backup:
@@ -12,34 +12,30 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: 安装 PostgreSQL 17 客户端
+      - name: 备份两个数据库
+        env:
+          MAIN_DB_URL: ${{ secrets.MAIN_DB_URL }}
+          BACK_DB_URL: ${{ secrets.BACK_DB_URL }}
         run: |
-          sudo apt-get update -q
-          sudo apt-get install -y curl ca-certificates
-          sudo install -d /usr/share/postgresql-common/pgdg
-          curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc \
-            | sudo tee /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc > /dev/null
-          sudo sh -c 'echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] \
-            https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" \
-            > /etc/apt/sources.list.d/pgdg.list'
-          sudo apt-get update -q
-          sudo apt-get install -y postgresql-client-17
+          set -euo pipefail
+          TIMESTAMP=$(date -u '+%Y%m%d_%H%M%S')
 
-      - name: 备份 main 数据库
-        run: |
-          TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-          pg_dump -Fc -v \
-            -d "${{ secrets.MAIN_DB_URL }}" \
-            -f "/tmp/main_${TIMESTAMP}.dump"
-          echo "MAIN_DUMP=main_${TIMESTAMP}.dump" >> $GITHUB_ENV
+          echo "备份 main..."
+          docker run --rm \
+            -v /tmp:/backup \
+            -e "DB_URL=${MAIN_DB_URL}" \
+            postgres:17-bookworm \
+            sh -c 'pg_dump -Fc -v -d "$DB_URL" -f /backup/main_'"${TIMESTAMP}"'.dump'
 
-      - name: 备份 back 数据库
-        run: |
-          TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-          pg_dump -Fc -v \
-            -d "${{ secrets.BACK_DB_URL }}" \
-            -f "/tmp/back_${TIMESTAMP}.dump"
-          echo "BACK_DUMP=back_${TIMESTAMP}.dump" >> $GITHUB_ENV
+          echo "备份 back..."
+          docker run --rm \
+            -v /tmp:/backup \
+            -e "DB_URL=${BACK_DB_URL}" \
+            postgres:17-bookworm \
+            sh -c 'pg_dump -Fc -v -d "$DB_URL" -f /backup/back_'"${TIMESTAMP}"'.dump'
+
+          echo "备份完成，文件列表："
+          ls -lh /tmp/main_*.dump /tmp/back_*.dump
 
       - name: 上传备份到 Artifacts
         uses: actions/upload-artifact@v4
@@ -48,5 +44,4 @@ jobs:
           path: |
             /tmp/main_*.dump
             /tmp/back_*.dump
-          # Artifacts 保留 90 天（免费账号上限）
           retention-days: 90
