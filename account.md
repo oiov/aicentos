@@ -34,7 +34,7 @@
 
 
 
-- **令牌分组**建议选择 **官渠**，该分组包含 `claude-opus-4-5-20251101`、`claude-haiku-4-5-20251001`、`claude-opus-4-6`、`claude-sonnet-4-5-20250929`、`claude-sonnet-4-6` 等模型，会根据任务复杂度自动选择，无需手动切换。
+- **令牌分组**建议选择 **aws-enterprise**，该分组包含 `claude-opus-4-5-20251101`、`claude-haiku-4-5-20251001`、`claude-opus-4-6`、`claude-sonnet-4-5-20250929`、`claude-sonnet-4-6` 等模型。模型可用性 https://nbility.dev/status
 
 创建完成后在令牌列表点击**复制**按钮获取 API Key（格式为 `sk-xxx`）：
 
