@@ -10,6 +10,7 @@ import AnnouncementBar from './components/AnnouncementBar.vue'
 import ModelCards from './components/ModelCards.vue'
 import ToolWizard from './components/ToolWizard.vue'
 import Timeline from './components/Timeline.vue'
+import TerminalPreview from './components/TerminalPreview.vue'
 import VideoPlayer from './components/VideoPlayer.vue'
 import PageActionBar from './components/PageActionBar.vue'
 import { initIframeBridge, notifyRouteChange, destroyIframeBridge } from './utils/iframeBridge'
@@ -23,6 +24,7 @@ export default {
     return h(DefaultTheme.Layout, null, {
       'not-found': () => h(NotFound),
       'layout-top': () => h(AnnouncementBar),
+      'home-features-after': () => h(TerminalPreview),
       'doc-before': () => h(PageActionBar),
       'layout-bottom': () => h(BackToTop),
     })
@@ -51,6 +53,7 @@ export default {
     app.component('ModelCards', ModelCards)
     app.component('ToolWizard', ToolWizard)
     app.component('Timeline', Timeline)
+    app.component('TerminalPreview', TerminalPreview)
     app.component('VideoPlayer', VideoPlayer)
   }
 } satisfies Theme
