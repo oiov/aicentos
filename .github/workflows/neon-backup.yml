@@ -37,7 +37,7 @@ jobs:
             docker run --rm \
               -v /tmp:/backup \
               -e "DB_URL=${url}" \
-              postgres:17-bookworm \
+              postgres:18-bookworm \
               sh -c 'pg_dump -Fc -v -d "$DB_URL" -f /backup/back'"${INDEX}"'_'"${TIMESTAMP}"'.dump'
           done <<< "${BACK_DB_URL}"
 
