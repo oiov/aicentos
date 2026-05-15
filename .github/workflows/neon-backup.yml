@@ -2,8 +2,10 @@ name: Backup main & back
 
 on:
   schedule:
-    # 每天 UTC 19:00（台北时间凌晨 3:00）
-    - cron: '0 19 * * *'
+    # 北京时间每天 04:00
+    - cron: '0 20 * * *'
+    # 北京时间每天 13:30
+    - cron: '30 5 * * *'
   workflow_dispatch:
 
 jobs:

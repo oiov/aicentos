@@ -2,8 +2,10 @@ name: Sync main → back
 
 on:
   schedule:
-    # 每天 UTC 18:00（台北时间凌晨 2:00）
-    - cron: '0 18 * * *'
+    # 北京时间每天 03:00
+    - cron: '0 19 * * *'
+    # 北京时间每天 12:30
+    - cron: '30 4 * * *'
   workflow_dispatch:
 
 jobs:
