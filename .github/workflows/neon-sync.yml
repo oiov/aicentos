@@ -1,11 +1,11 @@
 name: Sync main → back
 
 on:
-  schedule:
+  # schedule:
     # 北京时间每天 03:00
-    - cron: '0 19 * * *'
+    # - cron: '0 19 * * *'
     # 北京时间每天 12:30
-    - cron: '30 4 * * *'
+    # - cron: '30 4 * * *'
   workflow_dispatch:
 
 jobs:
@@ -39,7 +39,7 @@ jobs:
             if docker run --rm \
               -v /tmp:/backup \
               -e "DB_URL=${url}" \
-              postgres:17-bookworm \
+              postgres:18-bookworm \
               sh -c 'pg_restore -v --clean --if-exists --no-owner --no-privileges -d "$DB_URL" /backup/sync.dump'; then
               echo "备份库 #${INDEX} 同步成功"
             else

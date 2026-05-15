@@ -1,11 +1,11 @@
 name: Backup main & back
 
 on:
-  schedule:
+  # schedule:
     # 北京时间每天 04:00
-    - cron: '0 20 * * *'
+    # - cron: '0 20 * * *'
     # 北京时间每天 13:30
-    - cron: '30 5 * * *'
+    # - cron: '30 5 * * *'
   workflow_dispatch:
 
 jobs:
